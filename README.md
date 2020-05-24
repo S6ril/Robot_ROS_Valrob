@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/S6ril/Diff_Drive_Robot_Ros/blob/master/images/logo_valrob.PNG">
-    <img src="images/logo_valrob.PNG" alt="Logo" width="80" height="80">
+    <img src="images/logo_valrob.PNG" alt="Logo" width="80" >
   </a>
 
   <h3 align="center">Robot ROS - Valrobotik - ENSIAME Valenciennes </h3>
