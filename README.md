@@ -57,7 +57,7 @@ Ce robot à dont été développer avec ROS. On retrouve alors :
 <!-- GETTING STARTED -->
 ## Pour commencer
 
-### Prerequisites
+### Prerequis
 
 ROS et Python doivent être installés.
 
