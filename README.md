@@ -40,7 +40,7 @@
   </a>
 </p>
 
-Ce projet à pour but d'initialiser l'intégration du langage ROS pour le robot Valrob. Cela s'inscrit dans une démarche de rendre le robot modulaire et d'avoir une base solide pour les autres annnées.
+Ce projet à pour but d'initier l'intégration du langage ROS pour le robot Valrob. Cela s'inscrit dans une démarche de rendre le robot modulaire et d'avoir une base solide pour les autres annnées.
 
 On retrouve alors :
 * Sur ce github, un code ROS motion-controller pour faire déplacer le robot.
