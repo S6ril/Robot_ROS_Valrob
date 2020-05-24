@@ -2,6 +2,7 @@
 
     <node pkg="turtlesim" name="turtlesim" type="turtlesim_node"/>
     <node pkg="navigation_valrob" name="motion_controlleur" type="node_motion_controller.py"/>
+    <node pkg="navigation_valrob" name="consigne_point" type="node_consigne_point.py"/>
 
     <rosparam>
         krho : 0.2

@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/usr/bin/python3
 """
 @license
 @author S6ril & Starfunx
@@ -8,24 +8,31 @@ import rospy
 from geometry_msgs.msg import Twist, Pose2D
 from turtlesim.msg import Pose
 from math import sqrt, pow, atan2, cos, sin
+from Nav_utiles import isPosition_reached
 
 from Consigne_point import Consigne_Point
 
 
 def consigne_Point():
     rospy.init_node('consigne_point', anonymous=True)
+    distance_tolerance = rospy.get_param('distance_tolerance',0)
+    angle_tolerance    = rospy.get_param('angle_tolerance', 0)
+    maxLinVelStopped   = rospy.get_param('maxLinVelStopped', 0)
+    maxAngVelStopped   = rospy.get_param('maxAngVelStopped', 0)
+    
+    Cpoint = Consigne_Point(distance_tolerance, angle_tolerance,
+                            maxLinVelStopped, maxAngVelStopped, '/home/cyril/catkin_ws/point.txt')
+
 
     pub_consigne_pos = rospy.Publisher('/turtle1/consign', Pose2D, queue_size=10)
-
-    distance_tolerance = rospy.get_param('distance_tolerance', 0.5)
-    angle_tolerance = rospy.get_param('angle_tolerance', 0.5)
-    maxLinVelStopped = rospy.get_param('maxLinVelStopped', 0.5)
-    maxAngVelStopped = rospy.get_param('maxAngVelStopped', 0.5)
-    consigne_point = Consigne_Point(distance_tolerance, angle_tolerance, maxLinVelStopped, maxAngVelStopped)
+    rospy.Subscriber("/turtle1/pose", Pose, Cpoint.update_robot_pose)
 
     rate = rospy.Rate(10) # 10hz
+
+
     while not rospy.is_shutdown():
-        pub_consigne_pos.publish( consigne_point.update_robot_consign  )
+        pub_consigne_pos.publish(Cpoint.send_new_consign())
+        
         rate.sleep()
 
 

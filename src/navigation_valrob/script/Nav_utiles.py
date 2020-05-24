@@ -38,15 +38,15 @@ def isPosition_reached(pose, poseConsign, distance_tolerance):
     return False
 
 
-def isGoal_reached(motion_controller, consigne_point):
+def isGoal_reached(robotPose, robotConsign, distance_tolerance, commandVel, maxLinVelStopped, maxAngVelStopped):
     #x, y, angle
-    if isPosition_reached(motion_controller.robotPose,
-                          motion_controller.robotConsign,
-                          consigne_point.distance_tolerance):
+    if isPosition_reached(robotPose,
+                          robotConsign,
+                          distance_tolerance):
 
-                          if (isStopped(motion_controller.commandVel,
-                                        consigne_point.maxLinVelStopped,
-                                        consigne_point.maxAngVelStopped) ):
-                                        return True
+        if (isStopped(commandVel,
+                    maxLinVelStopped,
+                    maxAngVelStopped) ):
+            return True
 
     return False
