@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/S6ril/Diff_Drive_Robot_Ros/blob/master/images/logo_valrob.PNG">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo_valrob.PNG" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Robot ROS - Valrobotik - ENSIAME Valenciennes </h3>
@@ -75,16 +75,17 @@ _Pour plus de précision, veuillez vous réferer à la [Documentation](https://v
 
 
 <!-- LICENSE -->
-## License
+## Licence
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
 <!-- CONTACT -->
-## Contact
+## Contacte
 
-S6ril & Starfunkx
+S6ril & Starfunx
+
 Valrobotik - ENSIAME Valenciennes
 
 Lien du projet : [https://github.com/S6ril/](https://github.com/S6ril/Diff_Drive_Robot_Ros.git)
