@@ -12,11 +12,9 @@ from math import sqrt, pow, atan2, cos, sin
 from Consigne_point import Consigne_Point
 
 
-
 def consigne_Point():
     rospy.init_node('consigne_point', anonymous=True)
 
-    # rospy.Subscriber("/turtle1/pose", Pose, motion_controller.update_robot_pos)
     pub_consigne_pos = rospy.Publisher('/turtle1/consign', Pose2D, queue_size=10)
 
     distance_tolerance = rospy.get_param('distance_tolerance', 0.5)
