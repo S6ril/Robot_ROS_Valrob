@@ -35,7 +35,9 @@
 ## Le Projet
 
 <p align="center">
-![GIF Tortue](https://github.com/S6ril/Diff_Drive_Robot_Ros/blob/master/images/tortue_exemple.gif)
+ <a href="https://github.com/S6ril/Diff_Drive_Robot_Ros/blob/master/images/tortue_exemple.gif">
+    <img src="images/tortue_exemple.gif" alt="Gif" >
+  </a>
 </p>
 
 Ce projet à pour but d'initialiser l'intégration du langage ROS pour le robot Valrob. Cela s'inscrit dans une démarche de rendre le robot modulaire et d'avoir une base solide pour les autres annnées.
