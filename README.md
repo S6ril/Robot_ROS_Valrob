@@ -3,13 +3,13 @@
 <br />
 <p align="center">
   <a href="https://github.com/S6ril/Diff_Drive_Robot_Ros/blob/master/images/logo_valrob.PNG">
-    <img src="images/logo_valrob.PNG" alt="Logo" width="80" >
+    <img src="images/logo_valrob.PNG" alt="Logo" width="150" >
   </a>
 
   <h3 align="center">Robot ROS - Valrobotik - ENSIAME Valenciennes </h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Un projet pour rendre le robot modulaire !!
     <br />
     <a href="https://valrobotik.github.io/Documentation2020/"><strong>Documentation »</strong></a>
     <br />
@@ -34,27 +34,26 @@
 <!-- ABOUT THE PROJECT -->
 ## Le Projet
 
+<p align="center">
 ![GIF Tortue](https://github.com/S6ril/Diff_Drive_Robot_Ros/blob/master/images/tortue_exemple.gif)
+</p>
 
 Ce projet à pour but d'initialiser l'intégration du langage ROS pour le robot Valrob. Cela s'inscrit dans une démarche de rendre le robot modulaire et d'avoir une base solide pour les autres annnées.
 
 On retrouve alors :
 * Sur ce github, un code ROS motion-controller pour faire déplacer le robot.
-* Un robot modulaire dont la communication se fait par le port série et une communication GCODE :smile:
+* Un robot modulaire dont la communication se fait par le port série et une communication GCODE.
 
 
 ### Construit avec
 Ce robot à dont été développer avec ROS. On retrouve alors :
 * [ROS Noetic](https://www.ros.org/)
 * [Python 3](https://www.python.org/)
-* [Arduino - C++](https://www.arduino.cc/)
 
 
 
 <!-- GETTING STARTED -->
 ## Pour commencer
-
-Méthode pour mettre en route le code
 
 ### Prerequisites
 
@@ -82,7 +81,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 <!-- CONTACT -->
-## Contacte
+## Contact
 
 S6ril & Starfunx
 
@@ -94,7 +93,6 @@ Lien du projet : [https://github.com/S6ril/](https://github.com/S6ril/Diff_Drive
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Template](https://github.com/othneildrew/Best-README-Template)
 
 
