@@ -29,9 +29,19 @@ class Consigne_Point(object):
 
 
     def update_robot_pose(self, robotPose):
+        """Fonctio qui met à jour la position actuelle du robot dans la classe.
+
+        :param robotPose: Position actuelle du robot.
+        :type robotPose: Pose()
+        """
         self.robotPose = robotPose
 
     def send_new_consign(self):
+        """Fonction qui met à jour la nouvelle consigne que doit suivre le robot.
+
+        :return: la nouvelle consigne
+        :rtype: Pose2D()
+        """
         if isPosition_reached(self.robotPose, self.robotConsign, self.distance_tolerance):
             self.update_robot_consign()
         
@@ -39,6 +49,9 @@ class Consigne_Point(object):
 
 
     def update_robot_consign(self):
+        """Fonction qui génère la nouvelle consigne du robot en fonction de point dans un fichier .txt. 
+        Lorsque tous les points ont été lu, la consigne devient la postion actuelle du robot. (Cela permet de l'immobiliser).
+        """
         if len(self.listCoord) > 0:
             consign = self.listCoord.pop(0) # Enleve et retourne le dernier élément de la liste
             self.robotConsign.x = consign[0]
@@ -55,6 +68,11 @@ class Consigne_Point(object):
 
 
     def lecture_fichier(self, nomFichier):
+        """FOnction pour lire le fichier .txt contenant les points de consigne du robot.
+
+        :param nomFichier: nom du fichier
+        :type nomFichier: char[]
+        """
         fichier = open(nomFichier, "r")
 
         line = fichier.readline()
