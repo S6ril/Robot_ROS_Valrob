@@ -14,6 +14,14 @@ from Consigne_point import Consigne_Point
 
 
 def consigne_Point():
+    """
+    Fonction principale pour la node de la gestion de la consigne.
+    Elle demande des valeurs définies dans le roslaunch :
+        - distance_tolerance
+        - angle_tolerance
+        - maxLinVelStopped
+        - maxAngVelStopped
+    """
     rospy.init_node('consigne_point', anonymous=True)
     distance_tolerance = rospy.get_param('distance_tolerance',0)
     angle_tolerance    = rospy.get_param('angle_tolerance', 0)

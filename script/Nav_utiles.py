@@ -2,15 +2,37 @@
 """
 @license
 @author S6ril & Starfunx
+
+@brief : Cette bibliothèque ressence les fonctions qui peuvent être utile pour la gestion des déplacements du robot.
 """
 from math import sqrt, pow, atan2, pi
 
+
 def rotation(posRobot, posCible):
+    """Fonction pour gerer la rotation du robot
+
+    @param posRobot: Position actuelle du robot
+    :type posRobot: Pose()
+    @param posCible: Positio de la cible
+    :type posCible: Pose2D()
+    @return: Angle de rotation
+    :rtype: float
+    """
     deltax = posCible.x - posRobot.x
     deltay = posCible.y - posRobot.y
     return atan2(deltay , deltax) - posRobot.theta
 
+
 def distance_euclidienne(posRobot, posCible):
+    """Fonction pour calculer la distance euclidienne
+
+    :param posRobot: Position du robot
+    :type posRobot: Pose()
+    :param posCible: Position de la consignz
+    :type posCible: Pose2D()
+    :return: Distance euclidienne entre la postion du robot et la consigne
+    :rtype: float
+    """
     deltax = posCible.x - posRobot.x
     deltay = posCible.y - posRobot.y
     return sqrt( pow( deltax, 2) + pow( deltay, 2) )
