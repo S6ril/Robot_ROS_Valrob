@@ -15,7 +15,7 @@ from Motion_controller import Motion_controller
 
 
 def motion_controller():
-    """
+    """    
     Fonction principale de la node motion_controller.
     Elle demande des paramètres du roslaunch :
         - krho
