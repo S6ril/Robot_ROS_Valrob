@@ -2,7 +2,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/S6ril/Diff_Drive_Robot_Ros/blob/master/images/logo_valrob.PNG">
+  <a href="https://github.com/S6ril/Robot_ROS_Valrob/blob/master/images/logo_valrob.PNG">
     <img src="images/logo_valrob.PNG" alt="Logo" width="150" >
   </a>
 
@@ -11,7 +11,7 @@
   <p align="center">
     Un projet pour rendre le robot modulaire !!
     <br />
-    <a href="https://robot-ros-valrob.readthedocs.io/fr/latest/index.html"><strong>Documentation »</strong></a>
+    <a href="https://s6ril.github.io/Robot_ROS_Valrob/"><strong>Documentation »</strong></a>
     <br />
   </p>
 </p>
@@ -35,7 +35,7 @@
 ## Le Projet
 
 <p align="center">
- <a href="https://github.com/S6ril/Diff_Drive_Robot_Ros/blob/master/images/tortue_exemple.gif">
+ <a href="https://github.com/S6ril/Robot_ROS_Valrob/blob/master/images/tortue_exemple.gif">
     <img src="images/tortue_exemple.gif" alt="Gif" >
   </a>
 </p>
@@ -70,7 +70,7 @@ Pour lancer le programme sur un ordinateur :
 roslaunch navigation_valrob turtle.launch 
 ```
 
-_Pour plus de précision, veuillez vous réferer à la [Documentation](https://valrobotik.github.io/Documentation2020/)_
+_Pour plus de précision, veuillez vous réferer à la [Documentation](https://s6ril.github.io/Robot_ROS_Valrob/)_
 
 
 
@@ -89,7 +89,7 @@ S6ril & Starfunx
 
 Valrobotik - ENSIAME Valenciennes
 
-Lien du projet : [https://github.com/S6ril/](https://github.com/S6ril/Diff_Drive_Robot_Ros.git)
+Lien du projet : [https://github.com/S6ril/](https://github.com/S6ril/Robot_ROS_Valrob.git)
 
 
 
