@@ -48,7 +48,7 @@ class Consigne_Point(object):
 
 
     def update_robot_pose(self, robotPose):
-        """Fonctio qui met à jour la position actuelle du robot dans la classe.
+        """Fonction qui met à jour la position actuelle du robot dans la classe.
 
         :param robotPose: Position actuelle du robot.
         :type robotPose: Pose()
