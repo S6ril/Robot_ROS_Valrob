@@ -11,7 +11,7 @@ Cette documentation vous apprendra comment faire fonctionner le robot de Valrob 
 
 .. toctree::
    :maxdepth: 2
-   :caption: Sommaire :
+   :caption: Sommaire :
    
    Prérequis
    Lancement
