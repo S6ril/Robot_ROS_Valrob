@@ -1,3 +1,16 @@
+ --content-background-color: #fcfcfc;
+
+
 .wy-nav-content {
-    max-width: none;
+    background-color: var(--content-background-color);
+}
+
+
+
+@media only screen and (min-width: 769px) {
+    .wy-body-for-nav {
+        /* Center the page on wide displays for better readability */
+        max-width: 1100px;
+        margin: 0 auto;
+    }
 }

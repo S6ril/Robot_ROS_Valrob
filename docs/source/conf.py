@@ -81,6 +81,11 @@ autoclass_content = 'both'
 #
 html_theme = 'sphinx_rtd_theme'
 
+# The name of an image file (relative to this directory) to place at the top
+# of the sidebar.
+#
+html_logo = "./../../images/robot.png"
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.

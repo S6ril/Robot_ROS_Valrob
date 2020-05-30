@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/S6ril/Robot_ROS_Valrob/blob/master/images/logo_valrob.PNG">
-    <img src="images/logo_valrob.PNG" alt="Logo" width="150" >
+    <img src="images/logo_valrob.png" alt="Logo" width="150" >
   </a>
 
   <h3 align="center">Robot ROS - Valrobotik - ENSIAME Valenciennes </h3>
