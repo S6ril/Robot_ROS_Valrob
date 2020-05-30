@@ -1,8 +1,14 @@
 #!/usr/bin/python3
+
+
+# @author S6ril & Starfunx
+
+
 """
-@license
-@author S6ril & Starfunx
+Cette node permet de donner comme consigne de se diriger vers une succession de points définis dans un fichier `.txt`. 
+
 """
+
 
 import rospy
 from geometry_msgs.msg import Twist, Pose2D

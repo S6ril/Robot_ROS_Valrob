@@ -81,14 +81,15 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Consigne_point.html">Consigne point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Motion_controller module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Nav_utiles module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">node_consigne_point module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion controlleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Classe Motion Contrôleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Librairie Navigation utile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">Node Consigne Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion contrôleur</a></li>
 </ul>
 
             
@@ -153,16 +154,21 @@
             
   <h1>Code source de Consigne_point</h1><div class="highlight"><pre>
 <span></span><span class="c1"># coding: utf-8</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">@license</span>
-<span class="sd">@author S6ril &amp; Starfunx</span>
-<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># @author S6ril &amp; Starfunx</span>
+
 
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Pose2D</span>
 <span class="kn">from</span> <span class="nn">turtlesim.msg</span> <span class="k">import</span> <span class="n">Pose</span>
 
 <span class="kn">from</span> <span class="nn">Nav_utiles</span> <span class="k">import</span> <span class="n">isPosition_reached</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Cette classe permet de gérer les consignes données au robot.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
 
 
 <div class="viewcode-block" id="Consigne_Point"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point">[docs]</a><span class="k">class</span> <span class="nc">Consigne_Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>

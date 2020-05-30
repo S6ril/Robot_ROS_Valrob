@@ -1,10 +1,14 @@
 # coding: utf-8
-"""
-@license
-@author S6ril & Starfunx
 
-@brief : Cette bibliothèque ressence les fonctions qui peuvent être utile pour la gestion des déplacements du robot.
+
+# @author S6ril & Starfunx
+
+
 """
+Le but de cette librairie est de fournir des fonctions générales pour le déplacement d'un robot.
+
+"""
+
 from math import sqrt, pow, atan2, pi
 
 

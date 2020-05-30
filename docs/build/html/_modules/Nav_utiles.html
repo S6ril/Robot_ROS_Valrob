@@ -81,14 +81,15 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Consigne_point.html">Consigne point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Motion_controller module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Nav_utiles module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">node_consigne_point module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion controlleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Classe Motion Contrôleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Librairie Navigation utile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">Node Consigne Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion contrôleur</a></li>
 </ul>
 
             
@@ -153,12 +154,16 @@
             
   <h1>Code source de Nav_utiles</h1><div class="highlight"><pre>
 <span></span><span class="c1"># coding: utf-8</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">@license</span>
-<span class="sd">@author S6ril &amp; Starfunx</span>
 
-<span class="sd">@brief : Cette bibliothèque ressence les fonctions qui peuvent être utile pour la gestion des déplacements du robot.</span>
+
+<span class="c1"># @author S6ril &amp; Starfunx</span>
+
+
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Le but de cette librairie est de fournir des fonctions générales pour le déplacement d&#39;un robot.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">pi</span>
 
 

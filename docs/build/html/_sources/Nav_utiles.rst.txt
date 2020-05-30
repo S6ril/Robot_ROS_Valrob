@@ -1,5 +1,7 @@
-Nav\_utiles module
-==================
+**************************
+Librairie Navigation utile
+**************************
+
 
 .. automodule:: Nav_utiles
     :members:

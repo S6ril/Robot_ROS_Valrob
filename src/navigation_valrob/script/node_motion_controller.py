@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 
 
-# """
-# @license
+
 # @author S6ril & Starfunx
-# """
+
+
+"""
+Cette node permet de gérer les déplacements du robot. Elle vérifie que le robot se dirige bien vers la consigne demandée.
+
+"""
+
 
 import rospy
 from geometry_msgs.msg import Twist, Pose2D

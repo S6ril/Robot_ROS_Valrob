@@ -1,13 +1,14 @@
 Bienvenue sur la documentation du robot ROS de Valrob
 =====================================================
 
-Cette documentation vous apprendra comment faire fonctionnner le robot de Valrob avec le langage ROS. 
+Cette documentation vous apprendra comment faire fonctionner le robot de Valrob avec le langage ROS. 
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Sommaire:
    
    Prérequis
+   Lancement
    
    Consigne_point
    Motion_controller

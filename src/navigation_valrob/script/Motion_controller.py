@@ -1,8 +1,8 @@
 # coding: utf-8
-"""
-@license
-@author S6ril & Starfunx
-"""
+
+
+# @author S6ril & Starfunx
+
 
 from math import sqrt, pow, atan2, cos, sin, pi
 from geometry_msgs.msg import Twist, Pose2D
@@ -10,6 +10,10 @@ from turtlesim.msg import Pose
 
 from Nav_utiles import distance_euclidienne, rotation, reduction_angle
 
+"""
+Cette classe permet de gérer les déplacements du robot, afin qu'il se dirige vers la consigne donnée.
+
+"""
 
 class Motion_controller(object):
     """docstring for Motion_controller."""

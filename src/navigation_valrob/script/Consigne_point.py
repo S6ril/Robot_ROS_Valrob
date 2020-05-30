@@ -1,14 +1,19 @@
 # coding: utf-8
-"""
-@license
-@author S6ril & Starfunx
-"""
+
+
+# @author S6ril & Starfunx
+
 
 from math import sqrt, pow, atan2, cos, sin
 from geometry_msgs.msg import Twist, Pose2D
 from turtlesim.msg import Pose
 
 from Nav_utiles import isPosition_reached
+
+"""
+Cette classe permet de gérer les consignes données au robot.
+
+"""
 
 
 class Consigne_Point(object):

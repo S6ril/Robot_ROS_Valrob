@@ -1,5 +1,8 @@
-Motion\_controller module
-=========================
+************************
+Classe Motion Contrôleur
+************************
+
+Cette classe permet de gérer les déplacements du robot.
 
 .. automodule:: Motion_controller
     :members:
