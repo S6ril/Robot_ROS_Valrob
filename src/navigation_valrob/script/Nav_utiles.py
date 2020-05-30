@@ -1,6 +1,5 @@
 # coding: utf-8
 
-
 # @author S6ril & Starfunx
 
 

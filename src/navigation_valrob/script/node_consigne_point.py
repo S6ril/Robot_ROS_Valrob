@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-
 # @author S6ril & Starfunx
 
 
