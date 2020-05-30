@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Motion_controller &mdash; Documentation Robot ROS Valrob 2020</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Robot ROS Valrob
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Consigne_point.html">Consigne point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Motion_controller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Nav_utiles module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">node_consigne_point module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion controlleur</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Robot ROS Valrob</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Code du module</a> &raquo;</li>
+        
+      <li>Motion_controller</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Code source de Motion_controller</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding: utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@license</span>
+<span class="sd">@author S6ril &amp; Starfunx</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Pose2D</span>
+<span class="kn">from</span> <span class="nn">turtlesim.msg</span> <span class="k">import</span> <span class="n">Pose</span>
+
+<span class="kn">from</span> <span class="nn">Nav_utiles</span> <span class="k">import</span> <span class="n">distance_euclidienne</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">reduction_angle</span>
+
+
+<div class="viewcode-block" id="Motion_controller"><a class="viewcode-back" href="../Motion_controller.html#Motion_controller.Motion_controller">[docs]</a><span class="k">class</span> <span class="nc">Motion_controller</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;docstring for Motion_controller.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">krho</span><span class="p">,</span> <span class="n">kalpha</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Motion_controller</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">krho</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">krho</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kalpha</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">kalpha</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">commandVel</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span> <span class="o">=</span> <span class="n">Pose2D</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotPoseInitiale</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">()</span>
+
+
+
+<div class="viewcode-block" id="Motion_controller.update_command_vel"><a class="viewcode-back" href="../Motion_controller.html#Motion_controller.Motion_controller.update_command_vel">[docs]</a>    <span class="k">def</span> <span class="nf">update_command_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la commande du robot dès qu&#39;elle est appelé.</span>
+
+<span class="sd">        :return: la commande en vitesse, vitesse angulaire</span>
+<span class="sd">        :rtype: Twist()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rho</span> <span class="o">=</span> <span class="n">distance_euclidienne</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="p">)</span>
+
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">rotation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="p">)</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">reduction_angle</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+
+        <span class="n">commandVel</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+        <span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">krho</span><span class="o">*</span><span class="n">rho</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kalpha</span><span class="o">*</span><span class="n">alpha</span>
+
+        <span class="k">return</span> <span class="n">commandVel</span></div>
+
+<div class="viewcode-block" id="Motion_controller.update_robot_pos"><a class="viewcode-back" href="../Motion_controller.html#Motion_controller.Motion_controller.update_robot_pos">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotPose</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la position du robot dès qu&#39;elle est appelé.</span>
+
+<span class="sd">        :param robotPose: Position actuelle du robot</span>
+<span class="sd">        :type robotPose: turtlesim/Pose()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#robot_pos est un tutlesim/Pose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">robotPose</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robotPoseInitiale</span> <span class="o">=</span> <span class="n">robotPose</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">robotPose</span><span class="o">.</span><span class="n">x</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">robotPose</span><span class="o">.</span><span class="n">y</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Motion_controller.update_robot_consign"><a class="viewcode-back" href="../Motion_controller.html#Motion_controller.Motion_controller.update_robot_consign">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotConsign</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la consigne du robot, dès qu&#39;elle est appelé.</span>
+
+<span class="sd">        :param robotConsign: Consigne a donné au robot</span>
+<span class="sd">        :type robotConsign: geometry_msg/Pose2D()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#robot_consign est un geometry_msgs/Pose2D</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span> <span class="o">=</span> <span class="n">robotConsign</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, S6ril
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

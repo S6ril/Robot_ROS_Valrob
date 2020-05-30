@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Consigne_point &mdash; Documentation Robot ROS Valrob 2020</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Robot ROS Valrob
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Consigne_point.html">Consigne point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Motion_controller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Nav_utiles module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">node_consigne_point module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion controlleur</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Robot ROS Valrob</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Code du module</a> &raquo;</li>
+        
+      <li>Consigne_point</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Code source de Consigne_point</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding: utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@license</span>
+<span class="sd">@author S6ril &amp; Starfunx</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Pose2D</span>
+<span class="kn">from</span> <span class="nn">turtlesim.msg</span> <span class="k">import</span> <span class="n">Pose</span>
+
+<span class="kn">from</span> <span class="nn">Nav_utiles</span> <span class="k">import</span> <span class="n">isPosition_reached</span>
+
+
+<div class="viewcode-block" id="Consigne_Point"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point">[docs]</a><span class="k">class</span> <span class="nc">Consigne_Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Classe pour gérer la consigne vers un point.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">,</span> <span class="n">angle_tolerance</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">,</span> <span class="n">fichier</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Paramètres pour initialiser la classe</span>
+
+<span class="sd">        :param distance_tolerance: distance de tolérance pour affirmer que la cible est atteinte.</span>
+<span class="sd">        :type distance_tolerance: float</span>
+<span class="sd">        :param angle_tolerance: angle de tolérance pour affirmer que le robot est bien positionner.</span>
+<span class="sd">        :type angle_tolerance: float</span>
+<span class="sd">        :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
+<span class="sd">        :type maxLinVelStopped: float</span>
+<span class="sd">        :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>
+<span class="sd">        :type maxAngVelStopped: float</span>
+<span class="sd">        :param fichier: Nom du fichier contenant les points.</span>
+<span class="sd">        :type fichier: char</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Consigne_Point</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listCoord</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lecture_fichier</span><span class="p">(</span><span class="n">fichier</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">distance_tolerance</span> <span class="o">=</span> <span class="n">distance_tolerance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">angle_tolerance</span> <span class="o">=</span> <span class="n">angle_tolerance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxLinVelStopped</span> <span class="o">=</span> <span class="n">maxLinVelStopped</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxAngVelStopped</span> <span class="o">=</span> <span class="n">maxAngVelStopped</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span> <span class="o">=</span> <span class="n">Pose2D</span><span class="p">()</span>
+
+
+
+<div class="viewcode-block" id="Consigne_Point.update_robot_pose"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point.update_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotPose</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fonctio qui met à jour la position actuelle du robot dans la classe.</span>
+
+<span class="sd">        :param robotPose: Position actuelle du robot.</span>
+<span class="sd">        :type robotPose: Pose()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">robotPose</span></div>
+
+<div class="viewcode-block" id="Consigne_Point.send_new_consign"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point.send_new_consign">[docs]</a>    <span class="k">def</span> <span class="nf">send_new_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la nouvelle consigne que doit suivre le robot.</span>
+
+<span class="sd">        :return: la nouvelle consigne</span>
+<span class="sd">        :rtype: Pose2D()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">isPosition_reached</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_tolerance</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_robot_consign</span><span class="p">()</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span></div>
+
+
+<div class="viewcode-block" id="Consigne_Point.update_robot_consign"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point.update_robot_consign">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fonction qui génère la nouvelle consigne du robot en fonction de point dans un fichier .txt. </span>
+<span class="sd">        Lorsque tous les points ont été lu, la consigne devient la postion actuelle du robot. (Cela permet de l&#39;immobiliser).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listCoord</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">consign</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listCoord</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Enleve et retourne le dernier élément de la liste</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">consign</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">consign</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">consign</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">consign</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pas de points supplémentaires&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="o">.</span><span class="n">x</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="o">.</span><span class="n">y</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="o">.</span><span class="n">theta</span></div>
+
+
+
+
+<div class="viewcode-block" id="Consigne_Point.lecture_fichier"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point.lecture_fichier">[docs]</a>    <span class="k">def</span> <span class="nf">lecture_fichier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nomFichier</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fonction pour lire le fichier .txt contenant les points de consigne du robot.</span>
+
+<span class="sd">        :param nomFichier: nom du fichier</span>
+<span class="sd">        :type nomFichier: char[]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fichier</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">nomFichier</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+        <span class="n">line</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="k">while</span> <span class="n">line</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">listCoord</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)])</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listCoord</span><span class="p">)</span>
+        <span class="n">fichier</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, S6ril
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

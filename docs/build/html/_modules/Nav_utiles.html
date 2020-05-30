@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Nav_utiles &mdash; Documentation Robot ROS Valrob 2020</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Robot ROS Valrob
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Consigne_point.html">Consigne point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Motion_controller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Nav_utiles module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">node_consigne_point module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion controlleur</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Robot ROS Valrob</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Code du module</a> &raquo;</li>
+        
+      <li>Nav_utiles</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Code source de Nav_utiles</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding: utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@license</span>
+<span class="sd">@author S6ril &amp; Starfunx</span>
+
+<span class="sd">@brief : Cette bibliothèque ressence les fonctions qui peuvent être utile pour la gestion des déplacements du robot.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">pi</span>
+
+
+<div class="viewcode-block" id="rotation"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.rotation">[docs]</a><span class="k">def</span> <span class="nf">rotation</span><span class="p">(</span><span class="n">posRobot</span><span class="p">,</span> <span class="n">posCible</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fonction pour gerer la rotation du robot</span>
+
+<span class="sd">    @param posRobot: Position actuelle du robot</span>
+<span class="sd">    :type posRobot: Pose()</span>
+<span class="sd">    @param posCible: Positio de la cible</span>
+<span class="sd">    :type posCible: Pose2D()</span>
+<span class="sd">    @return: Angle de rotation</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">deltax</span> <span class="o">=</span> <span class="n">posCible</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">deltay</span> <span class="o">=</span> <span class="n">posCible</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">y</span>
+    <span class="k">return</span> <span class="n">atan2</span><span class="p">(</span><span class="n">deltay</span> <span class="p">,</span> <span class="n">deltax</span><span class="p">)</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">theta</span></div>
+
+
+<div class="viewcode-block" id="distance_euclidienne"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.distance_euclidienne">[docs]</a><span class="k">def</span> <span class="nf">distance_euclidienne</span><span class="p">(</span><span class="n">posRobot</span><span class="p">,</span> <span class="n">posCible</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fonction pour calculer la distance euclidienne</span>
+
+<span class="sd">    :param posRobot: Position du robot</span>
+<span class="sd">    :type posRobot: Pose()</span>
+<span class="sd">    :param posCible: Position de la consignz</span>
+<span class="sd">    :type posCible: Pose2D()</span>
+<span class="sd">    :return: Distance euclidienne entre la postion du robot et la consigne</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">deltax</span> <span class="o">=</span> <span class="n">posCible</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">deltay</span> <span class="o">=</span> <span class="n">posCible</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">y</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span> <span class="nb">pow</span><span class="p">(</span> <span class="n">deltax</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span> <span class="n">deltay</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="reduction_angle"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.reduction_angle">[docs]</a><span class="k">def</span> <span class="nf">reduction_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fontion pour remettre l&#39;angle dans entre [-Pi/2, Pi/2]</span>
+
+<span class="sd">    :param angle: angle en radian à réduire</span>
+<span class="sd">    :type angle: float</span>
+<span class="sd">    :return: angle en radian réduit</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">angle</span> <span class="o">&gt;</span> <span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">angle</span> <span class="o">-=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span>
+    <span class="k">while</span> <span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="n">angle</span><span class="p">:</span>
+        <span class="n">angle</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span>
+
+    <span class="k">return</span> <span class="n">angle</span></div>
+
+<div class="viewcode-block" id="isStopped"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.isStopped">[docs]</a><span class="k">def</span> <span class="nf">isStopped</span><span class="p">(</span><span class="n">commandVel</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fonction pour vérifier si le robot est bien stoppé.</span>
+
+<span class="sd">    :param commandVel: la commande du robot en vitesse</span>
+<span class="sd">    :type commandVel: Twist()</span>
+<span class="sd">    :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
+<span class="sd">    :type maxLinVelStopped: float</span>
+<span class="sd">    :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>
+<span class="sd">    :type maxAngVelStopped: float</span>
+<span class="sd">    :return: Vrai ou Faux</span>
+<span class="sd">    :rtype: Booleen</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">z</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>  <span class="o">&lt;</span> <span class="n">maxLinVelStopped</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">x</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">y</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>  <span class="o">&lt;</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="isPosition_reached"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.isPosition_reached">[docs]</a><span class="k">def</span> <span class="nf">isPosition_reached</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">poseConsign</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fonction pour vérifier si la position souhaitée est bien atteinte.</span>
+
+<span class="sd">    :param pose: Position actuelle du robot.</span>
+<span class="sd">    :type pose: Pose()</span>
+<span class="sd">    :param poseConsign: Position de la consigne du robot.</span>
+<span class="sd">    :type poseConsign: Pose2D()</span>
+<span class="sd">    :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</span>
+<span class="sd">    :type distance_tolerance: float</span>
+<span class="sd">    :return: Vrai ou Faux</span>
+<span class="sd">    :rtype: Booleen</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">poseConsign</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">pose</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">distance_tolerance</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">poseConsign</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">pose</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">distance_tolerance</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="isGoal_reached"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.isGoal_reached">[docs]</a><span class="k">def</span> <span class="nf">isGoal_reached</span><span class="p">(</span><span class="n">robotPose</span><span class="p">,</span> <span class="n">robotConsign</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">,</span> <span class="n">commandVel</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fonction pour vérifier que le robot a bien atteint l&#39;objectif désiré.</span>
+
+<span class="sd">    :param robotPose: Position actuelle du robot.</span>
+<span class="sd">    :type robotPose: Pose()</span>
+<span class="sd">    :param robotConsign: Position de la consigne du robot.</span>
+<span class="sd">    :type robotConsign: Pose2D()</span>
+<span class="sd">    :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</span>
+<span class="sd">    :type distance_tolerance: float</span>
+<span class="sd">    :param commandVel: la commande du robot en vitesse</span>
+<span class="sd">    :type commandVel: Twist()</span>
+<span class="sd">    :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
+<span class="sd">    :type maxLinVelStopped: float</span>
+<span class="sd">    :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>
+<span class="sd">    :type maxAngVelStopped: float</span>
+<span class="sd">    :return: Vrai ou Faux</span>
+<span class="sd">    :rtype: Booleen</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#x, y, angle</span>
+    <span class="k">if</span> <span class="n">isPosition_reached</span><span class="p">(</span><span class="n">robotPose</span><span class="p">,</span>
+                          <span class="n">robotConsign</span><span class="p">,</span>
+                          <span class="n">distance_tolerance</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">isStopped</span><span class="p">(</span><span class="n">commandVel</span><span class="p">,</span>
+                    <span class="n">maxLinVelStopped</span><span class="p">,</span>
+                    <span class="n">maxAngVelStopped</span><span class="p">)</span> <span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, S6ril
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

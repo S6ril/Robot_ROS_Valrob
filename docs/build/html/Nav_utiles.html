@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Nav_utiles module &mdash; Documentation Robot ROS Valrob 2020</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="node_consigne_point module" href="node_consigne_point.html" />
+    <link rel="prev" title="Motion_controller module" href="Motion_controller.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Robot ROS Valrob
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Consigne_point.html">Consigne point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Motion_controller.html">Motion_controller module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Nav_utiles module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node_consigne_point.html">node_consigne_point module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node_motion_controller.html">Node Motion controlleur</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Robot ROS Valrob</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Nav_utiles module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Nav_utiles.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-Nav_utiles">
+<span id="nav-utiles-module"></span><h1>Nav_utiles module<a class="headerlink" href="#module-Nav_utiles" title="Lien permanent vers ce titre">¶</a></h1>
+<p>&#64;license
+&#64;author S6ril &amp; Starfunx</p>
+<p>&#64;brief : Cette bibliothèque ressence les fonctions qui peuvent être utile pour la gestion des déplacements du robot.</p>
+<dl class="function">
+<dt id="Nav_utiles.distance_euclidienne">
+<code class="descclassname">Nav_utiles.</code><code class="descname">distance_euclidienne</code><span class="sig-paren">(</span><em>posRobot</em>, <em>posCible</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Nav_utiles.html#distance_euclidienne"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.distance_euclidienne" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction pour calculer la distance euclidienne</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
+<li><strong>posRobot</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position du robot</li>
+<li><strong>posCible</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Position de la consignz</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body"><p class="first">Distance euclidienne entre la postion du robot et la consigne</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Nav_utiles.isGoal_reached">
+<code class="descclassname">Nav_utiles.</code><code class="descname">isGoal_reached</code><span class="sig-paren">(</span><em>robotPose</em>, <em>robotConsign</em>, <em>distance_tolerance</em>, <em>commandVel</em>, <em>maxLinVelStopped</em>, <em>maxAngVelStopped</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Nav_utiles.html#isGoal_reached"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.isGoal_reached" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction pour vérifier que le robot a bien atteint l’objectif désiré.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
+<li><strong>robotPose</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position actuelle du robot.</li>
+<li><strong>robotConsign</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Position de la consigne du robot.</li>
+<li><strong>distance_tolerance</strong> (<em>float</em>) – seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</li>
+<li><strong>commandVel</strong> (<em>Twist</em><em>(</em><em>)</em>) – la commande du robot en vitesse</li>
+<li><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</li>
+<li><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body"><p class="first">Vrai ou Faux</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body"><p class="first last">Booleen</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Nav_utiles.isPosition_reached">
+<code class="descclassname">Nav_utiles.</code><code class="descname">isPosition_reached</code><span class="sig-paren">(</span><em>pose</em>, <em>poseConsign</em>, <em>distance_tolerance</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Nav_utiles.html#isPosition_reached"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.isPosition_reached" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction pour vérifier si la position souhaitée est bien atteinte.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
+<li><strong>pose</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position actuelle du robot.</li>
+<li><strong>poseConsign</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Position de la consigne du robot.</li>
+<li><strong>distance_tolerance</strong> (<em>float</em>) – seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body"><p class="first">Vrai ou Faux</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body"><p class="first last">Booleen</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Nav_utiles.isStopped">
+<code class="descclassname">Nav_utiles.</code><code class="descname">isStopped</code><span class="sig-paren">(</span><em>commandVel</em>, <em>maxLinVelStopped</em>, <em>maxAngVelStopped</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Nav_utiles.html#isStopped"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.isStopped" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction pour vérifier si le robot est bien stoppé.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
+<li><strong>commandVel</strong> (<em>Twist</em><em>(</em><em>)</em>) – la commande du robot en vitesse</li>
+<li><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</li>
+<li><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body"><p class="first">Vrai ou Faux</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body"><p class="first last">Booleen</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Nav_utiles.reduction_angle">
+<code class="descclassname">Nav_utiles.</code><code class="descname">reduction_angle</code><span class="sig-paren">(</span><em>angle</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Nav_utiles.html#reduction_angle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.reduction_angle" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fontion pour remettre l’angle dans entre [-Pi/2, Pi/2]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>angle</strong> (<em>float</em>) – angle en radian à réduire</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body">angle en radian réduit</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Nav_utiles.rotation">
+<code class="descclassname">Nav_utiles.</code><code class="descname">rotation</code><span class="sig-paren">(</span><em>posRobot</em>, <em>posCible</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Nav_utiles.html#rotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.rotation" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction pour gerer la rotation du robot</p>
+<p>&#64;param posRobot: Position actuelle du robot
+:type posRobot: Pose()
+&#64;param posCible: Positio de la cible
+:type posCible: Pose2D()
+&#64;return: Angle de rotation
+:rtype: float</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="node_consigne_point.html" class="btn btn-neutral float-right" title="node_consigne_point module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Motion_controller.html" class="btn btn-neutral float-left" title="Motion_controller module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, S6ril
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

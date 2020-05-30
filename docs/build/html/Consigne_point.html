@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Consigne point &mdash; Documentation Robot ROS Valrob 2020</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Motion_controller module" href="Motion_controller.html" />
+    <link rel="prev" title="Prérequis" href="Prérequis.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Robot ROS Valrob
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Consigne point</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-Consigne_point">Consigne_point module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Motion_controller.html">Motion_controller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Nav_utiles.html">Nav_utiles module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node_consigne_point.html">node_consigne_point module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node_motion_controller.html">Node Motion controlleur</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Robot ROS Valrob</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Consigne point</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Consigne_point.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="consigne-point">
+<h1>Consigne point<a class="headerlink" href="#consigne-point" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="module-Consigne_point">
+<span id="consigne-point-module"></span><h2>Consigne_point module<a class="headerlink" href="#module-Consigne_point" title="Lien permanent vers ce titre">¶</a></h2>
+<p>&#64;license
+&#64;author S6ril &amp; Starfunx</p>
+<dl class="class">
+<dt id="Consigne_point.Consigne_Point">
+<em class="property">class </em><code class="descclassname">Consigne_point.</code><code class="descname">Consigne_Point</code><span class="sig-paren">(</span><em>distance_tolerance</em>, <em>angle_tolerance</em>, <em>maxLinVelStopped</em>, <em>maxAngVelStopped</em>, <em>fichier</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Consigne_point.html#Consigne_Point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe pour gérer la consigne vers un point.</p>
+<p>Paramètres pour initialiser la classe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>distance_tolerance</strong> (<em>float</em>) – distance de tolérance pour affirmer que la cible est atteinte.</li>
+<li><strong>angle_tolerance</strong> (<em>float</em>) – angle de tolérance pour affirmer que le robot est bien positionner.</li>
+<li><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</li>
+<li><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</li>
+<li><strong>fichier</strong> (<em>char</em>) – Nom du fichier contenant les points.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="Consigne_point.Consigne_Point.lecture_fichier">
+<code class="descname">lecture_fichier</code><span class="sig-paren">(</span><em>nomFichier</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Consigne_point.html#Consigne_Point.lecture_fichier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.lecture_fichier" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction pour lire le fichier .txt contenant les points de consigne du robot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>nomFichier</strong> (<em>char</em><em>[</em><em>]</em>) – nom du fichier</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Consigne_point.Consigne_Point.send_new_consign">
+<code class="descname">send_new_consign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Consigne_point.html#Consigne_Point.send_new_consign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.send_new_consign" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction qui met à jour la nouvelle consigne que doit suivre le robot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Renvoie:</th><td class="field-body">la nouvelle consigne</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type renvoyé:</th><td class="field-body">Pose2D()</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Consigne_point.Consigne_Point.update_robot_consign">
+<code class="descname">update_robot_consign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Consigne_point.html#Consigne_Point.update_robot_consign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.update_robot_consign" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction qui génère la nouvelle consigne du robot en fonction de point dans un fichier .txt. 
+Lorsque tous les points ont été lu, la consigne devient la postion actuelle du robot. (Cela permet de l’immobiliser).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Consigne_point.Consigne_Point.update_robot_pose">
+<code class="descname">update_robot_pose</code><span class="sig-paren">(</span><em>robotPose</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Consigne_point.html#Consigne_Point.update_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.update_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonctio qui met à jour la position actuelle du robot dans la classe.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotPose</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position actuelle du robot.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Motion_controller.html" class="btn btn-neutral float-right" title="Motion_controller module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Prérequis.html" class="btn btn-neutral float-left" title="Prérequis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, S6ril
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
