@@ -14,11 +14,11 @@ from math import sqrt, pow, atan2, pi
 def rotation(posRobot, posCible):
     """Fonction pour gerer la rotation du robot
 
-    @param posRobot: Position actuelle du robot
+    :param posRobot: Position actuelle du robot
     :type posRobot: Pose()
-    @param posCible: Positio de la cible
+    :param posCible: Positio de la cible
     :type posCible: Pose2D()
-    @return: Angle de rotation
+    :return: Angle de rotation
     :rtype: float
     """
     deltax = posCible.x - posRobot.x
