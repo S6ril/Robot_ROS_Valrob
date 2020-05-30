@@ -12,7 +12,6 @@ Cette documentation vous apprendra comment faire fonctionnner le robot de Valrob
    Consigne_point
    Motion_controller
    Nav_utiles
-   conf
    node_consigne_point
    node_motion_controller
 
