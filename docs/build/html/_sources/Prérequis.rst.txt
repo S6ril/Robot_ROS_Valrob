@@ -44,4 +44,4 @@ Puis on télécharge le code :
 
     git clone https://github.com/S6ril/Robot_ROS_Valrob.git
 
-C'est bon !! Il reste plus qu'à le lancer.
+C'est bon !! Il ne reste plus qu'à le lancer.

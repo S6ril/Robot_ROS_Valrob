@@ -1,5 +1,5 @@
 **************
-Consigne point
+Classe Consigne point
 **************
 
 

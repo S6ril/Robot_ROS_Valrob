@@ -13,3 +13,12 @@ Maintenant que le code est prêt, il faut le lancer. Pour cela, j'utilise un `RO
 
 
 La dernière commande permet "d'apprendre" au terminal toutes les nouvelles commandes contenue dans ce dossier.
+
+Maintenant on lance les nodes ROS :
+
+::
+    roslaunch navigation_valrob turtle.launch 
+
+
+.. note::
+    Lorsque l'on écrit au clavier, il est utile d'utiliser la touche `tab`. Cela permet de compléter automatiquement la commande en cours.
