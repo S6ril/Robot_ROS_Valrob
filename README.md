@@ -11,7 +11,7 @@
   <p align="center">
     Un projet pour rendre le robot modulaire !!
     <br />
-    <a href="https://valrobotik.github.io/Documentation2020/"><strong>Documentation »</strong></a>
+    <a href="https://robot-ros-valrob.readthedocs.io/fr/latest/index.html"><strong>Documentation »</strong></a>
     <br />
   </p>
 </p>
