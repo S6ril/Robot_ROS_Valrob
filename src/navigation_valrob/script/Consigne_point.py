@@ -12,9 +12,23 @@ from Nav_utiles import isPosition_reached
 
 
 class Consigne_Point(object):
-    """docstring for Consigne_Point."""
+    """Classe pour gérer la consigne vers un point.
+    """
 
     def __init__(self, distance_tolerance, angle_tolerance, maxLinVelStopped, maxAngVelStopped, fichier):
+        """Paramètres pour initialiser la classe
+
+        :param distance_tolerance: distance de tolérance pour affirmer que la cible est atteinte.
+        :type distance_tolerance: float
+        :param angle_tolerance: angle de tolérance pour affirmer que le robot est bien positionner.
+        :type angle_tolerance: float
+        :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.
+        :type maxLinVelStopped: float
+        :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.
+        :type maxAngVelStopped: float
+        :param fichier: Nom du fichier contenant les points.
+        :type fichier: char
+        """
         super(Consigne_Point, self).__init__()
         self.listCoord = []
         self.lecture_fichier(fichier)
@@ -68,7 +82,7 @@ class Consigne_Point(object):
 
 
     def lecture_fichier(self, nomFichier):
-        """FOnction pour lire le fichier .txt contenant les points de consigne du robot.
+        """Fonction pour lire le fichier .txt contenant les points de consigne du robot.
 
         :param nomFichier: nom du fichier
         :type nomFichier: char[]
