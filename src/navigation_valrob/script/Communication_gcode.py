@@ -30,7 +30,7 @@ class Communication_Gcode(object):
         self.ser.close()
         print("serial close")
 
-    def update_robot_pose(self):
+    def get_robot_pose(self):
         """Fonction qui met à jour la position actuelle du robot dans la classe.
 
         :param robotPose: Position actuelle du robot.
@@ -38,12 +38,12 @@ class Communication_Gcode(object):
         """
         if (self.ser.is_open):
             self.ser.write(b'M114')
-            message = self.ser.read(50) #read 50 bytes
+            message = self.ser.read(190) #read 50 bytes
             print("message =", message)
             if (len(message) > 4):
                 indexX = message.index("X")
-                indexY = int(message.index("Y"))
-                indexA = int(message.index("A"))
+                indexY = message.index("Y")
+                indexA = message.index("A")
 
                 self.robotPose.x = float(message[ indexX+1: indexY ] )
                 self.robotPose.y = float(message[ indexY+1: indexA ] )
