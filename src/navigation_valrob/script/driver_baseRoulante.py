@@ -66,7 +66,7 @@ class Communication_Gcode(object):
         """
         if (self.ser.is_open):
             self.ser.write(b'M114')
-            message = self.ser.read(190) #read 50 bytes
+            message = self.ser.read(190) #read 190 bytes
             print("message =", message)
             if (len(message) > 4):
                 indexX = message.index("X")
@@ -116,10 +116,10 @@ class Communication_Gcode(object):
     def set_right_odom_wheel_diameter(self, r):
         pass
 
-    def set_odom_wheel_dist(self, d):
+    def set_odom_wheel_dist_left(self, d):
         pass
 
-    def set_odom_wheel_dist(self, d):
+    def set_odom_wheel_dist_right(self, d):
         pass
 
     def set_max_linear_acceleration(self, value):
@@ -135,10 +135,9 @@ class Communication_Gcode(object):
         pass
 
 
-
     # aliases
     def miseEnRouteRobot(self):
-        enable_motors()
+        self.enable_motors()
 
     def stopRobot(self):
-        disable_motors()
+        self.disable_motors()
