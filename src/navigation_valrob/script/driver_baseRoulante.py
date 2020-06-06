@@ -45,11 +45,11 @@ class Communication_Gcode(object):
         self.ser.write(b' A')
         self.ser.write(str.encode(str(theta)))
 
-    def set_robot_speed(self, linear, angular):
+    def set_robot_speed(self, msg_twist):
         self.ser.write(b'G10 I')
-        self.ser.write(str.encode(str(linear)))
+        self.ser.write(str.encode(str(msg_twist.linear.x)))
         self.ser.write(b' J')
-        self.ser.write(str.encode(str(angular)))
+        self.ser.write(str.encode(str(msg_twist.angular.z)))
 
     def set_robot_wheel_speed(self, leftWheelSpeed, RightWeelSpeed):
         self.ser.write(b'G11 I')
@@ -69,13 +69,12 @@ class Communication_Gcode(object):
             message = self.ser.read(190) #read 190 bytes
             print("message =", message)
             if (len(message) > 4):
-                indexX = message.index("X")
-                indexY = message.index("Y")
-                indexA = message.index("A")
+                message = message.split(" ")
+                print(message)
 
-                self.robotPose.x = float(message[ indexX+1: indexY ] )
-                self.robotPose.y = float(message[ indexY+1: indexA ] )
-                self.robotPose.theta = float(message[ indexA+1: ] )
+                self.robotPose.x = float(message[ 1 ] )
+                self.robotPose.y = float(message[ 3 ] )
+                self.robotPose.theta = float(message[ 5 ] )
 
         return self.robotPose
 
