@@ -95,8 +95,8 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
 
     def draw(x, y):
+        #Ca lag avec le nombre de points
         plt.scatter(x, y)
-        plt.show()
         plt.pause(0.0001)
 
     odometer = Odometer(0x046d, 0xc05a)
