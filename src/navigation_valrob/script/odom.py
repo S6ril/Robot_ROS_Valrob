@@ -25,9 +25,19 @@ class Odometer(object):
         IDVendor : 0x+ 046d
         IDProcduct : 0x+ c05a
         
+        Méthode 1 : (temporaire)
         Puis avant de lancer le programme, on donne les droits de lecture et d'écriture sur la souris :
         - sudo chmod a+rw /dev/bus/usb/001/016
         Permet de capter les déplacements de la souris
+
+        Méthode 2 : définitive avec 1 seul appareil
+        créer le fichier de rules :
+        - sudo nano /etc/udev/rules.d/99-mouses.rules
+        puis ajouter dans le fichier (les ids sont à changer)
+        - SUBSYSTEM=="usb", ATTR{idVendor}=="0fcf", ATTR{idProduct}=="1008", MODE="666"
+        enfin on redemarre le tout
+        - sudo udevadm trigger
+
 
         :param IDVendor: identificateur unique de la souris
         :type IDVendor: int
