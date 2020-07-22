@@ -53,6 +53,10 @@ class Odometer(object):
         self.robotData = MouseData()
         self.robotPose = MouseData()
 
+        self.calibration = 300 / 11754
+        """Calibration expérimentale sur 30 cm
+           Aller-retour sur 30 cm, je compte le nb de point donnés par le capteur
+        """
 
 
         if self.dev.is_kernel_driver_active(self.interface) is True:
@@ -80,20 +84,26 @@ class Odometer(object):
 
 
     def determine_position(self):
-        
-        self.read_mouse()
 
-        if self.robotData.x >= 129:
+        origin = time.time()
+        self.read_mouse()
+        
+
+        if self.robotData.x >= 128:
             self.robotData.x = -(~self.robotData.x & 0xFF)
 
-        if self.robotData.y >= 129:
+        if self.robotData.y >= 128:
             self.robotData.y = -(~self.robotData.y & 0xFF)
         
-        self.robotPose.x += self.robotData.x
-        self.robotPose.y -= self.robotData.y #Changement de signe pour un affichage matplotlib ensuite
+
+        dt = time.time() - origin
+
+        self.robotPose.x += self.robotData.x *dt
+        # Changement de signe pour un affichage matplotlib ensuite
+        self.robotPose.y -= self.robotData.y *dt
         
 
-        draw(self.robotPose.x, self.robotPose.y)
+        # draw(self.robotPose.x, self.robotPose.y)
 
 
 
@@ -111,13 +121,14 @@ if __name__ == "__main__":
 
     odometer = Odometer(0x046d, 0xc05a)
 
-    plt.ion()
-    fig = plt.figure()
+    # plt.ion()
+    # fig = plt.figure()
 
 
 
     while True:
         try:
+            0
             #odometer.read_mouse()
             #print("mouse =", odometer.robotData.__dict__)
 
