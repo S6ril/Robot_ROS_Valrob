@@ -1,70 +1,42 @@
 #include "Gcode.h"
 
 
-
-
-// void Gcode::DecompoGcode(String commande){
-//   // Serial.print(commande);
-
-//   int c = 0; //Incrément de la boucle principale
-//   int sub_c = 0; //Incrément pour le substring (petite tranche de la liste)
-//   int tString = 190; //Taille max du string
-//   param=0;
-
-//   for (c=0; c < tString; c++){
-//     //On parcourt le string carractère par carractère
-
-//     if ( isDigit(commande[c]) || isPunct(commande[c]) ){
-//       //Increment pour determiner la taille du sub string contenant les nombres
-//       sub_c++;
-//     }
-//     else {
-//       //Ici on a la position d'un nombre, on lui associe alors la lettre correspondantes.
-//       //On assigne les variables (ABCD...) avec la fonction compare.
-//       //Pour la propreté du code, la comparaison se fait dans un autre fichier.
-//       // 
-//       Compare(commande, commande[c-sub_c-1], c, sub_c );
-
-//       sub_c = 0; //remise à zero du sub string
-//     }
-
-//   }
-// }
-
-
 void Gcode::DecompoGcode(String commande)
+/**
+ * @brief Fonction qui va extraire du char transmis en série les différentes commandes (et leurs valeurs associés)
+ * 
+ */
 {
-  if (commande != '\0')
-  {
-    commande.replace(" ", ""); //Delete all space : no need
-
-    char letter = commande[0]; //Première commande
-    int char_int = 0; //  incrément pour définir la valeur de la commande
-    int c;
-    
-    for (c =1; commande[c] != '\0'; c++)
-    /**
-     * @brief On parcourt la liste de carractère.
-     * Dans un premier temps on sauvegarde la lettre, 
-     * puis au prochain carractère, on connait la valeur associé à la lettre initiale
-     */
+    if (commande != '\0')
     {
+        commande.replace(" ", ""); //Delete all space : no need
 
-      if (isAlpha(commande[c]) )
-      {
-        Compare(letter, commande.substring(c-char_int, c).toInt() );
-        letter = commande[c]; // Commande suivante
-        char_int = 0; //RaZ
-      }
-      else if ( isDigit(commande[c]) )
-      {
-        char_int++;
-      }
+        char letter = commande[0]; //Première commande
+        int char_int = 0; //  incrément pour définir la valeur de la commande
+        int c;
 
+        for (c =1; commande[c] != '\0'; c++)
+        /**
+         * @brief On parcourt la liste de carractère.
+         * Dans un premier temps on sauvegarde la lettre, 
+         * puis au prochain carractère, on connait la valeur associé à la lettre initiale
+         */
+        {
+            if (isAlpha(commande[c]) )
+            {
+                Compare(letter, commande.substring(c-char_int, c).toInt() );
+                letter = commande[c]; // Commande suivante
+                char_int = 0; //RaZ
+            }
+            else if ( isDigit(commande[c]) )
+            {
+                char_int++;
+            }
+
+        }
+        Compare(letter, commande.substring(c - char_int-1).toInt() ); // Appel de la fonction pour la dernière commande.
     }
-    Compare(letter, commande.substring(c - char_int-1).toInt() ); // Appel de la fonction pour la dernière commande.
-  }
-  
+
 
 }
 
@@ -76,172 +48,141 @@ void Gcode::DecompoGcode(String commande)
 
 
 
-void Gcode::Compare(int lettre, float value){
-  Serial.println("Ici");
-  Serial.println(lettre);
-  Serial.println(value);
-  
-  
-  switch (lettre) {
-    int sub_c = 0;
-
+void Gcode::Compare(int lettre, float value)
+{
+    switch (lettre) 
+    {
     case 'A':
-      m_A = value;
-      if (sub_c > 0)
-            param += 512;
-      break;
+        m_A = value;
+        param += 512;
+        break;
 
     case 'B':
-      m_B = value;
-      if (sub_c > 0)
+        m_B = value;
         param += 1024;
-      break;
+        break;
 
     case 'C':
-      m_C = value;
-      if (sub_c > 0)
+        m_C = value;
         param += 2048;
-      break;
+        break;
 
     case 'D':
-      m_D = value;
-      if (sub_c > 0)
+        m_D = value;
         param += 4096;
-      break;
+        break;
 
     case 'E':
-    m_E = value;
-    if (sub_c > 0)
-      param += 8192;
-    break;
+        m_E = value;
+        param += 8192;
+        break;
 
     case 'F':
-    m_F = value;
-    if (sub_c > 0)
-      param += 16384;
-    break;
+        m_F = value;
+        param += 16384;
+        break;
 
     case 'G':
-    m_G = value;
-    if (sub_c > 0)
-      param += 1;
-    break;
+        m_G = value;
+        param += 1;
+        break;
 
     case 'H':
-    m_H = value;
-    if (sub_c > 0)
-      param += 32768;
-    break;
+        m_H = value;
+        param += 32768;
+        break;
 
     case 'I':
-    m_I = value;
-    if (sub_c > 0)
-      param += 65536;
-    break;
+        m_I = value;
+        param += 65536;
+        break;
 
     case 'J':
-    m_J = value;
-    if (sub_c > 0)
-      param += 131072;
-    break;
+        m_J = value;
+        param += 131072;
+        break;
 
     case 'K':
-    m_K = value;
-    if (sub_c > 0)
-      param += 262144;
-    break;
+        m_K = value;
+        param += 262144;
+        break;
 
     case 'L':
-    m_L = value;
-    if (sub_c > 0)
-      param += 524288;
-    break;
+        m_L = value;
+        param += 524288;
+        break;
 
     case 'M':
-    m_M = value;
-    if (sub_c > 0)
-      param += 2;
-    break;
+        m_M = value;
+        param += 2;
+        break;
 
     case 'N':
-    m_N = value;
-    if (sub_c > 0)
-      param += 4;
-    break;
+        m_N = value;
+        param += 4;
+        break;
 
     case 'O':
-    m_O = value;
-    if (sub_c > 0)
-      param += 1048576;
-    break;
+        m_O = value;
+        param += 1048576;
+        break;
 
     case 'P':
-    m_P = value;
-    if (sub_c > 0)
-      param += 128;
-    break;
+        m_P = value;
+        param += 128;
+        break;
 
     case 'Q':
-    m_Q = value;
-    if (sub_c > 0)
-      param += 2097152;
-    break;
+        m_Q = value;
+        param += 2097152;
+        break;
 
     case 'R':
-    m_R = value;
-    if (sub_c > 0)
-      param += 4194304;
-    break;
+        m_R = value;
+        param += 4194304;
+        break;
 
     case 'S':
-    m_S = value;
-    if (sub_c > 0)
-      param += 64;
-    break;
+        m_S = value;
+        param += 64;
+        break;
 
     case 'T':
-    m_T = value;
-    if (sub_c > 0)
-      param += 256;
-    break;
+        m_T = value;
+        param += 256;
+        break;
 
     case 'U':
-    m_U = value;
-    if (sub_c > 0)
-      param += 8388608;
-    break;
+        m_U = value;
+        param += 8388608;
+        break;
 
     case 'V':
-    m_V = value;
-    if (sub_c > 0)
-      param += 16777216;
-    break;
+        m_V = value;
+        param += 16777216;
+        break;
 
     case 'W':
-    m_W = value;
-    if (sub_c > 0)
-    break;
-      param += 33554432;
+        m_W = value;
+        break;
+        param += 33554432;
 
     case 'X':
-    m_X = value;
-    if (sub_c > 0)
-      param += 8;
-    break;
+        m_X = value;
+        param += 8;
+        break;
 
     case 'Y':
-    m_Y = value;
-    if (sub_c > 0)
-      param += 16;
-    break;
+        m_Y = value;
+        param += 16;
+        break;
 
     case 'Z':
-    m_Z = value;
-    if (sub_c > 0)
-      param += 32;
-    break;
+        m_Z = value;
+        param += 32;
+        break;
 
-  }
+    }
 
 
 }

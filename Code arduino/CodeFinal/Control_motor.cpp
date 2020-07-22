@@ -18,20 +18,20 @@ void Control::setup(motorParam motorLParam, motorParam motorRParam)
 
 void Control::setMotorSpeed(int speed, motorParam motor)
 {
-  digitalWrite(motor.Lpin, HIGH);
-  digitalWrite(motor.Rpin, LOW);
-  // set speed to 150 out 255
-  analogWrite(motor.EnablePin, speed);
+    digitalWrite(motor.Lpin, HIGH);
+    digitalWrite(motor.Rpin, LOW);
+    // set speed to 150 out 255
+    analogWrite(motor.EnablePin, speed);
 }
 
 void Control::stop(motorParam motorL, motorParam motorR)
 {
-  digitalWrite(motorL.Lpin, LOW);
-  digitalWrite(motorL.Rpin, LOW);
-  digitalWrite(motorL.EnablePin, LOW);
+    digitalWrite(motorL.Lpin, LOW);
+    digitalWrite(motorL.Rpin, LOW);
+    digitalWrite(motorL.EnablePin, LOW);
 
-  digitalWrite(motorR.Lpin, LOW);
-  digitalWrite(motorR.Rpin, LOW);
-  digitalWrite(motorR.EnablePin, LOW);
+    digitalWrite(motorR.Lpin, LOW);
+    digitalWrite(motorR.Rpin, LOW);
+    digitalWrite(motorR.EnablePin, LOW);
 }
 

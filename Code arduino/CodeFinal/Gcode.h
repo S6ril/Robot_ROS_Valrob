@@ -34,10 +34,8 @@ class Gcode
    * On crée un substring à partir de la position du dernier chiffre.
    * On modifie aussi la valeur de param. Cela permet ensuite de determiner les valeurs contenus dans le Gcode reçu.
    * On utilise un système de masque (2^n), mais on ne l'affichage pas en en bits.
-   * @param stringcomplet Le Gcode complet où l'on va extraire les valeurs
    * @param lettre        La lettre dont l'on veut extraire la valeur
-   * @param c             Position du dernier chiffre à extraire
-   * @param sub_c         Nombre de chiffres à extraires
+   * @param value         La valeur de la commande
    */
   void Compare(int lettre, float value);
 
@@ -192,7 +190,6 @@ class Gcode
   }
 
 
-  private :
   //Parramètre contenant la masque du Gcode. Il sera testé par la suite.
   unsigned long param = 0;
 

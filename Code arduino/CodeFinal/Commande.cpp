@@ -20,6 +20,7 @@ void Commande::executerGcode(String commande)
         {
         case 0:
             // Commande à définir
+            Serial.println("J'ai reçu M0");
             break;
 
         case 1:
@@ -27,10 +28,7 @@ void Commande::executerGcode(String commande)
             break;
 
         case 666:
-            if (Serial.available() )
-            {
-                Serial.println("Com OK");   
-            }
+            Serial.println("Com OK");   
             break;
         }
     }
@@ -42,7 +40,7 @@ void Commande::executerGcode(String commande)
         switch (gcode.m_G)
         {
         case 20:
-            // Commande
+            Serial.println("G20");
             break;
 
         case 1:
@@ -66,4 +64,5 @@ void Commande::executerGcode(String commande)
         }
     }
 
+    gcode.param = 0;
 }
