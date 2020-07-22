@@ -64,5 +64,6 @@ void Commande::executerGcode(String commande)
         }
     }
 
+    // Raz des gcode.has()
     gcode.param = 0;
 }
