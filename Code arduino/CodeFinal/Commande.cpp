@@ -1,5 +1,4 @@
 #include "Commande.h"
-#include "Gcode.h"
 
 
 
@@ -39,12 +38,12 @@ void Commande::executerGcode(String commande)
         //Test de la varible G
         switch (gcode.m_G)
         {
+        case 11:
+            control.setMotorSpeed();
+            break;
+        
         case 20:
             Serial.println("G20");
-            break;
-
-        case 1:
-            // Commande à définir
             break;
         }
     }

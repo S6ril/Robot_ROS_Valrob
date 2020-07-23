@@ -17,5 +17,6 @@ class Commande
 
   private:
     Gcode gcode; // Définition de la variable Gcode qui récupéra les différentes variables du Gcode.
+    Control control;
 };
 #endif
