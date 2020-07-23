@@ -23,13 +23,13 @@ def odom():
 
     odometer = Odometer(0x046d, 0xc018)
 
-    pub_odometrie = rospy.Publisher('/turtle1/cmd_vel', Pose2D, queue_size=10)
+    pub_odometrie = rospy.Publisher('/turtle1/pose', Pose, queue_size=10)
 
     rate = rospy.Rate(10)  # 10hz
     while not rospy.is_shutdown():
         odometer.read_speed()
         print(odometer.robotPose)
-        pub_odometrie.publish(odometer.robotPose)
+        pub_odometrie.publish(odometer.robotPosition())
         rate.sleep()
 
 

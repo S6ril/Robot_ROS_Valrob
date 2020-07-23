@@ -5,6 +5,8 @@ import usb.util
 from math import atan2
 import time
 
+from turtlesim.msg import Pose
+
 
 
 class MouseData(object):
@@ -106,7 +108,13 @@ class Odometer(object):
         # draw(self.robotPose.x, self.robotPose.y)
 
 
+    def robotPosition(self):
+        position = Pose()
 
+        position.x = self.robotPose.x
+        position.y = self.robotPose.y
+
+        return position
 
 
     
