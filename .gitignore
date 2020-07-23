@@ -62,6 +62,7 @@ CATKIN_IGNORE
 
 ### VisualStudioCode ###
 .vscode/*
+Code arduino/CodeFinal/.vscode/*
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
