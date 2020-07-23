@@ -26,17 +26,21 @@ void Commande::executerGcode(String commande)
             // Commande à définir
             break;
 
+
+        case 18:
+            Serial.println("Stop Motor");
+            control.stop(m_motorLParam, m_motorRParam);
+
+            //RaZ des vitesses !!
+            gcode.m_I = 0;
+            gcode.m_J = 0;
+            break;
+        
         case 666:
             Serial.println("Com OK");
             control.setup(m_motorLParam, m_motorRParam);
             Serial.println("Initialisation OK"); 
             break;
-
-        case 18:
-            Serial.println("Stop Motor");
-            control.stop(m_motorLParam, m_motorRParam);
-            break;
-        
         }
     }
 
