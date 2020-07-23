@@ -1,7 +1,6 @@
 #include "Gcode.h"
 #include "Commande.h"
 
-
 Commande commande;
 //Creation de l'objet pour traduire le Gcode
 

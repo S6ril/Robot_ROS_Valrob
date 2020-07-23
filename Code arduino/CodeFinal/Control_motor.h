@@ -4,7 +4,7 @@
 #include <math.h>
 #include "Config.h"
 #include "type.h"
-#import <Arduino.h>
+#include <Arduino.h>
 
 class Control
 {

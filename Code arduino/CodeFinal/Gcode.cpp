@@ -7,7 +7,7 @@ void Gcode::DecompoGcode(String commande)
  * 
  */
 {
-    if (commande != '\0')
+    if (commande != "\0")
     {
         commande.replace(" ", ""); //Delete all space : no need
 

@@ -1,8 +1,6 @@
 #ifndef GCODE_H
 #define GCODE_H
-
 #include <Arduino.h>
-
 
 
 
