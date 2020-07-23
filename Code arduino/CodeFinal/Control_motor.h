@@ -26,7 +26,8 @@ public :
 
     void stop(motorParam motorL, motorParam motorR);
 
-    
+    void setMotorReverseSpeed(int speed, motorParam motor);
+
     motorParam m_motorLParam;
     motorParam m_motorRParam;
 

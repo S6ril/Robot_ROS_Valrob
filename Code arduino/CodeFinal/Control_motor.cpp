@@ -24,6 +24,15 @@ void Control::setMotorSpeed(int speed, motorParam motor)
     analogWrite(motor.EnablePin, speed);
 }
 
+void Control::setMotorReverseSpeed(int speed, motorParam motor)
+{
+    digitalWrite(motor.Lpin, LOW);
+    digitalWrite(motor.Rpin, HIGH);
+    // set speed to 150 out 255
+    analogWrite(motor.EnablePin, speed);
+}
+
+
 void Control::stop(motorParam motorL, motorParam motorR)
 {
     digitalWrite(motorL.Lpin, LOW);
