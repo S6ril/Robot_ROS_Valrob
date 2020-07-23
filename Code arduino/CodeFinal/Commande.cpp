@@ -36,6 +36,14 @@ void Commande::executerGcode(String commande)
             gcode.m_J = 0;
             break;
         
+        case 114:
+            Serial.print("cons ");
+            Serial.print(gcode.m_I);
+
+        case 115:
+            Serial.print("cons ");
+            Serial.print(gcode.m_J);
+
         case 666:
             Serial.println("Com OK");
             control.setup(m_motorLParam, m_motorRParam);
