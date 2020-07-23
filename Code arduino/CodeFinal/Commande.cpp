@@ -27,8 +27,16 @@ void Commande::executerGcode(String commande)
             break;
 
         case 666:
-            Serial.println("Com OK");   
+            Serial.println("Com OK");
+            control.setup(m_motorLParam, m_motorRParam);
+            Serial.println("Initialisation OK"); 
             break;
+
+        case 18:
+            Serial.println("Stop Motor");
+            control.stop(m_motorLParam, m_motorRParam);
+            break;
+        
         }
     }
 
@@ -39,7 +47,9 @@ void Commande::executerGcode(String commande)
         switch (gcode.m_G)
         {
         case 11:
-            control.setMotorSpeed();
+            Serial.println("Mise en route des moteurs");
+            control.setMotorSpeed(gcode.m_I, m_motorLParam);
+            control.setMotorSpeed(gcode.m_J, m_motorRParam);
             break;
         
         case 20:

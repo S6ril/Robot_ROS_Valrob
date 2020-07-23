@@ -18,5 +18,8 @@ class Commande
   private:
     Gcode gcode; // Définition de la variable Gcode qui récupéra les différentes variables du Gcode.
     Control control;
+
+    motorParam m_motorLParam = control.m_motorLParam;
+    motorParam m_motorRParam = control.m_motorRParam;
 };
 #endif

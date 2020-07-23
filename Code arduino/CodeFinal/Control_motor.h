@@ -28,9 +28,8 @@ public :
 
     void setMotorReverseSpeed(int speed, motorParam motor);
 
-    motorParam m_motorLParam;
-    motorParam m_motorRParam;
-
+    motorParam m_motorLParam = {LEFT_ENABLE_PIN, LEFT_LPIN, LEFT_RPIN};
+    motorParam m_motorRParam = {RIGHT_ENABLE_PIN, RIGHT_LPIN, RIGHT_RPIN};
 };
 
 
