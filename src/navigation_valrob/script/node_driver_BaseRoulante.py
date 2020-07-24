@@ -11,7 +11,6 @@ Cette node permet de communiquer avec le robot en Gcode
 
 import rospy
 from geometry_msgs.msg import Twist, Pose2D
-from turtlesim.msg import Pose
 
 from driver_baseRoulante import Communication_Gcode
 import serial
@@ -24,8 +23,8 @@ def communication():
     rospy.init_node('communication', anonymous=True)
     driver_robot = Communication_Gcode("/dev/ttyACM0", 9600)
 
-    pub_pose = rospy.Publisher('/turtle1/pose', Pose2D, queue_size=10)
-    rospy.Subscriber('/turtle1/cmd_vel', Twist, driver_robot.set_robot_speed)
+    pub_pose = rospy.Publisher('/robot/pose', Pose2D, queue_size=10)
+    rospy.Subscriber('/robot/cmd_vel', Twist, driver_robot.set_robot_speed)
 
     rate = rospy.Rate(10)  # 10hz
     while not rospy.is_shutdown():

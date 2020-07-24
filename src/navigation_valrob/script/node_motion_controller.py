@@ -11,7 +11,7 @@ Cette node permet de gérer les déplacements du robot. Elle vérifie que le rob
 
 import rospy
 from geometry_msgs.msg import Twist, Pose2D
-from turtlesim.msg import Pose
+
 from math import sqrt, pow, atan2, cos, sin
 
 from Motion_controller import Motion_controller
@@ -30,9 +30,9 @@ def motion_controller():
     kalpha = rospy.get_param('kalpha', 0)
     motion_controller = Motion_controller(krho, kalpha )
 
-    pub_cmd_Vel = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
-    rospy.Subscriber("/turtle1/pose", Pose, motion_controller.update_robot_pos)
-    rospy.Subscriber("/turtle1/consign", Pose2D, motion_controller.update_robot_consign)
+    pub_cmd_Vel = rospy.Publisher('/robot/cmd_vel', Twist, queue_size=10)
+    rospy.Subscriber("/robot/pose", Pose2D, motion_controller.update_robot_pos)
+    rospy.Subscriber("/robot/consign", Pose2D, motion_controller.update_robot_consign)
 
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
