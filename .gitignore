@@ -69,3 +69,6 @@ Code arduino/CodeFinal/.vscode/*
 .history
 
 # End of https://www.gitignore.io/api/ros,visualstudiocode
+
+# For privacy, no include
+docs/API_Carte_controle_deplacemetns.pdf
