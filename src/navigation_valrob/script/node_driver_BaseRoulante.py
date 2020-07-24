@@ -21,7 +21,7 @@ def communication():
 
     """
     rospy.init_node('communication', anonymous=True)
-    driver_robot = Communication_Gcode("/dev/ttyACM0", 9600)
+    driver_robot = Communication_Gcode("/dev/ttyACM0", 115200)
 
     pub_pose = rospy.Publisher('/robot/pose', Pose2D, queue_size=10)
     rospy.Subscriber('/robot/cmd_vel', Twist, driver_robot.set_robot_speed)
