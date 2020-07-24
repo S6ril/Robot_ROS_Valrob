@@ -10,8 +10,7 @@ Cette node permet de gérer les déplacements du robot. Elle vérifie que le rob
 
 
 import rospy
-from geometry_msgs.msg import Twist, Pose2D
-from turtlesim.msg import Pose
+from geometry_msgs.msg import Pose2D
 from math import sqrt, pow, atan2, cos, sin
 
 from odom import Odometer
@@ -23,7 +22,7 @@ def odom():
 
     odometer = Odometer(0x046d, 0xc018)
 
-    pub_odometrie = rospy.Publisher('/turtle1/pose', Pose, queue_size=10)
+    pub_odometrie = rospy.Publisher('/robot/pose', Pose2D, queue_size=10)
 
     rate = rospy.Rate(10)  # 10hz
     while not rospy.is_shutdown():

@@ -24,12 +24,11 @@ def communication():
     rospy.init_node('communication', anonymous=True)
     driver_robot = Communication_Gcode("/dev/ttyACM0", 9600)
 
-    pub_pose = rospy.Publisher('/turtle1/pose', Pose2D, queue_size=10)
-    rospy.Subscriber('/turtle1/cmd_vel', Twist, driver_robot.set_robot_speed)
+    rospy.Subscriber('/robot/cmd_vel', Twist, driver_robot.set_robot_speed)
 
     rate = rospy.Rate(10)  # 10hz
     while not rospy.is_shutdown():
-        pub_pose.publish(driver_robot.get_robot_pose())
+        
         rate.sleep()
 
     del driver_robot

@@ -11,7 +11,6 @@ Cette node permet de donner comme consigne de se diriger vers une succession de 
 
 import rospy
 from geometry_msgs.msg import Twist, Pose2D
-from turtlesim.msg import Pose
 from math import sqrt, pow, atan2, cos, sin
 from Nav_utiles import isPosition_reached
 
@@ -37,8 +36,8 @@ def consigne_Point():
                             maxLinVelStopped, maxAngVelStopped, '/home/cyril/catkin_ws/point.txt')
 
 
-    pub_consigne_pos = rospy.Publisher('/turtle1/consign', Pose2D, queue_size=10)
-    rospy.Subscriber("/turtle1/pose", Pose, Cpoint.update_robot_pose)
+    pub_consigne_pos = rospy.Publisher('/robot/consign', Pose2D, queue_size=10)
+    rospy.Subscriber("/robot/pose", Pose2D, Cpoint.update_robot_pose)
 
     rate = rospy.Rate(10) # 10hz
 

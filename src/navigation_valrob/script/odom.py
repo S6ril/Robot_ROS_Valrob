@@ -5,7 +5,7 @@ import usb.util
 from math import atan2
 import time
 
-from turtlesim.msg import Pose
+from geometry_msgs.msg import Pose2D
 
 
 
@@ -109,7 +109,13 @@ class Odometer(object):
 
 
     def robotPosition(self):
-        position = Pose()
+        """Conversion de la classe Pose compatible Python vers le message /geometry/Pose2D()
+
+
+        :return: Position du robot
+        :rtype: Pose2D()
+        """
+        position = Pose2D()
 
         position.x = self.robotPose.x
         position.y = self.robotPose.y
