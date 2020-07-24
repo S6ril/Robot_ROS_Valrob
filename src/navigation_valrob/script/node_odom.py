@@ -20,14 +20,13 @@ def odom():
     
     rospy.init_node('odometrie', anonymous=True)
 
-    odometer = Odometer(0x046d, 0xc018)
+    odometer = Odometer(0x046d, 0xc05a)
 
     pub_odometrie = rospy.Publisher('/robot/pose', Pose2D, queue_size=10)
 
     rate = rospy.Rate(10)  # 10hz
     while not rospy.is_shutdown():
-        odometer.read_speed()
-        print(odometer.robotPose)
+        odometer.determine_position()
         pub_odometrie.publish(odometer.robotPosition())
         rate.sleep()
 
