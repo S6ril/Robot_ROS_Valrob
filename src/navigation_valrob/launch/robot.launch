@@ -11,6 +11,8 @@
         <param name="deadzone" value="0.12" />
     </node>
 
+    <node pkg="navigation_valrob" name="joystick_driver" type="node_joystick.py" />
+
 
     <rosparam>
         krho : 0.2
