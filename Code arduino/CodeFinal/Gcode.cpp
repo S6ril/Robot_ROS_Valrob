@@ -9,6 +9,7 @@ void Gcode::DecompoGcode(String commande)
 {
     if (commande != "\0")
     {
+        // Serial.println(commande);
         commande.replace(" ", ""); //Delete all space : no need
 
         char letter = commande[0]; //Première commande
@@ -34,7 +35,7 @@ void Gcode::DecompoGcode(String commande)
             }
 
         }
-        Compare(letter, commande.substring(c - char_int-1).toInt() ); // Appel de la fonction pour la dernière commande.
+        Compare(letter, commande.substring(c - char_int).toInt() ); // Appel de la fonction pour la dernière commande.
     }
 
 

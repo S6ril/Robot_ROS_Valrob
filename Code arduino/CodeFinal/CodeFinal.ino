@@ -16,17 +16,21 @@ void setup() {
 
 void loop() 
 {
-    int i=0;
     char commandebuffer[200] = {'\0'};
 
-    if (Serial.available())
+    if (Serial)
     {
+        int i = 0;
         delay(100);
-        while (Serial.available() && i<200)
+        for (i = 0; i < 200; i++)
         {
-            commandebuffer[i++] = Serial.read();
+            commandebuffer[i] = Serial.read();
+            if (!isPrintable(commandebuffer[i]) )
+            {
+                break;
+            }
         }
-    commandebuffer[i++]='\0';
+        commandebuffer[i++]='\0';
     }
     commande.executerGcode(commandebuffer);
 }
