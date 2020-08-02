@@ -13,7 +13,7 @@ import rospy
 from geometry_msgs.msg import Twist, Pose2D
 from turtlesim.msg import Pose
 
-from driver_baseRoulante import Communication_Gcode
+from driver_baseRoulante_TEST import Communication_Gcode
 import serial
 
 def communication():
@@ -22,11 +22,11 @@ def communication():
 
     """
     rospy.init_node('communication', anonymous=True)
-    driver_robot = Communication_Gcode("/dev/ttyACM0", 9600)
+    driver_robot = Communication_Gcode("/dev/ttyACM1", 9600)
 
     rospy.Subscriber('/robot/cmd_vel', Twist, driver_robot.set_robot_speed)
 
-    rate = rospy.Rate(10)  # 10hz
+    rate = rospy.Rate(1)  # 1hz
     while not rospy.is_shutdown():
         
         rate.sleep()

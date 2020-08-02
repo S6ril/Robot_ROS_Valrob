@@ -24,7 +24,7 @@ class Joystick_driver(object):
 
         self.twist = Twist()
 
-        self.scale = 2
+        self.scale = 50
 
 
     def update_command_joy(self, joy):
@@ -34,6 +34,6 @@ class Joystick_driver(object):
 
     def update_command_vel(self):
         self.twist.angular.z = self.axes[0] *self.scale
-        self.twist.linear.x = self.buttons[0]
+        self.twist.linear.x = self.buttons[0] - self.buttons[1]
 
         return self.twist
