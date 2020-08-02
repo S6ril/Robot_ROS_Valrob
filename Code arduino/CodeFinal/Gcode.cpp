@@ -35,7 +35,8 @@ void Gcode::DecompoGcode(String commande)
             }
 
         }
-        Compare(letter, commande.substring(c - char_int).toInt() ); // Appel de la fonction pour la dernière commande.
+        // Serial.println(commande.substring(c - char_int-1).toInt());
+        Compare(letter, commande.substring(c - char_int-1).toInt() ); // Appel de la fonction pour la dernière commande.
     }
 
 
