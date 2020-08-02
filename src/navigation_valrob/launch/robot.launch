@@ -12,7 +12,7 @@
     </node>
 
     <node pkg="navigation_valrob" name="joystick_driver" type="node_joystick.py" />
-    <!-- <node pkg="navigation_valrob" name="motor_driver" type="node_driver_BaseRoulante.py" /> -->
+    <node pkg="navigation_valrob" name="motor_driver" type="node_driver_BaseRoulante.py" />
 
 
     <rosparam>

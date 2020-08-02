@@ -31,30 +31,36 @@ class Communication_Gcode(object):
         self.speed_L = 0
         self.speed_R = 0
 
+        self.isDriving = False
+
     def __del__(self):
         self.ser.close()
         print("serial close")
 
     def set_robot_speed(self, msg_twist):
         if msg_twist.linear.x == 1:
+            self.isDriving = True
             self.set_robot_angular_speed(msg_twist)
         
-        elif msg_twist.linear.x == -1:
+        elif msg_twist.linear.x == -1 or self.isDriving:
             self.ser.write(b'M18')
+            self.ser.write(b'\n')
+            self.isDriving = False
 
 
     def set_robot_angular_speed(self, msg_twist):
         # rospy.loginfo(msg_twist)
-        if msg_twist.angular.z != 0:
-            if msg_twist.angular.z > 0:
-                self.speed_L = 150 - msg_twist.angular.z
-                self.speed_R = 150 + msg_twist.angular.z
-            
-            elif msg_twist.angular.z < 0:
-                self.speed_R = 150 + msg_twist.angular.z
-                self.speed_L = 150 - msg_twist.angular.z
 
-            self.ser.write(b'G11 I')
-            self.ser.write(str.encode(str(self.speed_L)))
-            self.ser.write(b' J')
-            self.ser.write(str.encode(str(self.speed_R)))
+        if msg_twist.angular.z >= 0:
+            self.speed_L = 150 - msg_twist.angular.z
+            self.speed_R = 150 + msg_twist.angular.z
+        
+        elif msg_twist.angular.z < 0:
+            self.speed_R = 150 + msg_twist.angular.z
+            self.speed_L = 150 - msg_twist.angular.z
+
+        self.ser.write(b'G11 I')
+        self.ser.write(str.encode(str(int(self.speed_L))))
+        self.ser.write(b' J')
+        self.ser.write(str.encode(str(int(self.speed_R))))
+        self.ser.write(b'\n')
