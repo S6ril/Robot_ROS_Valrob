@@ -20,8 +20,10 @@ def communication():
     Fonction principale de la node, elle permet de communiquer avec le robot
 
     """
+    arduinoPort = rospy.get_param('portArduino', 0)
+
     rospy.init_node('communication', anonymous=True)
-    driver_robot = Communication_Gcode("/dev/ttyACM1", 9600)
+    driver_robot = Communication_Gcode("/dev/tty" + arduinoPort, 9600)
 
     rospy.Subscriber('/robot/cmd_vel', Twist, driver_robot.set_robot_speed)
 

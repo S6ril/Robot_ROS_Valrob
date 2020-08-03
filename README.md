@@ -21,6 +21,7 @@
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
+* [Cette Branche](#branche)
 * [Le Projet](#projet)
   * [Construit avec](#construit)
 * [Pour commencer](#commencer)
@@ -30,15 +31,22 @@
 * [Contact](#contact)
 
 
+## Cette Branche
+
+Cette branche est une branche de TEST. Elle permet à partir d'un Joystick, d'une Raspberry et d'une Arduino de controller un robot en passant par des nodes ROS. 
+
+
+<p align="center">
+  <a href="https://github.com/S6ril/Robot_ROS_Valrob/blob/Robot_test/images/Node_Robot_Test.png">
+    <img src="images/Node_Robot_Test.png" alt="Logo" width="150" >
+  </a>
+</p>
+
+
 
 <!-- ABOUT THE PROJECT -->
 ## Le Projet
 
-<p align="center">
- <a href="https://github.com/S6ril/Robot_ROS_Valrob/blob/master/images/tortue_exemple.gif">
-    <img src="images/tortue_exemple.gif" alt="Gif" >
-  </a>
-</p>
 
 Ce projet à pour but d'initier l'intégration du langage ROS pour le robot Valrob. Cela s'inscrit dans une démarche de rendre le robot modulaire et d'avoir une base solide pour les autres annnées.
 
@@ -51,6 +59,10 @@ On retrouve alors :
 Ce robot à dont été développer avec ROS. On retrouve alors :
 * [ROS Noetic](https://www.ros.org/)
 * [Python 3](https://www.python.org/)
+* [Arduino]
+* [Raspberry Pi 3] avec Ubuntu Server comme OS
+
+
 
 
 
@@ -67,7 +79,7 @@ ROS et Python doivent être installés.
 
 Pour lancer le programme sur un ordinateur :
 ```bash
-roslaunch navigation_valrob turtle.launch 
+roslaunch navigation_valrob robot.launch 
 ```
 
 _Pour plus de précision, veuillez vous réferer à la [Documentation](https://s6ril.github.io/Robot_ROS_Valrob/)_

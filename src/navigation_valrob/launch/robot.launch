@@ -7,7 +7,7 @@
     <!-- <node pkg="navigation_valrob" name="motor_driver" type="node_driver_BaseRoulante.py" /> -->
 
     <node pkg="joy" name="joy_node" type="joy_node" >
-        <param name="dev" type="string" value="/dev/input/js1" />
+        <param name="dev" type="string" value="/dev/input/js0" />
         <param name="deadzone" value="0.12" />
     </node>
 
@@ -16,12 +16,7 @@
 
 
     <rosparam>
-        krho : 0.2
-        kalpha : 1.5
-        distance_tolerance : 0.5
-        angle_tolerance : 0.5
-        maxLinVelStopped : 0.5
-        maxAngVelStopped : 0.5
+        portArduino : "ACM0"
     </rosparam>
 
 </launch>
