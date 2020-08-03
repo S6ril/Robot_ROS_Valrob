@@ -9,8 +9,7 @@ Cette classe permet de gérer les déplacements du robot, afin qu'il se dirige v
 
 
 from math import sqrt, pow, atan2, cos, sin, pi
-from geometry_msgs.msg import Twist, Pose2D
-from turtlesim.msg import Pose
+from geometry_msgs.msg import Twist, Pose2D, Pose
 
 from Nav_utiles import distance_euclidienne, rotation, reduction_angle
 

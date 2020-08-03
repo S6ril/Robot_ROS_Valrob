@@ -10,8 +10,7 @@ Cette node permet de communiquer avec le robot en Gcode
 
 
 import rospy
-from geometry_msgs.msg import Twist, Pose2D
-from turtlesim.msg import Pose
+from geometry_msgs.msg import Twist, Pose2D, Pose
 
 from driver_baseRoulante_TEST import Communication_Gcode
 import serial
