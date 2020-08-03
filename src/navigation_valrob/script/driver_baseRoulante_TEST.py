@@ -46,19 +46,17 @@ class Communication_Gcode(object):
             self.ser.write(b'M18')
             self.ser.write(b'\n')
             self.isDriving = False
+        
+        self.ser.flushInput()
+        self.ser.flushOutput()
 
 
     def set_robot_angular_speed(self, msg_twist):
         # rospy.loginfo(msg_twist)
 
-        if msg_twist.angular.z >= 0:
-            self.speed_L = 150 - msg_twist.angular.z
-            self.speed_R = 150 + msg_twist.angular.z
+        self.speed_L = 150 - msg_twist.angular.z
+        self.speed_R = 150 + msg_twist.angular.z
         
-        elif msg_twist.angular.z < 0:
-            self.speed_R = 150 + msg_twist.angular.z
-            self.speed_L = 150 - msg_twist.angular.z
-
         self.ser.write(b'G11 I')
         self.ser.write(str.encode(str(int(self.speed_L))))
         self.ser.write(b' J')

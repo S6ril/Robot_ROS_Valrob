@@ -25,6 +25,7 @@ void loop()
         // clear the string:
         inputString = "";
         stringComplete = false;
+        Serial.flush();
     }
 }
 
