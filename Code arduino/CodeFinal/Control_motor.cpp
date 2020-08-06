@@ -18,8 +18,17 @@ void Control::setup(motorParam motorLParam, motorParam motorRParam)
 
 void Control::setMotorSpeed(int speed, motorParam motor)
 {
-    digitalWrite(motor.Lpin, HIGH);
-    digitalWrite(motor.Rpin, LOW);
+    if (speed >= 0)
+    {
+        digitalWrite(motor.Lpin, HIGH);
+        digitalWrite(motor.Rpin, LOW);
+    }
+    else 
+    {
+        digitalWrite(motor.Lpin, LOW);
+        digitalWrite(motor.Rpin, HIGH);
+        speed = -speed;
+    }
     // set speed to 150 out 255
     analogWrite(motor.EnablePin, speed);
 }
