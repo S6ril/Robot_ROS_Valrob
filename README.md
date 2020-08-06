@@ -33,7 +33,9 @@
 
 ## Cette Branche
 
-Cette branche est une branche de TEST. Elle permet à partir d'un Joystick, d'une Raspberry et d'une Arduino de controller un robot en passant par des nodes ROS. 
+Cette branche est une branche de TEST. Elle permet à partir d'un Joystick, d'une Raspberry et d'une Arduino de controller un robot en passant par des nodes ROS. Le driver de moteur peut être adapté pour les différents moteurs. 
+
+Ici je me base sur le composant `L298N` avec 2 moteurs à CC. Les pins de connections à la carte arduino sont définis dans le fichier `Config.h` du code arduino.
 
 
 <p align="center">
