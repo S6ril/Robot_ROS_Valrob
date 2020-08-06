@@ -42,15 +42,16 @@ class Communication_Gcode(object):
             self.isDriving = True
             self.set_robot_angular_speed(msg_twist)
         
+        elif msg_twist.linear.x == -1:
+            self.isDriving = True
+            msg_twist.angular.z = - msg_twist.angular.z
+            self.set_robot_angular_speed(msg_twist)
+        
         elif self.isDriving:
             self.ser.write(b'M18')
             self.ser.write(b'\n')
             self.isDriving = False
         
-        elif msg_twist.linear.x == -1:
-            self.isDriving = True
-            msg_twist.angular.z = - msg_twist.angular.z
-            self.set_robot_angular_speed(msg_twist)
         
         self.ser.flushInput()
         self.ser.flushOutput()
