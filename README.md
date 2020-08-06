@@ -177,6 +177,10 @@ Puis on copie le dossier `navigation_valrob` vers `catkin_ws/src` :
     cd ~
     cp Robot_ROS_Valrob/src/navigation_valrob catkin_ws/src/
 
+On peut alors effectuer un `catkin_make` :
+
+    cd ~/catkin_ws
+    catkin_make
 
 # Utilisation
 
