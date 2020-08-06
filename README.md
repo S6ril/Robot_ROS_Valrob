@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/S6ril/Robot_ROS_Valrob/blob/master/images/logo_valrob.PNG">
-    <img src="images/logo_valrob.png" alt="Logo" width="100%" >
+    <img src="images/logo_valrob.png" alt="Logo" width="150" >
   </a>
 
   <h3 align="center">Robot ROS - Valrobotik - ENSIAME Valenciennes </h3>
@@ -38,7 +38,7 @@ Cette branche est une branche de TEST. Elle permet à partir d'un Joystick, d'un
 
 <p align="center">
   <a href="https://github.com/S6ril/Robot_ROS_Valrob/blob/Robot_test/images/Node_Robot_Test.png">
-    <img src="images/Node_Robot_Test.png" alt="Logo" width="150" >
+    <img src="images/Node_Robot_Test.png" alt="Logo" width="100%" >
   </a>
 </p>
 
@@ -79,15 +79,9 @@ Après le flash, il faut modifier dans la partition `system-boot` le fichier `ne
 Maintenant la Raspberry peut être démarrée. L'os est configuré pour activer automatiquement la connection SSH.
 L'utilisateur et mot de passe par défaut est `ubuntu`. 
 
-<div class="panel panel-warning">
+
 **Attention**
-{: .panel-heading}
-<div class="panel-body">
-
-Le clavier est surement en qwerty !!
-
-</div>
-</div>
+**Le clavier est surement en qwerty !!**
 
 
 Pour changer le clavier en français, je me base sur ce [site](https://linoxide.com/linux-how-to/configure-keyboard-ubuntu/).
@@ -129,6 +123,7 @@ Pour la manette il faut installer le paquet `ros-joystick-drivers` :
     sudo apt install ros-noetic-joystick-drivers
 
 On peut ajouter au terminal l'environnement ROS :
+    
     echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
     source ~/.bashrc
 
@@ -165,24 +160,69 @@ Pour récupérer les fichiers de Github :
 
 (On clone seulement la branche Robot_test qui correspond à la branche de démo avec le joystick.)
 
+Puis on copie le dossier navigation_valrob vers catkin_ws/src :
+    
+    cd ~
+    cp Robot_ROS_Valrob/src/navigation_valrob catkin_ws/src/
+
+
 # Utilisation
 
 ## Prerequis
 
-ROS et Python doivent être installés sur la Raspberry.
-
+Tout ce qu'il y a avant !
+La carte Arduino et la manette doivent être branchée sur la Raspberry Pi.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Pour lancer le programme sur un ordinateur :
-```bash
-roslaunch navigation_valrob robot.launch 
-```
+### Port de l'Arduino
 
-_Pour plus de précision, veuillez vous réferer à la [Documentation](https://s6ril.github.io/Robot_ROS_Valrob/)_
+Dans un premier temps on regarde le port de l'arduino. Pour cela dans le compilateur Arduino, on le trouve facilement dans outils/port.
+Souvent le port est `ttyACM0`. On retient alors `ACM0`.
+
+PS : Si plusieurs cartes ont été connectées, il est probable que le port soit `ACM1`, etc ...
 
 
+### Port de la manette
+
+Pour la manette, on se base sur la documentation ROS du paquet [Joy](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick).
+
+On recherche le port de la manette :
+    
+    ls /dev/input/
+
+Le port ressemble à quelque chose comme `js0`. On retient ce port.
+
+On teste alors la manette :
+
+    sudo jstest /dev/input/jsX
+
+On devrait voir toutes les touches de la manette. On l'actionnant, on vérifie que ça fonctionne.
+
+On change les permissions de lecture/écriture, afin que ROS puisse y accéder.
+
+    sudo chmod a+rw /dev/input/jsX
+
+
+### Configuration de ROS.
+
+Dans le fichier `robot.launch`, on modifie les paramètres :
+
+    cd ~/catkin_ws/src/navigation_valrob/launch/
+    nano robot.launch
+
+
+- A la ligne `<param name="dev" type="string" value="/dev/input/js0" />`, on modifie le numéro du Joystick.
+- A la ligne `portArduino : "ACM0"`, on modifie le port de l'arduino.
+
+
+### Lancement
+Le Joystick et l'arduino branché à la raspberry, on peut lancer ROS :
+
+    roslaunch navigation_valrob robot.launch
+
+Maintenant le robot est controlable avec le Joystick !!
 
 
 <!-- LICENSE -->
