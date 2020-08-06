@@ -48,7 +48,7 @@
 
 Ce projet à pour but d'initier l'intégration du langage ROS pour le robot Valrob. Cela s'inscrit dans une démarche de rendre le robot modulaire et d'avoir une base solide pour les autres annnées.
 
-Cette branche est une démo. On simule le Robot par el biais d'une Tortue (turtle_sim). En entrant les points dans le fichier `point.txt`, la tortue se déplacera automatiquement vers chacun de ces points.
+Cette branche est une démo. On simule le Robot par le biais d'une Tortue (turtle_sim). En entrant les points dans le fichier `point.txt`. La tortue se déplacera automatiquement vers chacun de ces points.
 
 
 ## Construit avec
@@ -66,12 +66,11 @@ Ce robot à dont été développer avec ROS. On retrouve alors :
 
 ROS et Python doivent être installés.
 
+Pour l'installation de ROS sur une autre plateforme, il faut suivre ce [tutoriel](http://wiki.ros.org/noetic/Installation).
 
 ## Installation de ROS sur Ubuntu
 
 Je me base sur le [tutoriel de ROS](http://wiki.ros.org/noetic/Installation/Ubuntu) pour l'installation sous Ubuntu.
-
-Sur la Raspberry il n'est pas utile d'installer entièrement ROS, mais seulement les paquets essentiels. 
 
 On ajout le dépot :
 
@@ -123,7 +122,7 @@ Pour récupérer les fichiers de Github :
 
 (On clone seulement la branche Demo_turtle qui correspond à la branche de démo avec la tortue.)
 
-Puis on copie le dossier `navigation_valrob` vers `catkin_ws/src` :
+Puis on copie le dossier cloné vers `catkin_ws/` :
     
     cd ~
     cp -r Robot_ROS_Valrob/* catkin_ws/
@@ -140,7 +139,7 @@ On peut alors effectuer un `catkin_make` :
 Avant de lancer le pogramme, on définit les points voulus dans le fichier `point.txt`. Ils sont de la forme `x y z`. 
 
 
-Pour lancer le programme on execute ROS :
+Pour lancer le programme, on execute ROS :
     
     cd ~/catkin_ws 
     roslaunch navigation_valrob turtle.launch
