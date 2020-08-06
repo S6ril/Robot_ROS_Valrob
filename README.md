@@ -22,9 +22,9 @@
 Table of Contents
 =================
 
-* [Robot ROS - Valrobotik - ENSIAME Valenciennes ](#robot-ros---valrobotik---ensiame-valenciennes-)
-      * [Cette Branche](#cette-branche)
-      * [Construit avec](#construit-avec)
+
+   * [Cette Branche](#cette-branche)
+   * [Construit avec](#construit-avec)
    * [Pour commencer](#pour-commencer)
       * [Préparation de la Raspberry Pi](#préparation-de-la-raspberry-pi)
       * [Installation de ROS](#installation-de-ros)
