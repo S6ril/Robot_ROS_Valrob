@@ -19,8 +19,7 @@
 
 
 <!-- TABLE OF CONTENTS -->
-Table of Contents
-=================
+# Sommaire
 
 
    * [Cette Branche](#cette-branche)
@@ -42,7 +41,7 @@ Table of Contents
       * [Acknowledgements](#acknowledgements)
 
 
-## Cette Branche
+# Cette Branche
 
 Cette branche est une branche de TEST. Elle permet à partir d'un Joystick, d'une Raspberry et d'une Arduino de controller un robot en passant par des nodes ROS. Le driver de moteur peut être adapté pour les différents moteurs. 
 
@@ -58,7 +57,7 @@ Ici je me base sur le composant `L298N` avec 2 moteurs à CC. Les pins de connec
 
 
 
-## Construit avec
+# Construit avec
 Ce robot à dont été développer avec ROS. On retrouve alors :
 * [ROS Noetic](https://www.ros.org/)
 * [Python 3](https://www.python.org/)
