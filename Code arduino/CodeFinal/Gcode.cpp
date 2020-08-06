@@ -25,18 +25,18 @@ void Gcode::DecompoGcode(String commande)
         {
             if (isAlpha(commande[c]) )
             {
-                Compare(letter, commande.substring(c-char_int, c).toInt() );
+                Compare(letter, commande.substring(c-char_int, c).toFloat() );
                 letter = commande[c]; // Commande suivante
                 char_int = 0; //RaZ
             }
-            else if ( isDigit(commande[c]) )
+            else if ( isDigit(commande[c]) || isPunct(commande[c]) )
             {
                 char_int++;
             }
 
         }
-        // Serial.println(commande.substring(c - char_int-1).toInt());
-        Compare(letter, commande.substring(c - char_int-1).toInt() ); // Appel de la fonction pour la dernière commande.
+        // Serial.println( commande.substring(c - char_int - 1).toFloat());
+        Compare(letter, commande.substring(c - char_int - 1).toFloat()); // Appel de la fonction pour la dernière commande.
     }
 
 
