@@ -44,8 +44,7 @@ class Communication_Gcode(object):
         
         elif msg_twist.linear.x == -1:
             self.isDriving = True
-            msg_twist.angular.z = - msg_twist.angular.z
-            self.set_robot_angular_speed(msg_twist)
+            self.set_robot_angular_speed_reverse(msg_twist)
         
         elif self.isDriving:
             self.ser.write(b'M18')
@@ -67,4 +66,17 @@ class Communication_Gcode(object):
         self.ser.write(str.encode(str(int(self.speed_L))))
         self.ser.write(b' J')
         self.ser.write(str.encode(str(int(self.speed_R))))
+        self.ser.write(b'\n')
+
+
+    def set_robot_angular_speed_reverse(self, msg_twist):
+        # rospy.loginfo(msg_twist)
+
+        self.speed_L = 150 - msg_twist.angular.z
+        self.speed_R = 150 + msg_twist.angular.z
+
+        self.ser.write(b'G11 I')
+        self.ser.write(str.encode(str(int(-self.speed_L))))
+        self.ser.write(b' J')
+        self.ser.write(str.encode(str(int(-self.speed_R))))
         self.ser.write(b'\n')
