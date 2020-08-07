@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Vue d&#39;ensemble : code du module &mdash; Documentation Robot ROS Valrob 2020</title>
+  <title>Node Consigne Point &mdash; Documentation Robot ROS Valrob 2020</title>
   
 
   
@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Node Driver Base Roulante" href="node_driver_BaseRoulante.html" />
+    <link rel="prev" title="Driver base roulante" href="driver_baseRoulante.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -85,10 +87,19 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Classe Consigne point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Classe Motion Contrôleur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nav_utiles.html">Librairie Navigation utile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_baseRoulante.html">Driver base roulante</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Node Consigne Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_motion_controller.html">Node Motion contrôleur</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -135,10 +146,16 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Vue d'ensemble : code du module</li>
+          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
+        
+      <li>Node Consigne Point</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/script/node_consigne_point.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -150,20 +167,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Modules pour lesquels le code est disponible</h1>
-<ul><li><a href="Consigne_point.html">Consigne_point</a></li>
-<li><a href="Motion_controller.html">Motion_controller</a></li>
-<li><a href="Nav_utiles.html">Nav_utiles</a></li>
-<li><a href="driver_baseRoulante.html">driver_baseRoulante</a></li>
-<li><a href="node_consigne_point.html">node_consigne_point</a></li>
-<li><a href="node_driver_BaseRoulante.html">node_driver_BaseRoulante</a></li>
-<li><a href="node_motion_controller.html">node_motion_controller</a></li>
+  <div class="section" id="module-node_consigne_point">
+<span id="node-consigne-point"></span><h1>Node Consigne Point<a class="headerlink" href="#module-node_consigne_point" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Cette node permet de donner comme consigne de se diriger vers une succession de points définis dans un fichier <cite>.txt</cite>.</p>
+<dl class="function">
+<dt id="node_consigne_point.consigne_Point">
+<code class="descclassname">node_consigne_point.</code><code class="descname">consigne_Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/node_consigne_point.html#consigne_Point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node_consigne_point.consigne_Point" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction principale pour la node de la gestion de la consigne.
+Elle demande des valeurs définies dans le roslaunch :</p>
+<ul class="simple">
+<li>distance_tolerance</li>
+<li>angle_tolerance</li>
+<li>maxLinVelStopped</li>
+<li>maxAngVelStopped</li>
+<li>fichierPoint : emplacement du fichier contenant les points à aller.</li>
 </ul>
+</dd></dl>
+
+</div>
+
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="node_driver_BaseRoulante.html" class="btn btn-neutral float-right" title="Node Driver Base Roulante" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="driver_baseRoulante.html" class="btn btn-neutral float-left" title="Driver base roulante" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

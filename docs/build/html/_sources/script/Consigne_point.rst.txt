@@ -1,6 +1,6 @@
-**************
+*********************
 Classe Consigne point
-**************
+*********************
 
 
 .. automodule:: Consigne_point

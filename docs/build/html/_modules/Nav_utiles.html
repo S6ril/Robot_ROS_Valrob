@@ -88,11 +88,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Consigne_point.html">Classe Consigne point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Classe Motion Contrôleur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Librairie Navigation utile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">Node Consigne Point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion contrôleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
             
@@ -169,7 +166,7 @@
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">pi</span>
 
 
-<div class="viewcode-block" id="rotation"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.rotation">[docs]</a><span class="k">def</span> <span class="nf">rotation</span><span class="p">(</span><span class="n">posRobot</span><span class="p">,</span> <span class="n">posCible</span><span class="p">):</span>
+<div class="viewcode-block" id="rotation"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.rotation">[docs]</a><span class="k">def</span> <span class="nf">rotation</span><span class="p">(</span><span class="n">posRobot</span><span class="p">,</span> <span class="n">posCible</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fonction pour gerer la rotation du robot</span>
 
 <span class="sd">    :param posRobot: Position actuelle du robot</span>
@@ -184,7 +181,7 @@
     <span class="k">return</span> <span class="n">atan2</span><span class="p">(</span><span class="n">deltay</span> <span class="p">,</span> <span class="n">deltax</span><span class="p">)</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">theta</span></div>
 
 
-<div class="viewcode-block" id="distance_euclidienne"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.distance_euclidienne">[docs]</a><span class="k">def</span> <span class="nf">distance_euclidienne</span><span class="p">(</span><span class="n">posRobot</span><span class="p">,</span> <span class="n">posCible</span><span class="p">):</span>
+<div class="viewcode-block" id="distance_euclidienne"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.distance_euclidienne">[docs]</a><span class="k">def</span> <span class="nf">distance_euclidienne</span><span class="p">(</span><span class="n">posRobot</span><span class="p">,</span> <span class="n">posCible</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fonction pour calculer la distance euclidienne</span>
 
 <span class="sd">    :param posRobot: Position du robot</span>
@@ -198,7 +195,7 @@
     <span class="n">deltay</span> <span class="o">=</span> <span class="n">posCible</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">y</span>
     <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span> <span class="nb">pow</span><span class="p">(</span> <span class="n">deltax</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span> <span class="n">deltay</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span></div>
 
-<div class="viewcode-block" id="reduction_angle"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.reduction_angle">[docs]</a><span class="k">def</span> <span class="nf">reduction_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
+<div class="viewcode-block" id="reduction_angle"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.reduction_angle">[docs]</a><span class="k">def</span> <span class="nf">reduction_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fontion pour remettre l&#39;angle dans entre [-Pi/2, Pi/2]</span>
 
 <span class="sd">    :param angle: angle en radian à réduire</span>
@@ -213,7 +210,7 @@
 
     <span class="k">return</span> <span class="n">angle</span></div>
 
-<div class="viewcode-block" id="isStopped"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.isStopped">[docs]</a><span class="k">def</span> <span class="nf">isStopped</span><span class="p">(</span><span class="n">commandVel</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
+<div class="viewcode-block" id="isStopped"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.isStopped">[docs]</a><span class="k">def</span> <span class="nf">isStopped</span><span class="p">(</span><span class="n">commandVel</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fonction pour vérifier si le robot est bien stoppé.</span>
 
 <span class="sd">    :param commandVel: la commande du robot en vitesse</span>
@@ -232,7 +229,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="isPosition_reached"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.isPosition_reached">[docs]</a><span class="k">def</span> <span class="nf">isPosition_reached</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">poseConsign</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">):</span>
+<div class="viewcode-block" id="isPosition_reached"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.isPosition_reached">[docs]</a><span class="k">def</span> <span class="nf">isPosition_reached</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">poseConsign</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fonction pour vérifier si la position souhaitée est bien atteinte.</span>
 
 <span class="sd">    :param pose: Position actuelle du robot.</span>
@@ -250,7 +247,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="isGoal_reached"><a class="viewcode-back" href="../Nav_utiles.html#Nav_utiles.isGoal_reached">[docs]</a><span class="k">def</span> <span class="nf">isGoal_reached</span><span class="p">(</span><span class="n">robotPose</span><span class="p">,</span> <span class="n">robotConsign</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">,</span> <span class="n">commandVel</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
+<div class="viewcode-block" id="isGoal_reached"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.isGoal_reached">[docs]</a><span class="k">def</span> <span class="nf">isGoal_reached</span><span class="p">(</span><span class="n">robotPose</span><span class="p">,</span> <span class="n">robotConsign</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">,</span> <span class="n">commandVel</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fonction pour vérifier que le robot a bien atteint l&#39;objectif désiré.</span>
 
 <span class="sd">    :param robotPose: Position actuelle du robot.</span>

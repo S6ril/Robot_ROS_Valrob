@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>driver_baseRoulante &mdash; Documentation Robot ROS Valrob 2020</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Robot ROS Valrob
+          
+
+          
+            
+            <img src="../_static/robot.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Robot ROS Valrob</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Code du module</a> &raquo;</li>
+        
+      <li>driver_baseRoulante</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Code source de driver_baseRoulante</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding: utf-8</span>
+<span class="c1"># @author S6ril &amp; Starfunx</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Cette classe permet de gérer la communication Gcode</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Pose2D</span><span class="p">,</span> <span class="n">Pose</span>
+<span class="kn">import</span> <span class="nn">serial</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<div class="viewcode-block" id="Communication_Gcode"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode">[docs]</a><span class="k">class</span> <span class="nc">Communication_Gcode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classe driver de la carte d&#39;asservissement base roulante</span>
+<span class="sd">    gère la communication sur le port serial</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">portserial</span><span class="p">,</span> <span class="n">bauderate</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Communication_Gcode</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">Pose2D</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">portserial</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">baudrate</span> <span class="o">=</span> <span class="n">bauderate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Destructeur de la classe.</span>
+<span class="sd">        Permet de fermer le port Serial.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;serial close&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Communication_Gcode.cleanSerial"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.cleanSerial">[docs]</a>    <span class="k">def</span> <span class="nf">cleanSerial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Nettoyage du buffer pour éviter une saturation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">flushInput</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">flushOutput</span><span class="p">()</span></div>
+
+
+    <span class="c1"># Commandes déplacements:</span>
+<div class="viewcode-block" id="Communication_Gcode.set_fast_move_to"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_fast_move_to">[docs]</a>    <span class="k">def</span> <span class="nf">set_fast_move_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        G00 Le robot se déplace au plus vite vers la cible et prends l’angle d’arrivée.</span>
+
+<span class="sd">        :param x: Position en X absolue sur le terrain</span>
+<span class="sd">        :type x: float</span>
+<span class="sd">        :param y: Position en Y absolue sur le terrain</span>
+<span class="sd">        :type y: flaot</span>
+<span class="sd">        :param theta: Angle d&#39;arrivé à prendre lorsque la position est atteinte</span>
+<span class="sd">        :type theta: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;G00 X&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; Y&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; A&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleanSerial</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Communication_Gcode.set_slow_move_to"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_slow_move_to">[docs]</a>    <span class="k">def</span> <span class="nf">set_slow_move_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        G01 Le robot se déplace vers la cible de façon linéaire : il s’oriente d’abord vers sa cible</span>
+<span class="sd">        avant d’avancer jusqu’à atteindre la cible. Il prend l’angle d’arrivée une fois sur la cible.</span>
+<span class="sd">        </span>
+<span class="sd">        :param x: Position en X absolue sur le terrain</span>
+<span class="sd">        :type x: float</span>
+<span class="sd">        :param y: Position en Y absolue sur le terrain</span>
+<span class="sd">        :type y: flaot</span>
+<span class="sd">        :param theta: Angle d&#39;arrivé à prendre lorsque la position est atteinte</span>
+<span class="sd">        :type theta: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;G01 X&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; Y&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; A&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleanSerial</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Communication_Gcode.set_robot_speed"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_robot_speed">[docs]</a>    <span class="k">def</span> <span class="nf">set_robot_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linearSpeed</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">angularSpeed</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        G10 Le robot se déplace à la vitesse et vitesse angulaire précisée.</span>
+
+<span class="sd">        :param linearSpeed: Consigne en vitesse linéaire du robot</span>
+<span class="sd">        :type linearSpeed: float</span>
+<span class="sd">        :param angularSpeed: Consigne en vitesse angulaire du robot</span>
+<span class="sd">        :type angularSpeed: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;G10 I&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">linearSpeed</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; J&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">angularSpeed</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleanSerial</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Communication_Gcode.set_robot_wheel_speed"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_robot_wheel_speed">[docs]</a>    <span class="k">def</span> <span class="nf">set_robot_wheel_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">leftWheelSpeed</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">RightWeelSpeed</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        G11 Les roues du robot se déplacent aux vitesses précisées.</span>
+
+<span class="sd">        :param leftWheelSpeed: Consigne de vitesse de la roue gauche</span>
+<span class="sd">        :type leftWheelSpeed: float</span>
+<span class="sd">        :param RightWeelSpeed: Consigne de vitesse de la roue droite</span>
+<span class="sd">        :type RightWeelSpeed: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;G11 I&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">leftWheelSpeed</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; J&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">RightWeelSpeed</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleanSerial</span><span class="p">()</span></div>
+
+
+
+    <span class="c1"># position control</span>
+<div class="viewcode-block" id="Communication_Gcode.get_robot_pose"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.get_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">get_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pose2D</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fonction qui met à jour la position actuelle du robot dans la classe.</span>
+<span class="sd">        </span>
+
+<span class="sd">        :param robotPose: Position actuelle du robot.</span>
+<span class="sd">        :type robotPose: Pose2D()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">is_open</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;M114</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Demande la position au robot</span>
+
+            <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="c1"># Lecture du port serial</span>
+
+            <span class="c1"># print(&quot;message =&quot;, message)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="c1">#Conversion bytes en str</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>  <span class="c1">#Enlève \n</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>    <span class="c1">#Conversion str en list</span>
+
+                <span class="c1"># Répartition des valeurs dans la variable position.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">message</span><span class="p">[</span> <span class="mi">1</span> <span class="p">]</span> <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">message</span><span class="p">[</span> <span class="mi">3</span> <span class="p">]</span> <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">message</span><span class="p">[</span> <span class="mi">5</span> <span class="p">]</span> <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleanSerial</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span></div>
+
+
+
+<div class="viewcode-block" id="Communication_Gcode.set_robot_pose"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">set_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        G92 Met à jour la position du robot, et change place la consigne de position du robot </span>
+<span class="sd">        à la même valeur.</span>
+
+<span class="sd">        :param x: Nouvelle valeur de position suivant l&#39;axe x</span>
+<span class="sd">        :type x: float</span>
+<span class="sd">        :param y: Nouvelle valeur de postion suivant l&#39;axe y</span>
+<span class="sd">        :type y: float</span>
+<span class="sd">        :param theta: Nouvelle valeur de position autour de l&#39;axe z</span>
+<span class="sd">        :type theta: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;G92 X&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; Y&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; A&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cleanSerial</span><span class="p">()</span></div>
+
+
+
+    <span class="c1"># motor enable control</span>
+<div class="viewcode-block" id="Communication_Gcode.enable_motors"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.enable_motors">[docs]</a>    <span class="k">def</span> <span class="nf">enable_motors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        M19 Active les moteurs et remet à zéro les intégrateurs des PID de contrôle moteur</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">is_open</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;M19</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1">#Mise en route des moteurs</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleanSerial</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Communication_Gcode.disable_motors"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.disable_motors">[docs]</a>    <span class="k">def</span> <span class="nf">disable_motors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        M18 Désactive les déplacements moteurs stoppant les mouvements jusqu’à réactivation </span>
+<span class="sd">        via la commande M19</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">is_open</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;M18</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1">#Stop tous les moteurs</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleanSerial</span><span class="p">()</span></div>
+
+
+
+    <span class="c1"># tests commands</span>
+<div class="viewcode-block" id="Communication_Gcode.get_left_wheel_data"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.get_left_wheel_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_left_wheel_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span> <span class="c1"># to do ( besoin pour calibrer les pid avec zigler nichhols etc..)</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.get_right_wheel_data"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.get_right_wheel_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_right_wheel_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span> <span class="c1"># to do ( besoin pour calibrer les pid avec zigler nichhols etc..)</span></div>
+
+    <span class="c1">#reglages paramètres</span>
+<div class="viewcode-block" id="Communication_Gcode.set_pid_left"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_pid_left">[docs]</a>    <span class="k">def</span> <span class="nf">set_pid_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span> <span class="c1"># set pid vitesse gauche</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.set_pid_right"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_pid_right">[docs]</a>    <span class="k">def</span> <span class="nf">set_pid_right</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span> <span class="c1"># set pid vitesse droite</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.set_left_odom_wheel_diameter"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_left_odom_wheel_diameter">[docs]</a>    <span class="k">def</span> <span class="nf">set_left_odom_wheel_diameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.set_right_odom_wheel_diameter"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_right_odom_wheel_diameter">[docs]</a>    <span class="k">def</span> <span class="nf">set_right_odom_wheel_diameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.set_odom_wheel_dist_left"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_odom_wheel_dist_left">[docs]</a>    <span class="k">def</span> <span class="nf">set_odom_wheel_dist_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.set_odom_wheel_dist_right"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_odom_wheel_dist_right">[docs]</a>    <span class="k">def</span> <span class="nf">set_odom_wheel_dist_right</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.set_max_linear_acceleration"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_max_linear_acceleration">[docs]</a>    <span class="k">def</span> <span class="nf">set_max_linear_acceleration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.set_max_angular_acceleration"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_max_angular_acceleration">[docs]</a>    <span class="k">def</span> <span class="nf">set_max_angular_acceleration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.set_max_linear_deceleration"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_max_linear_deceleration">[docs]</a>    <span class="k">def</span> <span class="nf">set_max_linear_deceleration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.set_max_angular_deceleration"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_max_angular_deceleration">[docs]</a>    <span class="k">def</span> <span class="nf">set_max_angular_deceleration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+
+
+    <span class="c1"># aliases</span>
+<div class="viewcode-block" id="Communication_Gcode.miseEnRouteRobot"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.miseEnRouteRobot">[docs]</a>    <span class="k">def</span> <span class="nf">miseEnRouteRobot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_motors</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Communication_Gcode.stopRobot"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.stopRobot">[docs]</a>    <span class="k">def</span> <span class="nf">stopRobot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">disable_motors</span><span class="p">()</span></div>
+    
+    <span class="k">def</span> <span class="nf">set_robot_speed_ros</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg_twist</span><span class="p">:</span> <span class="n">Twist</span><span class="p">()</span> <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes </span>
+<span class="sd">        et d&#39;avoir des fonctions spéciales ROS</span>
+
+<span class="sd">        :param msg_twist: Commande de vitesse ROS</span>
+<span class="sd">        :type msg_twist: Twist()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_robot_speed</span><span class="p">(</span><span class="n">msg_twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">msg_twist</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span><span class="p">)</span></div>
+
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, S6ril
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

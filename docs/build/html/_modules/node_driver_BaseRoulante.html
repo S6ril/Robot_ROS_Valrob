@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>node_consigne_point &mdash; Documentation Robot ROS Valrob 2020</title>
+  <title>node_driver_BaseRoulante &mdash; Documentation Robot ROS Valrob 2020</title>
   
 
   
@@ -137,7 +137,7 @@
         
           <li><a href="index.html">Code du module</a> &raquo;</li>
         
-      <li>node_consigne_point</li>
+      <li>node_driver_BaseRoulante</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -152,14 +152,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Code source de node_consigne_point</h1><div class="highlight"><pre>
+  <h1>Code source de node_driver_BaseRoulante</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/python3</span>
 
 <span class="c1"># @author S6ril &amp; Starfunx</span>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Cette node permet de donner comme consigne de se diriger vers une succession de points définis dans un fichier `.txt`. </span>
+<span class="sd">Cette node permet de communiquer avec le robot en Gcode. </span>
+<span class="sd">ELle récupère la consigne en vitesse et renvoie la position du robot.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -167,54 +168,44 @@
 <span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Pose2D</span>
 
-<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
-<span class="kn">from</span> <span class="nn">Nav_utiles</span> <span class="k">import</span> <span class="n">isPosition_reached</span>
+<span class="kn">from</span> <span class="nn">driver_baseRoulante</span> <span class="k">import</span> <span class="n">Communication_Gcode</span>
+<span class="kn">import</span> <span class="nn">serial</span>
 
-<span class="kn">from</span> <span class="nn">Consigne_point</span> <span class="k">import</span> <span class="n">Consigne_Point</span>
-
-
-<div class="viewcode-block" id="consigne_Point"><a class="viewcode-back" href="../script/node_consigne_point.html#node_consigne_point.consigne_Point">[docs]</a><span class="k">def</span> <span class="nf">consigne_Point</span><span class="p">():</span>
+<div class="viewcode-block" id="communication"><a class="viewcode-back" href="../script/node_driver_BaseRoulante.html#node_driver_BaseRoulante.communication">[docs]</a><span class="k">def</span> <span class="nf">communication</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fonction principale pour la node de la gestion de la consigne.</span>
-<span class="sd">    Elle demande des valeurs définies dans le roslaunch :</span>
+<span class="sd">    Fonction principale de la node, elle permet de communiquer avec le robot.</span>
+<span class="sd">    Elle demande les valeurs dans le ROSLaunch :</span>
 <span class="sd">    </span>
-<span class="sd">    - distance_tolerance</span>
-<span class="sd">    - angle_tolerance</span>
-<span class="sd">    - maxLinVelStopped</span>
-<span class="sd">    - maxAngVelStopped</span>
-<span class="sd">    - fichierPoint : emplacement du fichier contenant les points à aller.</span>
+<span class="sd">    - portCarte : port où se trouve la carte</span>
+<span class="sd">    - bauderate : bauderate de communication de la carte</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># Récupération des variables</span>
-    <span class="n">distance_tolerance</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;distance_tolerance&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">angle_tolerance</span>    <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;angle_tolerance&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">maxLinVelStopped</span>   <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;maxLinVelStopped&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">maxAngVelStopped</span>   <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;maxAngVelStopped&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">fichierPoint</span>       <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;fichierPoint&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># Récupération des paramètres du ROSLaunch</span>
+    <span class="n">portCarte</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;portCarte&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">bauderate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;bauderate&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Initiation de la classe Communication</span>
+    <span class="n">driver_robot</span> <span class="o">=</span> <span class="n">Communication_Gcode</span><span class="p">(</span><span class="s2">&quot;/dev/tty&quot;</span> <span class="o">+</span> <span class="n">portCarte</span><span class="p">,</span> <span class="n">bauderate</span><span class="p">)</span>
     
-    <span class="c1"># Initialisation de la classe pour donner les consignes.</span>
-    <span class="n">Cpoint</span> <span class="o">=</span> <span class="n">Consigne_Point</span><span class="p">(</span><span class="n">distance_tolerance</span><span class="p">,</span> <span class="n">angle_tolerance</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">,</span> <span class="n">fichierPoint</span><span class="p">)</span>
+    <span class="c1"># Initiation des E/S ROS</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;communication&#39;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="c1"># Mise en place des E/S</span>
-    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;consigne_point&#39;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    
-    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/robot/pose&quot;</span><span class="p">,</span> <span class="n">Pose2D</span><span class="p">,</span> <span class="n">Cpoint</span><span class="o">.</span><span class="n">update_robot_pose</span><span class="p">)</span> <span class="c1"># Entrée</span>
-    <span class="n">pub_consigne_pos</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/robot/consign&#39;</span><span class="p">,</span> <span class="n">Pose2D</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># Sortie</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/robot/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">driver_robot</span><span class="o">.</span><span class="n">set_robot_speed_ros</span><span class="p">)</span> <span class="c1">#Entrée</span>
+    <span class="n">pub_pose</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/robot/pose&#39;</span><span class="p">,</span> <span class="n">Pose2D</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># Sortie</span>
 
-
-    <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># 10hz</span>
-
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># 10hz</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
         <span class="c1"># Publication de la sortie à 10Hz</span>
-        <span class="n">pub_consigne_pos</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Cpoint</span><span class="o">.</span><span class="n">send_new_consign</span><span class="p">())</span>
-        
-        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span></div>
+        <span class="n">pub_pose</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">driver_robot</span><span class="o">.</span><span class="n">get_robot_pose</span><span class="p">())</span>
+        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
 
+    <span class="c1"># Fermeture du port série</span>
+    <span class="k">del</span> <span class="n">driver_robot</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">consigne_Point</span><span class="p">()</span>
+        <span class="n">communication</span><span class="p">()</span>
     <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span>
         <span class="k">pass</span>
 </pre></div>

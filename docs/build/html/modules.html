@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Node Consigne Point &mdash; Documentation Robot ROS Valrob 2020</title>
+  <title>Fichiers sources détaillés &mdash; Documentation Robot ROS Valrob 2020</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Node Motion contrôleur" href="node_motion_controller.html" />
-    <link rel="prev" title="Librairie Navigation utile" href="Nav_utiles.html" />
+    <link rel="next" title="Classe Consigne point" href="script/Consigne_point.html" />
+    <link rel="prev" title="Lancement rapide" href="Lancement.html" />
     <link href="_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -90,11 +90,17 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Consigne_point.html">Classe Consigne point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Motion_controller.html">Classe Motion Contrôleur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nav_utiles.html">Librairie Navigation utile</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Node Consigne Point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node_motion_controller.html">Node Motion contrôleur</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fichiers sources détaillés</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="script/Consigne_point.html">Classe Consigne point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="script/Motion_controller.html">Classe Motion Contrôleur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="script/Nav_utiles.html">Librairie Navigation utile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="script/driver_baseRoulante.html">Driver base roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="script/node_consigne_point.html">Node Consigne Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="script/node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="script/node_motion_controller.html">Node Motion contrôleur</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Astuces.html">Astuces</a></li>
 </ul>
 
             
@@ -140,13 +146,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Node Consigne Point</li>
+      <li>Fichiers sources détaillés</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/node_consigne_point.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,24 +165,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-node_consigne_point">
-<span id="node-consigne-point"></span><h1>Node Consigne Point<a class="headerlink" href="#module-node_consigne_point" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Cette node permet de donner comme consigne de se diriger vers une succession de points définis dans un fichier <cite>.txt</cite>.</p>
-<dl class="function">
-<dt id="node_consigne_point.consigne_Point">
-<code class="descclassname">node_consigne_point.</code><code class="descname">consigne_Point</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/node_consigne_point.html#consigne_Point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node_consigne_point.consigne_Point" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Fonction principale pour la node de la gestion de la consigne.
-Elle demande des valeurs définies dans le roslaunch :</p>
-<blockquote>
-<div><ul class="simple">
-<li>distance_tolerance</li>
-<li>angle_tolerance</li>
-<li>maxLinVelStopped</li>
-<li>maxAngVelStopped</li>
+  <div class="section" id="fichiers-sources-detailles">
+<h1>Fichiers sources détaillés<a class="headerlink" href="#fichiers-sources-detailles" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="script/Consigne_point.html">Classe Consigne point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script/Motion_controller.html">Classe Motion Contrôleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script/Nav_utiles.html">Librairie Navigation utile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script/driver_baseRoulante.html">Driver base roulante</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script/node_consigne_point.html">Node Consigne Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script/node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script/node_motion_controller.html">Node Motion contrôleur</a></li>
 </ul>
-</div></blockquote>
-</dd></dl>
-
+</div>
 </div>
 
 
@@ -187,10 +188,10 @@ Elle demande des valeurs définies dans le roslaunch :</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="node_motion_controller.html" class="btn btn-neutral float-right" title="Node Motion contrôleur" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="script/Consigne_point.html" class="btn btn-neutral float-right" title="Classe Consigne point" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Nav_utiles.html" class="btn btn-neutral float-left" title="Librairie Navigation utile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Lancement.html" class="btn btn-neutral float-left" title="Lancement rapide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

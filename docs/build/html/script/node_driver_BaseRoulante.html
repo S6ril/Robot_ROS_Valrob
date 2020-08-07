@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Vue d&#39;ensemble : code du module &mdash; Documentation Robot ROS Valrob 2020</title>
+  <title>Node Driver Base Roulante &mdash; Documentation Robot ROS Valrob 2020</title>
   
 
   
@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Node Motion contrôleur" href="node_motion_controller.html" />
+    <link rel="prev" title="Node Consigne Point" href="node_consigne_point.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -85,10 +87,19 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Classe Consigne point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Classe Motion Contrôleur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nav_utiles.html">Librairie Navigation utile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_baseRoulante.html">Driver base roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_consigne_point.html">Node Consigne Point</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Node Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_motion_controller.html">Node Motion contrôleur</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -135,10 +146,16 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Vue d'ensemble : code du module</li>
+          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
+        
+      <li>Node Driver Base Roulante</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/script/node_driver_BaseRoulante.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -150,20 +167,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Modules pour lesquels le code est disponible</h1>
-<ul><li><a href="Consigne_point.html">Consigne_point</a></li>
-<li><a href="Motion_controller.html">Motion_controller</a></li>
-<li><a href="Nav_utiles.html">Nav_utiles</a></li>
-<li><a href="driver_baseRoulante.html">driver_baseRoulante</a></li>
-<li><a href="node_consigne_point.html">node_consigne_point</a></li>
-<li><a href="node_driver_BaseRoulante.html">node_driver_BaseRoulante</a></li>
-<li><a href="node_motion_controller.html">node_motion_controller</a></li>
+  <div class="section" id="module-node_driver_BaseRoulante">
+<span id="node-driver-base-roulante"></span><h1>Node Driver Base Roulante<a class="headerlink" href="#module-node_driver_BaseRoulante" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Cette node permet de communiquer avec le robot en Gcode. 
+ELle récupère la consigne en vitesse et renvoie la position du robot.</p>
+<dl class="function">
+<dt id="node_driver_BaseRoulante.communication">
+<code class="descclassname">node_driver_BaseRoulante.</code><code class="descname">communication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/node_driver_BaseRoulante.html#communication"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node_driver_BaseRoulante.communication" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction principale de la node, elle permet de communiquer avec le robot.
+Elle demande les valeurs dans le ROSLaunch :</p>
+<ul class="simple">
+<li>portCarte : port où se trouve la carte</li>
+<li>bauderate : bauderate de communication de la carte</li>
 </ul>
+</dd></dl>
+
+</div>
+
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="node_motion_controller.html" class="btn btn-neutral float-right" title="Node Motion contrôleur" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="node_consigne_point.html" class="btn btn-neutral float-left" title="Node Consigne Point" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

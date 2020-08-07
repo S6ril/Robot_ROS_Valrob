@@ -88,11 +88,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Consigne_point.html">Classe Consigne point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Classe Motion Contrôleur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Librairie Navigation utile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">Node Consigne Point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion contrôleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
             
@@ -174,7 +171,7 @@
 <span class="kn">from</span> <span class="nn">Nav_utiles</span> <span class="k">import</span> <span class="n">isPosition_reached</span>
 
 
-<div class="viewcode-block" id="Consigne_Point"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point">[docs]</a><span class="k">class</span> <span class="nc">Consigne_Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Consigne_Point"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point">[docs]</a><span class="k">class</span> <span class="nc">Consigne_Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Classe pour gérer la consigne vers un point.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -205,7 +202,7 @@
 
 
 
-<div class="viewcode-block" id="Consigne_Point.update_robot_pose"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point.update_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotPose</span><span class="p">):</span>
+<div class="viewcode-block" id="Consigne_Point.update_robot_pose"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point.update_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotPose</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la position actuelle du robot dans la classe.</span>
 
 <span class="sd">        :param robotPose: Position actuelle du robot.</span>
@@ -213,7 +210,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">robotPose</span></div>
 
-<div class="viewcode-block" id="Consigne_Point.send_new_consign"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point.send_new_consign">[docs]</a>    <span class="k">def</span> <span class="nf">send_new_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Consigne_Point.send_new_consign"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point.send_new_consign">[docs]</a>    <span class="k">def</span> <span class="nf">send_new_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la nouvelle consigne que doit suivre le robot.</span>
 
 <span class="sd">        :return: la nouvelle consigne</span>
@@ -225,7 +222,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span></div>
 
 
-<div class="viewcode-block" id="Consigne_Point.update_robot_consign"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point.update_robot_consign">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Consigne_Point.update_robot_consign"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point.update_robot_consign">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui génère la nouvelle consigne du robot en fonction de point dans un fichier .txt. </span>
 <span class="sd">        Lorsque tous les points ont été lu, la consigne devient la postion actuelle du robot. (Cela permet de l&#39;immobiliser).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -244,7 +241,7 @@
 
 
 
-<div class="viewcode-block" id="Consigne_Point.lecture_fichier"><a class="viewcode-back" href="../Consigne_point.html#Consigne_point.Consigne_Point.lecture_fichier">[docs]</a>    <span class="k">def</span> <span class="nf">lecture_fichier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nomFichier</span><span class="p">):</span>
+<div class="viewcode-block" id="Consigne_Point.lecture_fichier"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point.lecture_fichier">[docs]</a>    <span class="k">def</span> <span class="nf">lecture_fichier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nomFichier</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction pour lire le fichier .txt contenant les points de consigne du robot.</span>
 
 <span class="sd">        :param nomFichier: nom du fichier</span>

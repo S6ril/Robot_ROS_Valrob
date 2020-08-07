@@ -88,11 +88,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Consigne_point.html">Classe Consigne point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Motion_controller.html">Classe Motion Contrôleur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Nav_utiles.html">Librairie Navigation utile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_consigne_point.html">Node Consigne Point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../node_motion_controller.html">Node Motion contrôleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
             
@@ -169,31 +166,37 @@
 
 <span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Pose2D</span>
-<span class="kn">from</span> <span class="nn">turtlesim.msg</span> <span class="k">import</span> <span class="n">Pose</span>
+
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
 
 <span class="kn">from</span> <span class="nn">Motion_controller</span> <span class="k">import</span> <span class="n">Motion_controller</span>
 
 
-<div class="viewcode-block" id="motion_controller"><a class="viewcode-back" href="../node_motion_controller.html#node_motion_controller.motion_controller">[docs]</a><span class="k">def</span> <span class="nf">motion_controller</span><span class="p">():</span>
+<div class="viewcode-block" id="motion_controller"><a class="viewcode-back" href="../script/node_motion_controller.html#node_motion_controller.motion_controller">[docs]</a><span class="k">def</span> <span class="nf">motion_controller</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;    </span>
 <span class="sd">    Fonction principale de la node motion_controller.</span>
 <span class="sd">    Elle demande des paramètres du roslaunch :</span>
-<span class="sd">        - krho</span>
-<span class="sd">        - kalpha</span>
+<span class="sd">    </span>
+<span class="sd">    - krho</span>
+<span class="sd">    - kalpha</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;motion_controller&#39;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
+    <span class="c1"># Demande de paramètres du ROSLaunch</span>
     <span class="n">krho</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;krho&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">kalpha</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;kalpha&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Initiation de la classe motion_controlleur</span>
     <span class="n">motion_controller</span> <span class="o">=</span> <span class="n">Motion_controller</span><span class="p">(</span><span class="n">krho</span><span class="p">,</span> <span class="n">kalpha</span> <span class="p">)</span>
 
-    <span class="n">pub_cmd_Vel</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/turtle1/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/turtle1/pose&quot;</span><span class="p">,</span> <span class="n">Pose</span><span class="p">,</span> <span class="n">motion_controller</span><span class="o">.</span><span class="n">update_robot_pos</span><span class="p">)</span>
-    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/turtle1/consign&quot;</span><span class="p">,</span> <span class="n">Pose2D</span><span class="p">,</span> <span class="n">motion_controller</span><span class="o">.</span><span class="n">update_robot_consign</span><span class="p">)</span>
+    <span class="c1"># Initiation de ROS</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;motion_controller&#39;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/robot/pose&quot;</span><span class="p">,</span> <span class="n">Pose2D</span><span class="p">,</span> <span class="n">motion_controller</span><span class="o">.</span><span class="n">update_robot_pos</span><span class="p">)</span> <span class="c1"># Entrée</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/robot/consign&quot;</span><span class="p">,</span> <span class="n">Pose2D</span><span class="p">,</span> <span class="n">motion_controller</span><span class="o">.</span><span class="n">update_robot_consign</span><span class="p">)</span> <span class="c1"># Entrée</span>
+    <span class="n">pub_cmd_Vel</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/robot/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># Sortie</span>
 
     <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># 10hz</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+        <span class="c1"># Publication de la sortie à 10Hz</span>
         <span class="n">pub_cmd_Vel</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">motion_controller</span><span class="o">.</span><span class="n">update_command_vel</span><span class="p">())</span>
         <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span></div>
 

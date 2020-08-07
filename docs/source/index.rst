@@ -12,15 +12,13 @@ Cette documentation vous apprendra comment faire fonctionner le robot de Valrob 
 .. toctree::
    :maxdepth: 2
    :caption: Sommaire :
-   
+    
    Prérequis
    Lancement
-   
-   Consigne_point
-   Motion_controller
-   Nav_utiles
-   node_consigne_point
-   node_motion_controller
+   modules
+   Astuces
+
+
 
 Indices and tables
 ==================
