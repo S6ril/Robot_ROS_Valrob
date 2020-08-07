@@ -20,8 +20,11 @@ def communication():
     Fonction principale de la node, elle permet de communiquer avec le robot
 
     """
+    portCarte = rospy.get_param('portCarte', 0)
+    bauderate = rospy.get_param('bauderate', 0)
+
     rospy.init_node('communication', anonymous=True)
-    driver_robot = Communication_Gcode("/dev/ttyACM0", 115200)
+    driver_robot = Communication_Gcode("/dev/tty" + portCarte, bauderate)
 
     pub_pose = rospy.Publisher('/robot/pose', Pose2D, queue_size=10)
     rospy.Subscriber('/robot/cmd_vel', Twist, driver_robot.set_robot_speed_ros)

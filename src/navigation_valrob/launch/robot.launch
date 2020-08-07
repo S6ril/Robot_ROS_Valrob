@@ -11,6 +11,9 @@
         angle_tolerance : 0.5
         maxLinVelStopped : 0.5
         maxAngVelStopped : 0.5
+
+        portCarte : "ACM0"
+        bauderate : 115200
     </rosparam>
 
 </launch>
