@@ -6,6 +6,7 @@
 """
 Cette node permet de communiquer avec le robot en Gcode. 
 ELle récupère la consigne en vitesse et renvoie la position du robot.
+
 """
 
 
@@ -19,8 +20,9 @@ def communication():
     """
     Fonction principale de la node, elle permet de communiquer avec le robot.
     Elle demande les valeurs dans le ROSLaunch :
-        - portCarte : port où se trouve la carte
-        - bauderate : bauderate de communication de la carte
+    
+    - portCarte : port où se trouve la carte
+    - bauderate : bauderate de communication de la carte
     """
 
     # Récupération des paramètres du ROSLaunch
