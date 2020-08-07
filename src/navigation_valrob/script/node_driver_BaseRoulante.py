@@ -28,7 +28,7 @@ def communication():
 
     rate = rospy.Rate(10)  # 10hz
     while not rospy.is_shutdown():
-        pub_pose.publish(driver_robot.get_robot_pose())
+        pub_pose.publish(driver_robot.set_robot_speed_ros())
         rate.sleep()
 
     del driver_robot

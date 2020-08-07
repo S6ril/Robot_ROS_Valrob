@@ -248,6 +248,13 @@ class Communication_Gcode(object):
         self.disable_motors()
     
     def set_robot_speed_ros(self, msg_twist: Twist() ):
+        """
+        Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes 
+        et d'avoir des fonctions spéciales ROS
+
+        :param msg_twist: Commande de vitesse ROS
+        :type msg_twist: Twist()
+        """
         self.set_robot_speed(self, msg_twist.linear.x, msg_twist.angular.z)
 
 
