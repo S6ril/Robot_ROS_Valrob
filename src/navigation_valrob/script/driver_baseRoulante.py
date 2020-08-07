@@ -255,6 +255,6 @@ class Communication_Gcode(object):
         :param msg_twist: Commande de vitesse ROS
         :type msg_twist: Twist()
         """
-        self.set_robot_speed(self, msg_twist.linear.x, msg_twist.angular.z)
+        self.set_robot_speed(msg_twist.linear.x, msg_twist.angular.z)
 
 
