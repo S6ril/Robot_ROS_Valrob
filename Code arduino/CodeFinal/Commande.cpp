@@ -39,10 +39,12 @@ void Commande::executerGcode(String commande)
         case 114:
             Serial.print("cons ");
             Serial.print(gcode.m_I);
+            break;
 
         case 115:
             Serial.print("cons ");
             Serial.print(gcode.m_J);
+            break;
 
         case 666:
             Serial.println("Com OK");
