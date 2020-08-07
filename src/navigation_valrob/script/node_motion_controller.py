@@ -21,8 +21,9 @@ def motion_controller():
     """    
     Fonction principale de la node motion_controller.
     Elle demande des paramètres du roslaunch :
-        - krho
-        - kalpha
+    
+    - krho
+    - kalpha
     """
     # Demande de paramètres du ROSLaunch
     krho = rospy.get_param('krho', 0)
