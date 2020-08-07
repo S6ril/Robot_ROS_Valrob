@@ -22,11 +22,12 @@ def consigne_Point():
     """
     Fonction principale pour la node de la gestion de la consigne.
     Elle demande des valeurs définies dans le roslaunch :
-        - distance_tolerance
-        - angle_tolerance
-        - maxLinVelStopped
-        - maxAngVelStopped
-        - fichierPoint : emplacement du fichier contenant les points à aller.
+    
+    - distance_tolerance
+    - angle_tolerance
+    - maxLinVelStopped
+    - maxAngVelStopped
+    - fichierPoint : emplacement du fichier contenant les points à aller.
     """
 
     # Récupération des variables
@@ -37,8 +38,7 @@ def consigne_Point():
     fichierPoint       = rospy.get_param('fichierPoint', 0)
     
     # Initialisation de la classe pour donner les consignes.
-    Cpoint = Consigne_Point(distance_tolerance, angle_tolerance,
-                            maxLinVelStopped, maxAngVelStopped, fichierPoint)
+    Cpoint = Consigne_Point(distance_tolerance, angle_tolerance, maxLinVelStopped, maxAngVelStopped, fichierPoint)
 
     # Mise en place des E/S
     rospy.init_node('consigne_point', anonymous=True)
