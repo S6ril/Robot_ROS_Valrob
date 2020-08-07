@@ -128,13 +128,13 @@ class Communication_Gcode(object):
 
 
     # position control
-    def get_robot_pose(self) -> Pose2D():
+    def get_robot_pose(self) -> Pose2D:
         """
         Fonction qui met à jour la position actuelle du robot dans la classe.
         
 
         :param robotPose: Position actuelle du robot.
-        :type robotPose: Pose2D()
+        :type robotPose: Pose2D
         """
         if (self.serial.is_open):
             self.serial.write(b'M114\n') # Demande la position au robot
@@ -252,13 +252,13 @@ class Communication_Gcode(object):
     def stopRobot(self):
         self.disable_motors()
     
-    def set_robot_speed_ros(self, msg_twist: Twist() ):
+    def set_robot_speed_ros(self, msg_twist: Twist ):
         """
         Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes 
         et d'avoir des fonctions spéciales ROS
 
         :param msg_twist: Commande de vitesse ROS
-        :type msg_twist: Twist()
+        :type msg_twist: Twist
         """
         self.set_robot_speed(msg_twist.linear.x, msg_twist.angular.z)
 

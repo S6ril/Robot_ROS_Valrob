@@ -34,7 +34,7 @@ class Motion_controller(object):
         """Fonction qui met à jour la commande du robot dès qu'elle est appelée.
 
         :return: la commande en vitesse, vitesse angulaire
-        :rtype: Twist()
+        :rtype: Twist
         """
         rho = distance_euclidienne(self.robotPose, self.robotConsign)
 
@@ -51,7 +51,7 @@ class Motion_controller(object):
         """Fonction qui met à jour la position du robot dès qu'elle est appelée.
 
         :param robotPose: Position actuelle du robot
-        :type robotPose: Pose2D()
+        :type robotPose: Pose2D
         """
         self.robotPose = robotPose
         if self.initialise:
@@ -65,6 +65,6 @@ class Motion_controller(object):
         """Fonction qui met à jour la consigne du robot, dès qu'elle est appelé.
 
         :param robotConsign: Consigne a donné au robot
-        :type robotConsign: Pose2D()
+        :type robotConsign: Pose2D
         """
         self.robotConsign = robotConsign

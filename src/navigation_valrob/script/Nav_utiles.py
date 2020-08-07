@@ -15,9 +15,9 @@ def rotation(posRobot, posCible):
     """Fonction pour gerer la rotation du robot
 
     :param posRobot: Position actuelle du robot
-    :type posRobot: Pose()
+    :type posRobot: Pose
     :param posCible: Positio de la cible
-    :type posCible: Pose2D()
+    :type posCible: Pose2D
     :return: Angle de rotation
     :rtype: float
     """
@@ -30,9 +30,9 @@ def distance_euclidienne(posRobot, posCible):
     """Fonction pour calculer la distance euclidienne
 
     :param posRobot: Position du robot
-    :type posRobot: Pose()
+    :type posRobot: Pose
     :param posCible: Position de la consignz
-    :type posCible: Pose2D()
+    :type posCible: Pose2D
     :return: Distance euclidienne entre la postion du robot et la consigne
     :rtype: float
     """
@@ -59,7 +59,7 @@ def isStopped(commandVel, maxLinVelStopped, maxAngVelStopped):
     """Fonction pour vérifier si le robot est bien stoppé.
 
     :param commandVel: la commande du robot en vitesse
-    :type commandVel: Twist()
+    :type commandVel: Twist
     :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.
     :type maxLinVelStopped: float
     :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.
@@ -78,9 +78,9 @@ def isPosition_reached(pose, poseConsign, distance_tolerance):
     """Fonction pour vérifier si la position souhaitée est bien atteinte.
 
     :param pose: Position actuelle du robot.
-    :type pose: Pose()
+    :type pose: Pose
     :param poseConsign: Position de la consigne du robot.
-    :type poseConsign: Pose2D()
+    :type poseConsign: Pose2D
     :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch
     :type distance_tolerance: float
     :return: Vrai ou Faux
@@ -96,13 +96,13 @@ def isGoal_reached(robotPose, robotConsign, distance_tolerance, commandVel, maxL
     """Fonction pour vérifier que le robot a bien atteint l'objectif désiré.
 
     :param robotPose: Position actuelle du robot.
-    :type robotPose: Pose()
+    :type robotPose: Pose
     :param robotConsign: Position de la consigne du robot.
-    :type robotConsign: Pose2D()
+    :type robotConsign: Pose2D
     :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch
     :type distance_tolerance: float
     :param commandVel: la commande du robot en vitesse
-    :type commandVel: Twist()
+    :type commandVel: Twist
     :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.
     :type maxLinVelStopped: float
     :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.
