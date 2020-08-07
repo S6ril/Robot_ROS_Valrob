@@ -18,44 +18,44 @@ class Communication_Gcode(object):
     def __init__(self, portserial, bauderate):
         super(Communication_Gcode, self).__init__()
         self.robotPose = Pose2D()
-        self.ser = serial.Serial()
-        self.ser.port = portserial
-        self.ser.baudrate = bauderate
-        self.ser.timeout = 0
-        self.ser.open()
+        self.serial = serial.Serial()
+        self.serial.port = portserial
+        self.serial.baudrate = bauderate
+        self.serial.timeout = 0
+        self.serial.open()
 
     def __del__(self):
-        self.ser.close()
+        self.serial.close()
         print("serial close")
 
     # Commandes déplacements:
     def set_fast_move_to(self, x, y, theta):
-        self.ser.write(b'G00 X')
-        self.ser.write(str.encode(str(x)))
-        self.ser.write(b' Y')
-        self.ser.write(str.encode(str(y)))
-        self.ser.write(b' A')
-        self.ser.write(str.encode(str(theta)))
+        self.serial.write(b'G00 X')
+        self.serial.write(str.encode(str(x)))
+        self.serial.write(b' Y')
+        self.serial.write(str.encode(str(y)))
+        self.serial.write(b' A')
+        self.serial.write(str.encode(str(theta)))
 
     def set_slow_move_to(self, x, y, theta):
-        self.ser.write(b'G01 X')
-        self.ser.write(str.encode(str(x)))
-        self.ser.write(b' Y')
-        self.ser.write(str.encode(str(y)))
-        self.ser.write(b' A')
-        self.ser.write(str.encode(str(theta)))
+        self.serial.write(b'G01 X')
+        self.serial.write(str.encode(str(x)))
+        self.serial.write(b' Y')
+        self.serial.write(str.encode(str(y)))
+        self.serial.write(b' A')
+        self.serial.write(str.encode(str(theta)))
 
     def set_robot_speed(self, msg_twist):
-        self.ser.write(b'G10 I')
-        self.ser.write(str.encode(str(msg_twist.linear.x)))
-        self.ser.write(b' J')
-        self.ser.write(str.encode(str(msg_twist.angular.z)))
+        self.serial.write(b'G10 I')
+        self.serial.write(str.encode(str(msg_twist.linear.x)))
+        self.serial.write(b' J')
+        self.serial.write(str.encode(str(msg_twist.angular.z)))
 
     def set_robot_wheel_speed(self, leftWheelSpeed, RightWeelSpeed):
-        self.ser.write(b'G11 I')
-        self.ser.write(str.encode(str(leftWheelSpeed)))
-        self.ser.write(b' J')
-        self.ser.write(str.encode(str(RightWeelSpeed)))
+        self.serial.write(b'G11 I')
+        self.serial.write(str.encode(str(leftWheelSpeed)))
+        self.serial.write(b' J')
+        self.serial.write(str.encode(str(RightWeelSpeed)))
 
     # position control
     def get_robot_pose(self):
@@ -64,9 +64,9 @@ class Communication_Gcode(object):
         :param robotPose: Position actuelle du robot.
         :type robotPose: Pose()
         """
-        if (self.ser.is_open):
-            self.ser.write(b'M114')
-            message = self.ser.read(190) #read 190 bytes
+        if (self.serial.is_open):
+            self.serial.write(b'M114')
+            message = self.serial.read(190) #read 190 bytes
             print("message =", message)
             if (len(message) > 4):
                 message = message.split(" ")
@@ -79,21 +79,21 @@ class Communication_Gcode(object):
         return self.robotPose
 
     def set_robot_pose(self, x, y, theta):
-        self.ser.write(b'G92 X')
-        self.ser.write(str.encode(str(x)))
-        self.ser.write(b' Y')
-        self.ser.write(str.encode(str(y)))
-        self.ser.write(b' A')
-        self.ser.write(str.encode(str(theta)))
+        self.serial.write(b'G92 X')
+        self.serial.write(str.encode(str(x)))
+        self.serial.write(b' Y')
+        self.serial.write(str.encode(str(y)))
+        self.serial.write(b' A')
+        self.serial.write(str.encode(str(theta)))
 
     # motor enable control
     def enable_motors(self):
-        if (self.ser.is_open):
-            self.ser.write(b'M19') #Mise en route des moteurs
+        if (self.serial.is_open):
+            self.serial.write(b'M19') #Mise en route des moteurs
 
     def disable_motors(self):
-        if (self.ser.is_open):
-            self.ser.write(b'M18') #Stop tous les moteurs
+        if (self.serial.is_open):
+            self.serial.write(b'M18') #Stop tous les moteurs
 
     # tests commands
     def get_left_wheel_data(self):
