@@ -43,7 +43,7 @@ def consigne_Point():
     # Mise en place des E/S
     rospy.init_node('consigne_point', anonymous=True)
     
-    rospy.Subscriber("/robot/pose", Pose2D, Cpoint.update_robot_pose) # Entré
+    rospy.Subscriber("/robot/pose", Pose2D, Cpoint.update_robot_pose) # Entrée
     pub_consigne_pos = rospy.Publisher('/robot/consign', Pose2D, queue_size=10) # Sortie
 
 

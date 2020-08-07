@@ -31,7 +31,7 @@ class Motion_controller(object):
 
 
     def update_command_vel(self):
-        """Fonction qui met à jour la commande du robot dès qu'elle est appelé.
+        """Fonction qui met à jour la commande du robot dès qu'elle est appelée.
 
         :return: la commande en vitesse, vitesse angulaire
         :rtype: Twist()
@@ -48,12 +48,11 @@ class Motion_controller(object):
         return commandVel
 
     def update_robot_pos(self, robotPose):
-        """Fonction qui met à jour la position du robot dès qu'elle est appelé.
+        """Fonction qui met à jour la position du robot dès qu'elle est appelée.
 
         :param robotPose: Position actuelle du robot
-        :type robotPose: turtlesim/Pose()
+        :type robotPose: Pose2D()
         """
-        #robot_pos est un tutlesim/Pose
         self.robotPose = robotPose
         if self.initialise:
             self.robotPoseInitiale = robotPose
@@ -66,7 +65,6 @@ class Motion_controller(object):
         """Fonction qui met à jour la consigne du robot, dès qu'elle est appelé.
 
         :param robotConsign: Consigne a donné au robot
-        :type robotConsign: geometry_msg/Pose2D()
+        :type robotConsign: Pose2D()
         """
-        #robot_consign est un geometry_msgs/Pose2D
         self.robotConsign = robotConsign
