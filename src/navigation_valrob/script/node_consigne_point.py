@@ -26,6 +26,7 @@ def consigne_Point():
         - angle_tolerance
         - maxLinVelStopped
         - maxAngVelStopped
+        - fichierPoint : emplacement du fichier contenant les points à aller.
     """
 
     # Récupération des variables
