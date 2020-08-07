@@ -88,16 +88,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../script/Consigne_point.html">Module Consigne</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../script/Motion_controller.html">Module Motion Controlleur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../script/Nav_utiles.html">Module Navigation Utile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../script/driver_baseRoulante.html">Driver Base Roulante</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../script/node_consigne_point.html">Node Consigne</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../script/node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../script/node_motion_controller.html">Node Motion Controlleur</a></li>
 </ul>
 
             
@@ -178,9 +170,9 @@
     <span class="sd">&quot;&quot;&quot;Fonction pour gerer la rotation du robot</span>
 
 <span class="sd">    :param posRobot: Position actuelle du robot</span>
-<span class="sd">    :type posRobot: Pose()</span>
+<span class="sd">    :type posRobot: Pose</span>
 <span class="sd">    :param posCible: Positio de la cible</span>
-<span class="sd">    :type posCible: Pose2D()</span>
+<span class="sd">    :type posCible: Pose2D</span>
 <span class="sd">    :return: Angle de rotation</span>
 <span class="sd">    :rtype: float</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -193,9 +185,9 @@
     <span class="sd">&quot;&quot;&quot;Fonction pour calculer la distance euclidienne</span>
 
 <span class="sd">    :param posRobot: Position du robot</span>
-<span class="sd">    :type posRobot: Pose()</span>
+<span class="sd">    :type posRobot: Pose</span>
 <span class="sd">    :param posCible: Position de la consignz</span>
-<span class="sd">    :type posCible: Pose2D()</span>
+<span class="sd">    :type posCible: Pose2D</span>
 <span class="sd">    :return: Distance euclidienne entre la postion du robot et la consigne</span>
 <span class="sd">    :rtype: float</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -222,7 +214,7 @@
     <span class="sd">&quot;&quot;&quot;Fonction pour vérifier si le robot est bien stoppé.</span>
 
 <span class="sd">    :param commandVel: la commande du robot en vitesse</span>
-<span class="sd">    :type commandVel: Twist()</span>
+<span class="sd">    :type commandVel: Twist</span>
 <span class="sd">    :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
 <span class="sd">    :type maxLinVelStopped: float</span>
 <span class="sd">    :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>
@@ -241,9 +233,9 @@
     <span class="sd">&quot;&quot;&quot;Fonction pour vérifier si la position souhaitée est bien atteinte.</span>
 
 <span class="sd">    :param pose: Position actuelle du robot.</span>
-<span class="sd">    :type pose: Pose()</span>
+<span class="sd">    :type pose: Pose</span>
 <span class="sd">    :param poseConsign: Position de la consigne du robot.</span>
-<span class="sd">    :type poseConsign: Pose2D()</span>
+<span class="sd">    :type poseConsign: Pose2D</span>
 <span class="sd">    :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</span>
 <span class="sd">    :type distance_tolerance: float</span>
 <span class="sd">    :return: Vrai ou Faux</span>
@@ -259,13 +251,13 @@
     <span class="sd">&quot;&quot;&quot;Fonction pour vérifier que le robot a bien atteint l&#39;objectif désiré.</span>
 
 <span class="sd">    :param robotPose: Position actuelle du robot.</span>
-<span class="sd">    :type robotPose: Pose()</span>
+<span class="sd">    :type robotPose: Pose</span>
 <span class="sd">    :param robotConsign: Position de la consigne du robot.</span>
-<span class="sd">    :type robotConsign: Pose2D()</span>
+<span class="sd">    :type robotConsign: Pose2D</span>
 <span class="sd">    :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</span>
 <span class="sd">    :type distance_tolerance: float</span>
 <span class="sd">    :param commandVel: la commande du robot en vitesse</span>
-<span class="sd">    :type commandVel: Twist()</span>
+<span class="sd">    :type commandVel: Twist</span>
 <span class="sd">    :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
 <span class="sd">    :type maxLinVelStopped: float</span>
 <span class="sd">    :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>

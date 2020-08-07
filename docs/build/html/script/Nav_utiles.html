@@ -87,19 +87,20 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Module Motion Controlleur</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module Navigation Utile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_baseRoulante.html">Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_motion_controller.html">Node Motion Controlleur</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Motion_controller.html">Module Motion Controlleur</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Module Navigation Utile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="driver_baseRoulante.html">Driver Base Roulante</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node_motion_controller.html">Node Motion Controlleur</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
             
@@ -145,6 +146,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
+        
       <li>Module Navigation Utile</li>
     
     
@@ -176,8 +179,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>posRobot</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position du robot</li>
-<li><strong>posCible</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Position de la consignz</li>
+<li><strong>posRobot</strong> (<em>Pose</em>) – Position du robot</li>
+<li><strong>posCible</strong> (<em>Pose2D</em>) – Position de la consignz</li>
 </ul>
 </td>
 </tr>
@@ -200,10 +203,10 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>robotPose</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position actuelle du robot.</li>
-<li><strong>robotConsign</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Position de la consigne du robot.</li>
+<li><strong>robotPose</strong> (<em>Pose</em>) – Position actuelle du robot.</li>
+<li><strong>robotConsign</strong> (<em>Pose2D</em>) – Position de la consigne du robot.</li>
 <li><strong>distance_tolerance</strong> (<em>float</em>) – seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</li>
-<li><strong>commandVel</strong> (<em>Twist</em><em>(</em><em>)</em>) – la commande du robot en vitesse</li>
+<li><strong>commandVel</strong> (<em>Twist</em>) – la commande du robot en vitesse</li>
 <li><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</li>
 <li><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</li>
 </ul>
@@ -228,8 +231,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>pose</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position actuelle du robot.</li>
-<li><strong>poseConsign</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Position de la consigne du robot.</li>
+<li><strong>pose</strong> (<em>Pose</em>) – Position actuelle du robot.</li>
+<li><strong>poseConsign</strong> (<em>Pose2D</em>) – Position de la consigne du robot.</li>
 <li><strong>distance_tolerance</strong> (<em>float</em>) – seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</li>
 </ul>
 </td>
@@ -253,7 +256,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>commandVel</strong> (<em>Twist</em><em>(</em><em>)</em>) – la commande du robot en vitesse</li>
+<li><strong>commandVel</strong> (<em>Twist</em>) – la commande du robot en vitesse</li>
 <li><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</li>
 <li><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</li>
 </ul>
@@ -296,8 +299,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>posRobot</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position actuelle du robot</li>
-<li><strong>posCible</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Positio de la cible</li>
+<li><strong>posRobot</strong> (<em>Pose</em>) – Position actuelle du robot</li>
+<li><strong>posCible</strong> (<em>Pose2D</em>) – Positio de la cible</li>
 </ul>
 </td>
 </tr>

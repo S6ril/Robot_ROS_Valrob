@@ -87,19 +87,20 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module Motion Controlleur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nav_utiles.html">Module Navigation Utile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_baseRoulante.html">Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_motion_controller.html">Node Motion Controlleur</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Module Motion Controlleur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nav_utiles.html">Module Navigation Utile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="driver_baseRoulante.html">Driver Base Roulante</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node_motion_controller.html">Node Motion Controlleur</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
             
@@ -145,6 +146,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
+        
       <li>Module Motion Controlleur</li>
     
     
@@ -182,7 +185,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Renvoie:</th><td class="field-body">la commande en vitesse, vitesse angulaire</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Type renvoyé:</th><td class="field-body">Twist()</td>
+<tr class="field-even field"><th class="field-name">Type renvoyé:</th><td class="field-body">Twist</td>
 </tr>
 </tbody>
 </table>
@@ -196,7 +199,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotConsign</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Consigne a donné au robot</td>
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotConsign</strong> (<em>Pose2D</em>) – Consigne a donné au robot</td>
 </tr>
 </tbody>
 </table>
@@ -210,7 +213,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotPose</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Position actuelle du robot</td>
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotPose</strong> (<em>Pose2D</em>) – Position actuelle du robot</td>
 </tr>
 </tbody>
 </table>

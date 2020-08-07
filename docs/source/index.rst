@@ -15,9 +15,9 @@ Cette documentation vous apprendra comment faire fonctionner le robot de Valrob 
     
    Prérequis
    Lancement
+   modules
    Astuces
    
-.. include:: ./modules.rst
 
 
 
