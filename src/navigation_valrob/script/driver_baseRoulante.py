@@ -28,6 +28,14 @@ class Communication_Gcode(object):
         self.serial.close()
         print("serial close")
 
+    def cleanSerial(self):
+        """
+        Nettoyage du buffer pour éviter une saturation.
+        """
+        self.serial.flushInput()
+        self.serial.flushOutput()
+
+
     # Commandes déplacements:
     def set_fast_move_to(self, x, y, theta):
         self.serial.write(b'G00 X')
@@ -38,6 +46,8 @@ class Communication_Gcode(object):
         self.serial.write(str.encode(str(theta)))
         self.serial.write(b'\n')
 
+        self.cleanSerial()
+
     def set_slow_move_to(self, x, y, theta):
         self.serial.write(b'G01 X')
         self.serial.write(str.encode(str(x)))
@@ -47,6 +57,9 @@ class Communication_Gcode(object):
         self.serial.write(str.encode(str(theta)))
         self.serial.write(b'\n')
 
+        self.cleanSerial()
+
+
     def set_robot_speed(self, msg_twist):
         self.serial.write(b'G10 I')
         self.serial.write(str.encode(str(msg_twist.linear.x)))
@@ -54,12 +67,18 @@ class Communication_Gcode(object):
         self.serial.write(str.encode(str(msg_twist.angular.z)))
         self.serial.write(b'\n')
 
+        self.cleanSerial()
+
+
     def set_robot_wheel_speed(self, leftWheelSpeed, RightWeelSpeed):
         self.serial.write(b'G11 I')
         self.serial.write(str.encode(str(leftWheelSpeed)))
         self.serial.write(b' J')
         self.serial.write(str.encode(str(RightWeelSpeed)))
         self.serial.write(b'\n')
+
+        self.cleanSerial()
+
 
     # position control
     def get_robot_pose(self):
@@ -71,6 +90,8 @@ class Communication_Gcode(object):
         if (self.serial.is_open):
             self.serial.write(b'M114')
             self.serial.write(b'\n')
+            self.cleanSerial()
+
             message = self.serial.read(190) #read 190 bytes
             print("message =", message)
             if (len(message) > 4):
@@ -92,16 +113,25 @@ class Communication_Gcode(object):
         self.serial.write(str.encode(str(theta)))
         self.serial.write(b'\n')
 
+        self.cleanSerial()
+
+
     # motor enable control
     def enable_motors(self):
         if (self.serial.is_open):
             self.serial.write(b'M19') #Mise en route des moteurs
             self.serial.write(b'\n')
 
+            self.cleanSerial()
+
+
     def disable_motors(self):
         if (self.serial.is_open):
             self.serial.write(b'M18') #Stop tous les moteurs
             self.serial.write(b'\n')
+
+            self.cleanSerial()
+
 
     # tests commands
     def get_left_wheel_data(self):
