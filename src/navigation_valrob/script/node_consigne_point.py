@@ -27,23 +27,29 @@ def consigne_Point():
         - maxLinVelStopped
         - maxAngVelStopped
     """
-    rospy.init_node('consigne_point', anonymous=True)
+
+    # Récupération des variables
     distance_tolerance = rospy.get_param('distance_tolerance',0)
     angle_tolerance    = rospy.get_param('angle_tolerance', 0)
     maxLinVelStopped   = rospy.get_param('maxLinVelStopped', 0)
     maxAngVelStopped   = rospy.get_param('maxAngVelStopped', 0)
+    fichierPoint       = rospy.get_param('fichierPoint', 0)
     
+    # Initialisation de la classe pour donner les consignes.
     Cpoint = Consigne_Point(distance_tolerance, angle_tolerance,
-                            maxLinVelStopped, maxAngVelStopped, '/home/cyril/catkin_ws/point.txt')
+                            maxLinVelStopped, maxAngVelStopped, fichierPoint)
 
+    # Mise en place des E/S
+    rospy.init_node('consigne_point', anonymous=True)
+    
+    rospy.Subscriber("/robot/pose", Pose2D, Cpoint.update_robot_pose) # Entré
+    pub_consigne_pos = rospy.Publisher('/robot/consign', Pose2D, queue_size=10) # Sortie
 
-    pub_consigne_pos = rospy.Publisher('/robot/consign', Pose2D, queue_size=10)
-    rospy.Subscriber("/robot/pose", Pose2D, Cpoint.update_robot_pose)
 
     rate = rospy.Rate(10) # 10hz
 
-
     while not rospy.is_shutdown():
+        # Publication de la sortie à 10Hz
         pub_consigne_pos.publish(Cpoint.send_new_consign())
         
         rate.sleep()

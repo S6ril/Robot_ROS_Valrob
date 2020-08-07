@@ -5,15 +5,20 @@
     <node pkg="navigation_valrob" name="driver_motor" type="node_driver_BaseRoulante.py"/>
 
     <rosparam>
+        <!-- A Changer en fonction de la carte et l'environnement -->
+        portCarte : "ACM0"
+        bauderate : 115200
+
+        fichierPoint : '/home/cyril/catkin_ws/point.txt'
+
+
+        <!-- Paramètres plus précis -->
         krho : 0.2
         kalpha : 1.5
         distance_tolerance : 0.5
         angle_tolerance : 0.5
         maxLinVelStopped : 0.5
         maxAngVelStopped : 0.5
-
-        portCarte : "ACM0"
-        bauderate : 115200
     </rosparam>
 
 </launch>
