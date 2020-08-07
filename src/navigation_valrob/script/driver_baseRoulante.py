@@ -8,6 +8,7 @@ Cette classe permet de gérer la communication Gcode
 
 from geometry_msgs.msg import Twist, Pose2D, Pose
 import serial
+import time
 
 class Communication_Gcode(object):
     """
@@ -88,20 +89,21 @@ class Communication_Gcode(object):
         :type robotPose: Pose()
         """
         if (self.serial.is_open):
-            self.serial.write(b'M114')
-            self.serial.write(b'\n')
-            self.cleanSerial()
+            self.serial.write(b'M114\n')
 
-            message = self.serial.read(190) #read 190 bytes
-            print("message =", message)
-            if (len(message) > 4):
-                message = message.split(" ")
-                print(message)
+            message = self.serial.readlines() #read 190 bytes
+
+            # print("message =", message)
+            if (len(message) > 0):
+                message = message[0].decode() #Conversion bytes en str
+                message = message.rstrip()  #Enlève \n
+                message = message.split(" ")    #Conversion str en list
 
                 self.robotPose.x = float(message[ 1 ] )
                 self.robotPose.y = float(message[ 3 ] )
                 self.robotPose.theta = float(message[ 5 ] )
 
+            self.cleanSerial()
         return self.robotPose
 
     def set_robot_pose(self, x, y, theta):
