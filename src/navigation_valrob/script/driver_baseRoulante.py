@@ -59,6 +59,8 @@ class Communication_Gcode(object):
 
         self.cleanSerial()
 
+
+
     def set_slow_move_to(self, x: float, y: float, theta: float):
         """
         G01 Le robot se déplace vers la cible de façon linéaire : il s’oriente d’abord vers sa cible
@@ -82,6 +84,7 @@ class Communication_Gcode(object):
         self.cleanSerial()
 
 
+
     def set_robot_speed(self, linearSpeed: float, angularSpeed: float):
         """
         G10 Le robot se déplace à la vitesse et vitesse angulaire précisée.
@@ -100,6 +103,7 @@ class Communication_Gcode(object):
         self.cleanSerial()
 
 
+
     def set_robot_wheel_speed(self, leftWheelSpeed: float, RightWeelSpeed: float):
         """
         G11 Les roues du robot se déplacent aux vitesses précisées.
@@ -116,6 +120,7 @@ class Communication_Gcode(object):
         self.serial.write(b'\n')
 
         self.cleanSerial()
+
 
 
     # position control
@@ -145,6 +150,8 @@ class Communication_Gcode(object):
             self.cleanSerial()
         return self.robotPose
 
+
+
     def set_robot_pose(self, x: float, y: float, theta: float):
         """
         G92 Met à jour la position du robot, et change place la consigne de position du robot 
@@ -168,6 +175,7 @@ class Communication_Gcode(object):
         self.cleanSerial()
 
 
+
     # motor enable control
     def enable_motors(self):
         """
@@ -179,6 +187,7 @@ class Communication_Gcode(object):
             self.cleanSerial()
 
 
+
     def disable_motors(self):
         """
         M18 Désactive les déplacements moteurs stoppant les mouvements jusqu’à réactivation 
@@ -188,6 +197,7 @@ class Communication_Gcode(object):
             self.serial.write(b'M18\n') #Stop tous les moteurs
 
             self.cleanSerial()
+
 
 
     # tests commands
@@ -227,6 +237,7 @@ class Communication_Gcode(object):
 
     def set_max_angular_deceleration(self, value):
         pass
+
 
 
     # aliases
