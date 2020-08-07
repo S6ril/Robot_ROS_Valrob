@@ -26,6 +26,10 @@ class Communication_Gcode(object):
         self.serial.open()
 
     def __del__(self):
+        """
+        Destructeur de la classe.
+        Permet de fermer le port Serial.
+        """
         self.serial.close()
         print("serial close")
 
@@ -133,9 +137,9 @@ class Communication_Gcode(object):
         :type robotPose: Pose2D()
         """
         if (self.serial.is_open):
-            self.serial.write(b'M114\n')
+            self.serial.write(b'M114\n') # Demande la position au robot
 
-            message = self.serial.readlines()
+            message = self.serial.readlines() # Lecture du port serial
 
             # print("message =", message)
             if (len(message) > 0):
@@ -143,6 +147,7 @@ class Communication_Gcode(object):
                 message = message.rstrip()  #Enlève \n
                 message = message.split(" ")    #Conversion str en list
 
+                # Répartition des valeurs dans la variable position.
                 self.robotPose.x = float(message[ 1 ] )
                 self.robotPose.y = float(message[ 3 ] )
                 self.robotPose.theta = float(message[ 5 ] )
