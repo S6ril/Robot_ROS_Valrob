@@ -36,6 +36,7 @@ class Communication_Gcode(object):
         self.serial.write(str.encode(str(y)))
         self.serial.write(b' A')
         self.serial.write(str.encode(str(theta)))
+        self.serial.write(b'\n')
 
     def set_slow_move_to(self, x, y, theta):
         self.serial.write(b'G01 X')
@@ -44,18 +45,21 @@ class Communication_Gcode(object):
         self.serial.write(str.encode(str(y)))
         self.serial.write(b' A')
         self.serial.write(str.encode(str(theta)))
+        self.serial.write(b'\n')
 
     def set_robot_speed(self, msg_twist):
         self.serial.write(b'G10 I')
         self.serial.write(str.encode(str(msg_twist.linear.x)))
         self.serial.write(b' J')
         self.serial.write(str.encode(str(msg_twist.angular.z)))
+        self.serial.write(b'\n')
 
     def set_robot_wheel_speed(self, leftWheelSpeed, RightWeelSpeed):
         self.serial.write(b'G11 I')
         self.serial.write(str.encode(str(leftWheelSpeed)))
         self.serial.write(b' J')
         self.serial.write(str.encode(str(RightWeelSpeed)))
+        self.serial.write(b'\n')
 
     # position control
     def get_robot_pose(self):
@@ -66,6 +70,7 @@ class Communication_Gcode(object):
         """
         if (self.serial.is_open):
             self.serial.write(b'M114')
+            self.serial.write(b'\n')
             message = self.serial.read(190) #read 190 bytes
             print("message =", message)
             if (len(message) > 4):
@@ -85,15 +90,18 @@ class Communication_Gcode(object):
         self.serial.write(str.encode(str(y)))
         self.serial.write(b' A')
         self.serial.write(str.encode(str(theta)))
+        self.serial.write(b'\n')
 
     # motor enable control
     def enable_motors(self):
         if (self.serial.is_open):
             self.serial.write(b'M19') #Mise en route des moteurs
+            self.serial.write(b'\n')
 
     def disable_motors(self):
         if (self.serial.is_open):
             self.serial.write(b'M18') #Stop tous les moteurs
+            self.serial.write(b'\n')
 
     # tests commands
     def get_left_wheel_data(self):
