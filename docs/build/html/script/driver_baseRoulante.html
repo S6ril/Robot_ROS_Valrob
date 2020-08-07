@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Driver base roulante &mdash; Documentation Robot ROS Valrob 2020</title>
+  <title>Driver Base Roulante &mdash; Documentation Robot ROS Valrob 2020</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Node Consigne Point" href="node_consigne_point.html" />
-    <link rel="prev" title="Librairie Navigation utile" href="Nav_utiles.html" />
+    <link rel="next" title="Node Consigne" href="node_consigne_point.html" />
+    <link rel="prev" title="Module Navigation Utile" href="Nav_utiles.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -87,20 +87,19 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Classe Consigne point</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Classe Motion Contrôleur</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Nav_utiles.html">Librairie Navigation utile</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Driver base roulante</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node_consigne_point.html">Node Consigne Point</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node_motion_controller.html">Node Motion contrôleur</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Motion_controller.html">Module Motion Controlleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Nav_utiles.html">Module Navigation Utile</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Driver Base Roulante</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node_motion_controller.html">Node Motion Controlleur</a></li>
 </ul>
 
             
@@ -146,9 +145,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
-        
-      <li>Driver base roulante</li>
+      <li>Driver Base Roulante</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -168,7 +165,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="module-driver_baseRoulante">
-<span id="driver-base-roulante"></span><h1>Driver base roulante<a class="headerlink" href="#module-driver_baseRoulante" title="Lien permanent vers ce titre">¶</a></h1>
+<span id="driver-base-roulante"></span><h1>Driver Base Roulante<a class="headerlink" href="#module-driver_baseRoulante" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Cette classe permet de gérer la communication Gcode</p>
 <dl class="class">
 <dt id="driver_baseRoulante.Communication_Gcode">
@@ -207,17 +204,13 @@ via la commande M19</p>
 
 <dl class="method">
 <dt id="driver_baseRoulante.Communication_Gcode.get_robot_pose">
-<code class="descname">get_robot_pose</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; x: 0.0<a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
-<dt>
-<code class="descname">y: 0.0</code></dt>
-<dt>
-<code class="descname">theta: 0.0</code></dt>
+<code class="descname">get_robot_pose</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; geometry_msgs.msg._Pose2D.Pose2D<a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction qui met à jour la position actuelle du robot dans la classe.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotPose</strong> (<em>Pose2D</em><em>(</em><em>)</em>) – Position actuelle du robot.</td>
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotPose</strong> (<em>Pose2D</em>) – Position actuelle du robot.</td>
 </tr>
 </tbody>
 </table>
@@ -336,29 +329,15 @@ via la commande M19</p>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">Communication_Gcode.set_robot_speed_ros(msg_twist: linear:</code></dt>
-<dt>
-<code class="descname">x: 0.0</code></dt>
-<dt>
-<code class="descname">y: 0.0</code></dt>
-<dt>
-<code class="descname">z: 0.0</code></dt>
-<dt>
-<code class="descname">angular:</code></dt>
-<dt>
-<code class="descname">x: 0.0</code></dt>
-<dt>
-<code class="descname">y: 0.0</code></dt>
-<dt>
-<code class="descname">z: 0.0)</code></dt>
+<dt id="driver_baseRoulante.Communication_Gcode.set_robot_speed_ros">
+<code class="descname">set_robot_speed_ros</code><span class="sig-paren">(</span><em>msg_twist: geometry_msgs.msg._Twist.Twist</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_speed_ros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_speed_ros" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes 
 et d’avoir des fonctions spéciales ROS</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>msg_twist</strong> (<em>Twist</em><em>(</em><em>)</em>) – Commande de vitesse ROS</td>
+<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>msg_twist</strong> (<em>Twist</em>) – Commande de vitesse ROS</td>
 </tr>
 </tbody>
 </table>
@@ -419,10 +398,10 @@ avant d’avancer jusqu’à atteindre la cible. Il prend l’angle d’arrivée
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="node_consigne_point.html" class="btn btn-neutral float-right" title="Node Consigne Point" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="node_consigne_point.html" class="btn btn-neutral float-right" title="Node Consigne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Nav_utiles.html" class="btn btn-neutral float-left" title="Librairie Navigation utile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Nav_utiles.html" class="btn btn-neutral float-left" title="Module Navigation Utile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

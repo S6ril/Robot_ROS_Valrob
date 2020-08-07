@@ -1,7 +1,5 @@
-************************
-Classe Motion Contrôleur
-************************
-
+Module Motion Controlleur
+=========================
 
 .. automodule:: Motion_controller
     :members:

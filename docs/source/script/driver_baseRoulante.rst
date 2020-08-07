@@ -1,4 +1,4 @@
-Driver base roulante
+Driver Base Roulante
 ====================
 
 .. automodule:: driver_baseRoulante

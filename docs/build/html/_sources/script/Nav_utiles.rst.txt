@@ -1,7 +1,5 @@
-**************************
-Librairie Navigation utile
-**************************
-
+Module Navigation Utile
+=======================
 
 .. automodule:: Nav_utiles
     :members:

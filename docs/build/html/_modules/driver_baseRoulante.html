@@ -88,8 +88,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../script/Consigne_point.html">Module Consigne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/Motion_controller.html">Module Motion Controlleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/Nav_utiles.html">Module Navigation Utile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/driver_baseRoulante.html">Driver Base Roulante</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/node_consigne_point.html">Node Consigne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/node_motion_controller.html">Node Motion Controlleur</a></li>
 </ul>
 
             
@@ -283,13 +291,13 @@
 
 
     <span class="c1"># position control</span>
-<div class="viewcode-block" id="Communication_Gcode.get_robot_pose"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.get_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">get_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pose2D</span><span class="p">():</span>
+<div class="viewcode-block" id="Communication_Gcode.get_robot_pose"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.get_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">get_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pose2D</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fonction qui met à jour la position actuelle du robot dans la classe.</span>
 <span class="sd">        </span>
 
 <span class="sd">        :param robotPose: Position actuelle du robot.</span>
-<span class="sd">        :type robotPose: Pose2D()</span>
+<span class="sd">        :type robotPose: Pose2D</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">is_open</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;M114</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Demande la position au robot</span>
@@ -407,15 +415,15 @@
 <div class="viewcode-block" id="Communication_Gcode.stopRobot"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.stopRobot">[docs]</a>    <span class="k">def</span> <span class="nf">stopRobot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">disable_motors</span><span class="p">()</span></div>
     
-    <span class="k">def</span> <span class="nf">set_robot_speed_ros</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg_twist</span><span class="p">:</span> <span class="n">Twist</span><span class="p">()</span> <span class="p">):</span>
+<div class="viewcode-block" id="Communication_Gcode.set_robot_speed_ros"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_robot_speed_ros">[docs]</a>    <span class="k">def</span> <span class="nf">set_robot_speed_ros</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg_twist</span><span class="p">:</span> <span class="n">Twist</span> <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes </span>
 <span class="sd">        et d&#39;avoir des fonctions spéciales ROS</span>
 
 <span class="sd">        :param msg_twist: Commande de vitesse ROS</span>
-<span class="sd">        :type msg_twist: Twist()</span>
+<span class="sd">        :type msg_twist: Twist</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_robot_speed</span><span class="p">(</span><span class="n">msg_twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">msg_twist</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_robot_speed</span><span class="p">(</span><span class="n">msg_twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">msg_twist</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span><span class="p">)</span></div></div>
 
 
 </pre></div>

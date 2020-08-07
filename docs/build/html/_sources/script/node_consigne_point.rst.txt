@@ -1,8 +1,5 @@
-*******************
-Node Consigne Point
-*******************
-
-
+Node Consigne
+=============
 
 .. automodule:: node_consigne_point
     :members:

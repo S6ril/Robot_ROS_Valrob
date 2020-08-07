@@ -1,7 +1,5 @@
-*********************
-Classe Consigne point
-*********************
-
+Module Consigne
+===============
 
 .. automodule:: Consigne_point
     :members:

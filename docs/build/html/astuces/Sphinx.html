@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sphinx &mdash; Documentation Robot ROS Valrob 2020</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Module Consigne" href="../script/Consigne_point.html" />
+    <link rel="prev" title="Astuces" href="../Astuces.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Robot ROS Valrob
+          
+
+          
+            
+            <img src="../_static/robot.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Astuces.html">Astuces</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#faire-sa-documentation-avec-sphinx">Faire sa documentation avec Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-de-sphinx">Installation de Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lancement-du-script">Lancement du script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../script/Consigne_point.html">Module Consigne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/Motion_controller.html">Module Motion Controlleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/Nav_utiles.html">Module Navigation Utile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/driver_baseRoulante.html">Driver Base Roulante</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/node_consigne_point.html">Node Consigne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script/node_motion_controller.html">Node Motion Controlleur</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Robot ROS Valrob</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../Astuces.html">Astuces</a> &raquo;</li>
+        
+      <li>Sphinx</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/astuces/Sphinx.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx">
+<h1>Sphinx<a class="headerlink" href="#sphinx" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="faire-sa-documentation-avec-sphinx">
+<h2>Faire sa documentation avec Sphinx<a class="headerlink" href="#faire-sa-documentation-avec-sphinx" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Toute cette documentation a été faite avec <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a>.</p>
+<p>À première vue c’est assez complexe, mais ce n’est pas irréalisable pour un futur ingénieur INSA HDF&nbsp;!!!</p>
+</div>
+<div class="section" id="installation-de-sphinx">
+<h2>Installation de Sphinx<a class="headerlink" href="#installation-de-sphinx" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Je me base sur ce <a class="reference external" href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/">site</a>. Il explique plutôt bien la procédure. Comme d’habitude, je suis sous Ubuntu 20 LTS.</p>
+<p>Pour cela on utilise pip&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">Sphinx</span>
+</pre></div>
+</div>
+<p>Pour plus tard, on installe aussi une extension pour écrire en Mardown (plus pratique que le <code class="docutils literal notranslate"><span class="pre">.rst</span></code>)&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">recommonmark</span>
+</pre></div>
+</div>
+<p>Il faut aussi installer un thème&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+</pre></div>
+</div>
+<p>C’est déjà fini&nbsp;!!</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h2>
+<p>C’est la partie la plus délicate. Je me base sur cette documentation. Elle a été faite dans le dossier source <code class="docutils literal notranslate"><span class="pre">catkin_ws</span></code>. On crée alors un nouveau document&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span>
+<span class="n">mkdir</span> <span class="n">docs</span><span class="o">/</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
+</pre></div>
+</div>
+<p>Une liste de question va alors apparaitre (lorsque c’est vide, il faut faire <code class="docutils literal notranslate"><span class="pre">entrer</span></code>, cela laisse la valeur par défaut):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    &gt; Separate <span class="nb">source</span> and build directories <span class="o">(</span>y/n<span class="o">)</span> <span class="o">[</span>n<span class="o">]</span> : y
+    &gt; Name prefix <span class="k">for</span> templates and static dir <span class="o">[</span>_<span class="o">]</span> :
+    &gt; Project name : À choisir
+    &gt; ...
+    ...
+    &gt; Project language <span class="o">[</span>en : fr
+    &gt; Name of your master document <span class="o">(</span>without suffix<span class="o">)</span> <span class="o">[</span>index<span class="o">]</span> :
+    &gt; autodoc : automatically insert docstrings from modules <span class="o">(</span>y/n<span class="o">)</span> <span class="o">[</span>n<span class="o">]</span> : y
+    &gt; ...
+</pre></div>
+</div>
+<p>Ajouter les extensions que vous voulez&nbsp;!!</p>
+<p>Maintenant que cela est fait, on se rend dans le dossier <code class="docutils literal notranslate"><span class="pre">source</span></code> et on va modifier <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>. Cela permettra de mieux configurer Sphinx.</p>
+<p>Tout d’abord en haut, on rajoute&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;./../../src/navigation_valrob/script/&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Cela permet d’ajouter le dossier qui contient les différents scripts Python.</p>
+<p>Pour les extensions, on ajote dans la ligne <code class="docutils literal notranslate"><span class="pre">recommonmark</span></code>. Cela permettra d’écrire des documents en langage <code class="docutils literal notranslate"><span class="pre">.md</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+	<span class="o">...</span>    	
+	<span class="s1">&#39;recommonmark&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>On modifie la ligne <code class="docutils literal notranslate"><span class="pre">source_suffix</span></code> par&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source_suffix</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="s1">&#39;.rst&#39;</span><span class="p">:</span> <span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;.md&#39;</span><span class="p">:</span> <span class="s1">&#39;markdown&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Il est aussi conseiller de changer le thème de la page, pour cela j’utilise <a class="reference external" href="https://github.com/readthedocs/sphinx_rtd_theme">sphinx rtd theme</a>. On modifie la ligne.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+</pre></div>
+</div>
+<p>Il en existe d’autre sur internet.</p>
+<p>J’ajoute par la même occasion un logo (ajouter la ligne juste en dessous)&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_logo</span> <span class="o">=</span> <span class="s2">&quot;./../../images/robot.png&quot;</span>
+</pre></div>
+</div>
+<p>Et ma page est configurée.</p>
+</div>
+<div class="section" id="lancement-du-script">
+<h2>Lancement du script<a class="headerlink" href="#lancement-du-script" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Avec cette configuration, on génère la documentation automatiquement. Dans un premier temps, on link les scripts pythons.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span><span class="n">docs</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">apidoc</span> <span class="o">-</span><span class="n">o</span> <span class="n">source</span><span class="o">/</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">navigation_valrob</span><span class="o">/</span><span class="n">script</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Il faudra avant de lancer la compilation modifier le fichier <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>, et ajouter <code class="docutils literal notranslate"><span class="pre">modules</span></code>&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">maxdepth</span> <span class="p">:</span> <span class="mi">2</span>
+   <span class="p">:</span><span class="n">caption</span> <span class="p">:</span> <span class="n">Sommaire</span> <span class="p">:</span>
+
+   <span class="n">modules</span>
+</pre></div>
+</div>
+<p>Maintenant on peut compiler&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>Le site est maintenant accessible dans le dossier <code class="docutils literal notranslate"><span class="pre">docs\build\html\index.html</span></code>.</p>
+</div>
+<div class="section" id="pour-aller-plus-loin">
+<h2>Pour aller plus loin<a class="headerlink" href="#pour-aller-plus-loin" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour plus de lisibilité, j’ai choisi de séparer mes chapitres dans le site dans des sous-dossier. Pour cela, j’ai créé un dossier <code class="docutils literal notranslate"><span class="pre">script</span></code>, j’ai inserer les fichiers <code class="docutils literal notranslate"><span class="pre">.rst</span></code> correspondant dedans. Et dans le fichier <code class="docutils literal notranslate"><span class="pre">modules.rst</span></code>, je modifie le chemin d’accès. Exemple&nbsp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">script</span><span class="o">/</span><span class="n">Consigne_point</span>
+</pre></div>
+</div>
+<p>Cela rend mon répertoire plus lisible&nbsp;!!</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../script/Consigne_point.html" class="btn btn-neutral float-right" title="Module Consigne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Astuces.html" class="btn btn-neutral float-left" title="Astuces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, S6ril
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
