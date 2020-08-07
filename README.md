@@ -9,7 +9,7 @@
   <h3 align="center">Robot ROS - Valrobotik - ENSIAME Valenciennes </h3>
 
   <p align="center">
-    Un projet pour rendre le robot modulaire !!
+    Un projet pour rendre le robot modulaire !!
     <br />
     <a href="https://s6ril.github.io/Robot_ROS_Valrob/"><strong>Documentation »</strong></a>
     <br />
@@ -26,7 +26,7 @@
 * [Pour commencer](#pour-commencer)
   * [Prerequis](#prerequis)
   * [Installation de ROS sur Ubuntu](#installation-de-ros-sur-ubuntu)
-  * [Préparation de l'environnement ROS](#préparation-de-lenvironnement-ros)
+  * [Préparation de l’environnement ROS](#préparation-de-lenvironnement-ros)
   * [Github](#github)
 * [Utilisation](#utilisation)
 * [Licence](#licence)
@@ -46,16 +46,16 @@
   </a>
 </p>
 
-Ce projet à pour but d'initier l'intégration du langage ROS pour le robot Valrob. Cela s'inscrit dans une démarche de rendre le robot modulaire et d'avoir une base solide pour les autres annnées.
+Ce projet a pour but d’initier l’intégration du langage ROS pour le robot Valrob. Cela s’inscrit dans une démarche de rendre le robot modulaire et d’avoir une base solide pour les autres annnées.
 
-Cette branche est une démo. On simule le Robot par le biais d'une Tortue (turtle_sim). En entrant les points dans le fichier `point.txt`. La tortue se déplacera automatiquement vers chacun de ces points.
+Cette branche est une DEMO. On simule le Robot par le biais d’une Tortue (turtle_sim). En entrant les points dans le fichier `point.txt`. La tortue se déplacera automatiquement vers chacun de ces points.
 
 
 ## Construit avec
-Ce robot à dont été développer avec ROS. On retrouve alors :
+Ce robot a été développé avec ROS. On retrouve alors :
 * [ROS Noetic](https://www.ros.org/)
 * [Python 3](https://www.python.org/)
-* Dans mon cas OS Ubuntu 20 LTS
+* Dans mon cas l’OS est [Ubuntu 20 LTS](https://ubuntu.com/download/desktop)
 
 
 
@@ -66,40 +66,40 @@ Ce robot à dont été développer avec ROS. On retrouve alors :
 
 ROS et Python doivent être installés.
 
-Pour l'installation de ROS sur une autre plateforme, il faut suivre ce [tutoriel](http://wiki.ros.org/noetic/Installation).
+Pour l’installation de ROS sur une autre plateforme, il faut suivre ce [tutoriel](http://wiki.ros.org/noetic/Installation).
 
 ## Installation de ROS sur Ubuntu
 
-Je me base sur le [tutoriel de ROS](http://wiki.ros.org/noetic/Installation/Ubuntu) pour l'installation sous Ubuntu.
+Je me base sur le [tutoriel de ROS](http://wiki.ros.org/noetic/Installation/Ubuntu) pour l’installation sous Ubuntu.
 
-On ajout le dépot :
+On ajoute le dépot :
 
     sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
     sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
     curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -
     sudo apt update
 
-On installe ROS :
+On installe ROS :
     
     sudo apt install ros-noetic-desktop-full
 
 
-On peut ajouter au terminal l'environnement ROS :
+On peut ajouter au terminal l’environnement ROS :
     
     echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
     source ~/.bashrc
 
 
-## Préparation de l'environnement ROS
+## Préparation de l’environnement ROS
 
 Je me base sur le [tutoriel de ROS](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
 
-Il faut dans un premier temps sourcer le terminal (si ce n'est pas déjà fait) :
+Il faut dans un premier temps sourcer le terminal (si ce n’est pas déjà fait) :
     
     source /opt/ros/noetic/setup.bash
 
 
-Puis créer le ROS Workspace :
+Puis créer le ROS Workspace :
 
     mkdir -p ~/catkin_ws/src
     cd ~/catkin_ws/
@@ -107,28 +107,28 @@ Puis créer le ROS Workspace :
   
 On impose python 3 pour `catkin_make`. ROS Noetic est le premier ROS à être seulement basé sur Python3. Pour cette version `catkin_make` suffit.
 
-On source à nouveau le workspace (pour prendre en compte les modofications) :
+On source à nouveau le workspace (pour prendre en compte les modofications) :
 
     source devel/setup.bash
 
 
-On peut alors mettre le code github sur l'ordinateur !
+On peut alors mettre le code github sur l’ordinateur !
 
 ## Github
 
-Pour récupérer les fichiers de Github :
+Pour récupérer les fichiers de Github :
 
     git clone -b Demo_turtle https://github.com/S6ril/Robot_ROS_Valrob.git
 
 (On clone seulement la branche Demo_turtle qui correspond à la branche de démo avec la tortue.)
 
-Puis on copie le dossier cloné vers `catkin_ws/` :
+Puis on copie le dossier cloné vers `catkin_ws/` :
     
     cd ~
     cp -r Robot_ROS_Valrob/* catkin_ws/
 
 
-On peut alors effectuer un `catkin_make` :
+On peut alors effectuer un `catkin_make` :
 
     cd ~/catkin_ws
     catkin_make
@@ -136,16 +136,19 @@ On peut alors effectuer un `catkin_make` :
 <!-- USAGE EXAMPLES -->
 # Utilisation
 
-Avant de lancer le pogramme, on définit les points voulus dans le fichier `point.txt`. Ils sont de la forme `x y z`. 
+Avant de lancer le pogramme, on définit les points voulus dans le fichier `point.txt`. Ils sont de la forme :
+    
+    x y z
+    x y z 
+    ...
 
-
-Pour lancer le programme, on execute ROS :
+Pour lancer le programme, on execute ROS :
     
     cd ~/catkin_ws 
     roslaunch navigation_valrob turtle.launch
 
 
-La tortue va alors se diriger vers chacun des points !
+La tortue va alors se diriger vers chacun des points !
 
 
 <!-- LICENSE -->
@@ -162,7 +165,7 @@ S6ril & Starfunx
 
 Valrobotik - ENSIAME Valenciennes
 
-Lien du projet : [https://github.com/S6ril/](https://github.com/S6ril/Robot_ROS_Valrob.git)
+Lien du projet : [https://github.com/S6ril/](https://github.com/S6ril/Robot_ROS_Valrob.git)
 
 
 
