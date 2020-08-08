@@ -99,7 +99,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FichierSource.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Astuces.html">Astuces</a></li>
 </ul>
 
@@ -212,9 +212,9 @@ Cependant ROS est un langage disponible sur toutes les plateformes. <strong>Les 
 </pre></div>
 </div>
 <p>Puis créer le ROS Workspace :</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    mkdir -p ~/catkin_ws/src
-    <span class="nb">cd</span> ~/catkin_ws/
-    catkin_make -DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/catkin_ws/src
+<span class="nb">cd</span> ~/catkin_ws/
+catkin_make -DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
 </pre></div>
 </div>
 <p>On impose python 3 pour <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code>. ROS Noetic est le premier ROS à être seulement basé sur Python3. Pour cette version <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code> suffit.</p>

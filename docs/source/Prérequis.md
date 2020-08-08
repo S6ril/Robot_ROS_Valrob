@@ -57,9 +57,9 @@ Il faut dans un premier temps sourcer le terminal (si ce n’est pas déjà fait
 Puis créer le ROS Workspace :
 
 ```bash
-    mkdir -p ~/catkin_ws/src
-    cd ~/catkin_ws/
-    catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 ```
 
 On impose python 3 pour `catkin_make`. ROS Noetic est le premier ROS à être seulement basé sur Python3. Pour cette version `catkin_make` suffit.
