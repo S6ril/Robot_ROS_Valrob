@@ -12,11 +12,18 @@ Cet algorithme se base sur 3 nodes qui communiquent comme le montre le graphe ci
     :align: center
     :alt: node ROS
 
+Chaques nodes ROS est composées d'une script :
+
+* node_script
+* script
+
+La node permet de gérer les entrées/sorties vers ROS (donc vers les différentes nodes). On retrouve aussi la gestion de la fréquence d'actualisation.
+
+Le script est composé d'une classe, et correspond au code en Python. La classe est codée pour répondre au problème.
+
+
+
+.. include:: modules.rst
+
 
 Bonne lecture ;)
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Sommaire :
-    
-   modules

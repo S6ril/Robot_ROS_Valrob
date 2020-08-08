@@ -1,7 +1,10 @@
 
+
+
+
 .. toctree::
-   :caption: Scripts utilisés :
-   :maxdepth: 4
+   :maxdepth: 2
+   :caption: Liste du code source
 
    script/Consigne_point
    script/Motion_controller

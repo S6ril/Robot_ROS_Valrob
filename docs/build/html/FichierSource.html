@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="modules.html" />
+    <link rel="next" title="Module Consigne" href="script/Consigne_point.html" />
     <link rel="prev" title="Lancement rapide" href="Lancement.html" />
     <link href="_static/style.css" rel="stylesheet" type="text/css">
 
@@ -172,9 +172,15 @@ La documentation est automatique, et basée sur les commentaires des fichiers so
 <p>N’hésitez pas à regarder le code source. Un petit lien <cite>source</cite> se trouve après chaques prototypes de fonction.</p>
 <p>Cet algorithme se base sur 3 nodes qui communiquent comme le montre le graphe ci-dessous.</p>
 <img alt="node ROS" class="align-center" src="_images/node_ROS_deplacement.png" />
-<p>Bonne lecture ;)</p>
+<p>Chaques nodes ROS est composées d’une script :</p>
+<ul class="simple">
+<li><p>node_script</p></li>
+<li><p>script</p></li>
+</ul>
+<p>La node permet de gérer les entrées/sorties vers ROS (donc vers les différentes nodes). On retrouve aussi la gestion de la fréquence d’actualisation.</p>
+<p>Le script est composé d’une classe, et correspond au code en Python. La classe est codée pour répondre au problème.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Sommaire :</span></p>
+<p class="caption"><span class="caption-text">Liste du code source</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="script/Consigne_point.html">Module Consigne</a></li>
 <li class="toctree-l1"><a class="reference internal" href="script/Motion_controller.html">Module Motion Controlleur</a></li>
@@ -185,6 +191,7 @@ La documentation est automatique, et basée sur les commentaires des fichiers so
 <li class="toctree-l1"><a class="reference internal" href="script/node_motion_controller.html">Node Motion Controlleur</a></li>
 </ul>
 </div>
+<p>Bonne lecture ;)</p>
 </div>
 
 
@@ -195,7 +202,7 @@ La documentation est automatique, et basée sur les commentaires des fichiers so
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="modules.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="script/Consigne_point.html" class="btn btn-neutral float-right" title="Module Consigne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Lancement.html" class="btn btn-neutral float-left" title="Lancement rapide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
