@@ -88,7 +88,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FichierSource.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -165,16 +165,16 @@
 
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">pi</span>
 
-
 <div class="viewcode-block" id="rotation"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.rotation">[docs]</a><span class="k">def</span> <span class="nf">rotation</span><span class="p">(</span><span class="n">posRobot</span><span class="p">,</span> <span class="n">posCible</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fonction pour gerer la rotation du robot</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction pour gerer la rotation du robot</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        posRobot (Pose): Position actuelle du robot</span>
+<span class="sd">        posCible (Pose2D): Position de la consigne</span>
 
-<span class="sd">    :param posRobot: Position actuelle du robot</span>
-<span class="sd">    :type posRobot: Pose</span>
-<span class="sd">    :param posCible: Positio de la cible</span>
-<span class="sd">    :type posCible: Pose2D</span>
-<span class="sd">    :return: Angle de rotation</span>
-<span class="sd">    :rtype: float</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Angle de rotation à effectuer pour se diriger vers la consigne.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">deltax</span> <span class="o">=</span> <span class="n">posCible</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">x</span>
     <span class="n">deltay</span> <span class="o">=</span> <span class="n">posCible</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">y</span>
@@ -182,26 +182,29 @@
 
 
 <div class="viewcode-block" id="distance_euclidienne"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.distance_euclidienne">[docs]</a><span class="k">def</span> <span class="nf">distance_euclidienne</span><span class="p">(</span><span class="n">posRobot</span><span class="p">,</span> <span class="n">posCible</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fonction pour calculer la distance euclidienne</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction pour calculer la distance euclidienne</span>
 
-<span class="sd">    :param posRobot: Position du robot</span>
-<span class="sd">    :type posRobot: Pose</span>
-<span class="sd">    :param posCible: Position de la consignz</span>
-<span class="sd">    :type posCible: Pose2D</span>
-<span class="sd">    :return: Distance euclidienne entre la postion du robot et la consigne</span>
-<span class="sd">    :rtype: float</span>
+<span class="sd">    Args:</span>
+<span class="sd">        posRobot (Pose): Position du robot</span>
+<span class="sd">        posCible (Pose2D): Position de la consigne</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Distance euclidienne entre la postion du robot et la consigne</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">deltax</span> <span class="o">=</span> <span class="n">posCible</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">x</span>
     <span class="n">deltay</span> <span class="o">=</span> <span class="n">posCible</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">posRobot</span><span class="o">.</span><span class="n">y</span>
     <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span> <span class="nb">pow</span><span class="p">(</span> <span class="n">deltax</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span> <span class="n">deltay</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span></div>
 
 <div class="viewcode-block" id="reduction_angle"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.reduction_angle">[docs]</a><span class="k">def</span> <span class="nf">reduction_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fontion pour remettre l&#39;angle dans entre [-Pi/2, Pi/2]</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fontion pour remettre l&#39;angle dans entre[-Pi/2, Pi/2]</span>
 
-<span class="sd">    :param angle: angle en radian à réduire</span>
-<span class="sd">    :type angle: float</span>
-<span class="sd">    :return: angle en radian réduit</span>
-<span class="sd">    :rtype: float</span>
+<span class="sd">    Args:</span>
+<span class="sd">        angle (flaot): Angle en rad à réduire</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Angle en radian réduit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">while</span> <span class="n">angle</span> <span class="o">&gt;</span> <span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
         <span class="n">angle</span> <span class="o">-=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span>
@@ -211,16 +214,16 @@
     <span class="k">return</span> <span class="n">angle</span></div>
 
 <div class="viewcode-block" id="isStopped"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.isStopped">[docs]</a><span class="k">def</span> <span class="nf">isStopped</span><span class="p">(</span><span class="n">commandVel</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fonction pour vérifier si le robot est bien stoppé.</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction pour vérifier si le robot est bien stoppé.</span>
 
-<span class="sd">    :param commandVel: la commande du robot en vitesse</span>
-<span class="sd">    :type commandVel: Twist</span>
-<span class="sd">    :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
-<span class="sd">    :type maxLinVelStopped: float</span>
-<span class="sd">    :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>
-<span class="sd">    :type maxAngVelStopped: float</span>
-<span class="sd">    :return: Vrai ou Faux</span>
-<span class="sd">    :rtype: Booleen</span>
+<span class="sd">    Args:</span>
+<span class="sd">        commandVel (Twist): La commande du robot en vitesse</span>
+<span class="sd">        maxLinVelStopped (float): Seuil de tolérance pour la vitesse linéaire</span>
+<span class="sd">        maxAngVelStopped (float): Seuil de tolérance pour la vitesse angulaire</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Booleen</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">z</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>  <span class="o">&lt;</span> <span class="n">maxLinVelStopped</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">x</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">y</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span><span class="o">*</span><span class="n">commandVel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>  <span class="o">&lt;</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
@@ -230,16 +233,16 @@
 
 
 <div class="viewcode-block" id="isPosition_reached"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.isPosition_reached">[docs]</a><span class="k">def</span> <span class="nf">isPosition_reached</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">poseConsign</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fonction pour vérifier si la position souhaitée est bien atteinte.</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction pour vérifier si la position souhaitée est bien atteinte.</span>
 
-<span class="sd">    :param pose: Position actuelle du robot.</span>
-<span class="sd">    :type pose: Pose</span>
-<span class="sd">    :param poseConsign: Position de la consigne du robot.</span>
-<span class="sd">    :type poseConsign: Pose2D</span>
-<span class="sd">    :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</span>
-<span class="sd">    :type distance_tolerance: float</span>
-<span class="sd">    :return: Vrai ou Faux</span>
-<span class="sd">    :rtype: Booleen</span>
+<span class="sd">    Args:</span>
+<span class="sd">        pose (Pose): Position actuelle du robot</span>
+<span class="sd">        poseConsign (Pose2D): Consigne de position</span>
+<span class="sd">        distance_tolerance (float): Seuil de tolérance pour accepter que le robot à atteint l&#39;objectif</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Booleen</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">poseConsign</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">pose</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">distance_tolerance</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">poseConsign</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">pose</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">distance_tolerance</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
@@ -248,22 +251,19 @@
 
 
 <div class="viewcode-block" id="isGoal_reached"><a class="viewcode-back" href="../script/Nav_utiles.html#Nav_utiles.isGoal_reached">[docs]</a><span class="k">def</span> <span class="nf">isGoal_reached</span><span class="p">(</span><span class="n">robotPose</span><span class="p">,</span> <span class="n">robotConsign</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">,</span> <span class="n">commandVel</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fonction pour vérifier que le robot a bien atteint l&#39;objectif désiré.</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fonction pour vérifier que le robot a bien atteint l&#39;objectif désiré.</span>
 
-<span class="sd">    :param robotPose: Position actuelle du robot.</span>
-<span class="sd">    :type robotPose: Pose</span>
-<span class="sd">    :param robotConsign: Position de la consigne du robot.</span>
-<span class="sd">    :type robotConsign: Pose2D</span>
-<span class="sd">    :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</span>
-<span class="sd">    :type distance_tolerance: float</span>
-<span class="sd">    :param commandVel: la commande du robot en vitesse</span>
-<span class="sd">    :type commandVel: Twist</span>
-<span class="sd">    :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
-<span class="sd">    :type maxLinVelStopped: float</span>
-<span class="sd">    :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>
-<span class="sd">    :type maxAngVelStopped: float</span>
-<span class="sd">    :return: Vrai ou Faux</span>
-<span class="sd">    :rtype: Booleen</span>
+<span class="sd">    Args:</span>
+<span class="sd">        robotPose(Pose): Position actuelle du robot.</span>
+<span class="sd">        robotConsign(Pose2D): Position de la consigne du robot.</span>
+<span class="sd">        distance_tolerance(float): seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</span>
+<span class="sd">        commandVel(Twist): la commande du robot en vitesse</span>
+<span class="sd">        maxLinVelStopped(float): Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
+<span class="sd">        maxAngVelStopped(float): Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Booleen</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#x, y, angle</span>
     <span class="k">if</span> <span class="n">isPosition_reached</span><span class="p">(</span><span class="n">robotPose</span><span class="p">,</span>

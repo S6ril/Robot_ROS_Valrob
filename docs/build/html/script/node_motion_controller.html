@@ -87,10 +87,19 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire :</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FichierSource.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Module Motion Controlleur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nav_utiles.html">Module Navigation Utile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_baseRoulante.html">Module Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Node Motion Controlleur</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -137,7 +146,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../FichierSource.html">Fichiers sources détaillés</a> &raquo;</li>
+          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
         
       <li>Node Motion Controlleur</li>
     
@@ -164,8 +173,8 @@
 <dl class="py function">
 <dt id="node_motion_controller.motion_controller">
 <code class="sig-prename descclassname">node_motion_controller.</code><code class="sig-name descname">motion_controller</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/node_motion_controller.html#motion_controller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node_motion_controller.motion_controller" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Fonction principale de la node motion_controller.
-Elle demande des paramètres du roslaunch :</p>
+<dd><p>Fonction principale de la node motion_controller.</p>
+<p>Elle demande des paramètres du roslaunch :</p>
 <ul class="simple">
 <li><p>krho</p></li>
 <li><p>kalpha</p></li>

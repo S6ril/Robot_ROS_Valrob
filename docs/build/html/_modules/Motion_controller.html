@@ -88,7 +88,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FichierSource.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -188,8 +188,8 @@
 <div class="viewcode-block" id="Motion_controller.update_command_vel"><a class="viewcode-back" href="../script/Motion_controller.html#Motion_controller.Motion_controller.update_command_vel">[docs]</a>    <span class="k">def</span> <span class="nf">update_command_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la commande du robot dès qu&#39;elle est appelée.</span>
 
-<span class="sd">        :return: la commande en vitesse, vitesse angulaire</span>
-<span class="sd">        :rtype: Twist</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Twist: La commande en vitesse et vitesse angulaire</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rho</span> <span class="o">=</span> <span class="n">distance_euclidienne</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="p">)</span>
 
@@ -205,8 +205,8 @@
 <div class="viewcode-block" id="Motion_controller.update_robot_pos"><a class="viewcode-back" href="../script/Motion_controller.html#Motion_controller.Motion_controller.update_robot_pos">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotPose</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la position du robot dès qu&#39;elle est appelée.</span>
 
-<span class="sd">        :param robotPose: Position actuelle du robot</span>
-<span class="sd">        :type robotPose: Pose2D</span>
+<span class="sd">        Args:</span>
+<span class="sd">            robotPose (Pose2D): Position actuelle du robot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">robotPose</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span><span class="p">:</span>
@@ -219,8 +219,8 @@
 <div class="viewcode-block" id="Motion_controller.update_robot_consign"><a class="viewcode-back" href="../script/Motion_controller.html#Motion_controller.Motion_controller.update_robot_consign">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotConsign</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la consigne du robot, dès qu&#39;elle est appelé.</span>
 
-<span class="sd">        :param robotConsign: Consigne a donné au robot</span>
-<span class="sd">        :type robotConsign: Pose2D</span>
+<span class="sd">        Args:</span>
+<span class="sd">            robotConsign (Pose2D): Consigne a donné au robot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span> <span class="o">=</span> <span class="n">robotConsign</span></div></div>
 </pre></div>

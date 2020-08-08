@@ -88,7 +88,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FichierSource.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -178,16 +178,12 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">,</span> <span class="n">angle_tolerance</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">,</span> <span class="n">fichier</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Paramètres pour initialiser la classe</span>
 
-<span class="sd">        :param distance_tolerance: distance de tolérance pour affirmer que la cible est atteinte.</span>
-<span class="sd">        :type distance_tolerance: float</span>
-<span class="sd">        :param angle_tolerance: angle de tolérance pour affirmer que le robot est bien positionner.</span>
-<span class="sd">        :type angle_tolerance: float</span>
-<span class="sd">        :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
-<span class="sd">        :type maxLinVelStopped: float</span>
-<span class="sd">        :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>
-<span class="sd">        :type maxAngVelStopped: float</span>
-<span class="sd">        :param fichier: Nom du fichier contenant les points.</span>
-<span class="sd">        :type fichier: char</span>
+<span class="sd">        Args:</span>
+<span class="sd">            distance_tolerance (float): distance de tolérance pour affirmer que la cible est atteinte.</span>
+<span class="sd">            angle_tolerance (float): angle de tolérance pour affirmer que le robot est bien positionner.</span>
+<span class="sd">            maxLinVelStopped (float): Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</span>
+<span class="sd">            maxAngVelStopped (float): Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</span>
+<span class="sd">            fichier (char): Nom du fichier contenant les points.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Consigne_Point</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">listCoord</span> <span class="o">=</span> <span class="p">[]</span>
@@ -205,16 +201,16 @@
 <div class="viewcode-block" id="Consigne_Point.update_robot_pose"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point.update_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotPose</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la position actuelle du robot dans la classe.</span>
 
-<span class="sd">        :param robotPose: Position actuelle du robot.</span>
-<span class="sd">        :type robotPose: Pose()</span>
+<span class="sd">        Args:</span>
+<span class="sd">            robotPose (Pose): Position actuelle su robot.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">robotPose</span></div>
 
 <div class="viewcode-block" id="Consigne_Point.send_new_consign"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point.send_new_consign">[docs]</a>    <span class="k">def</span> <span class="nf">send_new_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la nouvelle consigne que doit suivre le robot.</span>
 
-<span class="sd">        :return: la nouvelle consigne</span>
-<span class="sd">        :rtype: Pose2D()</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Pose2D: La nouvelle consigne.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">isPosition_reached</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_tolerance</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update_robot_consign</span><span class="p">()</span>
@@ -244,8 +240,8 @@
 <div class="viewcode-block" id="Consigne_Point.lecture_fichier"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point.lecture_fichier">[docs]</a>    <span class="k">def</span> <span class="nf">lecture_fichier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nomFichier</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction pour lire le fichier .txt contenant les points de consigne du robot.</span>
 
-<span class="sd">        :param nomFichier: nom du fichier</span>
-<span class="sd">        :type nomFichier: char[]</span>
+<span class="sd">        Args:</span>
+<span class="sd">            nomFichier (char): nom du fichier</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">fichier</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">nomFichier</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 

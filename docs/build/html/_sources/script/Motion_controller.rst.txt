@@ -1,7 +1,7 @@
 Module Motion Controlleur
-=========================
+----------------------------
 
 .. automodule:: Motion_controller
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

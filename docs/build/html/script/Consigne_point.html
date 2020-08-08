@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
     <link rel="next" title="Module Motion Controlleur" href="Motion_controller.html" />
-    <link rel="prev" title="Fichiers sources détaillés" href="../FichierSource.html" />
+    <link rel="prev" title="Fichiers sources détaillés" href="../modules.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -87,10 +87,19 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire :</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FichierSource.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Module Motion Controlleur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nav_utiles.html">Module Navigation Utile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_baseRoulante.html">Module Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_motion_controller.html">Node Motion Controlleur</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -137,7 +146,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../FichierSource.html">Fichiers sources détaillés</a> &raquo;</li>
+          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
         
       <li>Module Consigne</li>
     
@@ -184,7 +193,7 @@
 <dd><p>Fonction pour lire le fichier .txt contenant les points de consigne du robot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>nomFichier</strong> (<em>char</em><em>[</em><em>]</em>) – nom du fichier</p>
+<dd class="field-odd"><p><strong>nomFichier</strong> (<em>char</em>) – nom du fichier</p>
 </dd>
 </dl>
 </dd></dl>
@@ -195,10 +204,10 @@
 <dd><p>Fonction qui met à jour la nouvelle consigne que doit suivre le robot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Renvoie</dt>
-<dd class="field-odd"><p>la nouvelle consigne</p>
+<dd class="field-odd"><p>La nouvelle consigne.</p>
 </dd>
 <dt class="field-even">Type renvoyé</dt>
-<dd class="field-even"><p>Pose2D()</p>
+<dd class="field-even"><p>Pose2D</p>
 </dd>
 </dl>
 </dd></dl>
@@ -206,7 +215,7 @@
 <dl class="py method">
 <dt id="Consigne_point.Consigne_Point.update_robot_consign">
 <code class="sig-name descname">update_robot_consign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point.update_robot_consign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.update_robot_consign" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Fonction qui génère la nouvelle consigne du robot en fonction de point dans un fichier .txt. 
+<dd><p>Fonction qui génère la nouvelle consigne du robot en fonction de point dans un fichier .txt.
 Lorsque tous les points ont été lu, la consigne devient la postion actuelle du robot. (Cela permet de l’immobiliser).</p>
 </dd></dl>
 
@@ -216,7 +225,7 @@ Lorsque tous les points ont été lu, la consigne devient la postion actuelle du
 <dd><p>Fonction qui met à jour la position actuelle du robot dans la classe.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>robotPose</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position actuelle du robot.</p>
+<dd class="field-odd"><p><strong>robotPose</strong> (<em>Pose</em>) – Position actuelle su robot.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -236,7 +245,7 @@ Lorsque tous les points ont été lu, la consigne devient la postion actuelle du
         <a href="Motion_controller.html" class="btn btn-neutral float-right" title="Module Motion Controlleur" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../FichierSource.html" class="btn btn-neutral float-left" title="Fichiers sources détaillés" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../modules.html" class="btn btn-neutral float-left" title="Fichiers sources détaillés" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

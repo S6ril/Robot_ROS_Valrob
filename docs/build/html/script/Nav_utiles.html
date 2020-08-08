@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Driver Base Roulante" href="driver_baseRoulante.html" />
+    <link rel="next" title="Module Driver Base Roulante" href="driver_baseRoulante.html" />
     <link rel="prev" title="Module Motion Controlleur" href="Motion_controller.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
 
@@ -87,10 +87,19 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire :</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FichierSource.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Module Motion Controlleur</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module Navigation Utile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_baseRoulante.html">Module Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_motion_controller.html">Node Motion Controlleur</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -137,7 +146,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../FichierSource.html">Fichiers sources détaillés</a> &raquo;</li>
+          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
         
       <li>Module Navigation Utile</li>
     
@@ -169,7 +178,7 @@
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>posRobot</strong> (<em>Pose</em>) – Position du robot</p></li>
-<li><p><strong>posCible</strong> (<em>Pose2D</em>) – Position de la consignz</p></li>
+<li><p><strong>posCible</strong> (<em>Pose2D</em>) – Position de la consigne</p></li>
 </ul>
 </dd>
 <dt class="field-even">Renvoie</dt>
@@ -197,10 +206,7 @@
 </ul>
 </dd>
 <dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p>Vrai ou Faux</p>
-</dd>
-<dt class="field-odd">Type renvoyé</dt>
-<dd class="field-odd"><p>Booleen</p>
+<dd class="field-even"><p>Booleen</p>
 </dd>
 </dl>
 </dd></dl>
@@ -212,16 +218,13 @@
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pose</strong> (<em>Pose</em>) – Position actuelle du robot.</p></li>
-<li><p><strong>poseConsign</strong> (<em>Pose2D</em>) – Position de la consigne du robot.</p></li>
-<li><p><strong>distance_tolerance</strong> (<em>float</em>) – seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</p></li>
+<li><p><strong>pose</strong> (<em>Pose</em>) – Position actuelle du robot</p></li>
+<li><p><strong>poseConsign</strong> (<em>Pose2D</em>) – Consigne de position</p></li>
+<li><p><strong>distance_tolerance</strong> (<em>float</em>) – Seuil de tolérance pour accepter que le robot à atteint l’objectif</p></li>
 </ul>
 </dd>
 <dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p>Vrai ou Faux</p>
-</dd>
-<dt class="field-odd">Type renvoyé</dt>
-<dd class="field-odd"><p>Booleen</p>
+<dd class="field-even"><p>Booleen</p>
 </dd>
 </dl>
 </dd></dl>
@@ -233,16 +236,13 @@
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>commandVel</strong> (<em>Twist</em>) – la commande du robot en vitesse</p></li>
-<li><p><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</p></li>
-<li><p><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</p></li>
+<li><p><strong>commandVel</strong> (<em>Twist</em>) – La commande du robot en vitesse</p></li>
+<li><p><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour la vitesse linéaire</p></li>
+<li><p><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour la vitesse angulaire</p></li>
 </ul>
 </dd>
 <dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p>Vrai ou Faux</p>
-</dd>
-<dt class="field-odd">Type renvoyé</dt>
-<dd class="field-odd"><p>Booleen</p>
+<dd class="field-even"><p>Booleen</p>
 </dd>
 </dl>
 </dd></dl>
@@ -250,13 +250,13 @@
 <dl class="py function">
 <dt id="Nav_utiles.reduction_angle">
 <code class="sig-prename descclassname">Nav_utiles.</code><code class="sig-name descname">reduction_angle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#reduction_angle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.reduction_angle" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Fontion pour remettre l’angle dans entre [-Pi/2, Pi/2]</p>
+<dd><p>Fontion pour remettre l’angle dans entre[-Pi/2, Pi/2]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – angle en radian à réduire</p>
+<dd class="field-odd"><p><strong>angle</strong> (<em>flaot</em>) – Angle en rad à réduire</p>
 </dd>
 <dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p>angle en radian réduit</p>
+<dd class="field-even"><p>Angle en radian réduit</p>
 </dd>
 <dt class="field-odd">Type renvoyé</dt>
 <dd class="field-odd"><p>float</p>
@@ -272,11 +272,11 @@
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>posRobot</strong> (<em>Pose</em>) – Position actuelle du robot</p></li>
-<li><p><strong>posCible</strong> (<em>Pose2D</em>) – Positio de la cible</p></li>
+<li><p><strong>posCible</strong> (<em>Pose2D</em>) – Position de la consigne</p></li>
 </ul>
 </dd>
 <dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p>Angle de rotation</p>
+<dd class="field-even"><p>Angle de rotation à effectuer pour se diriger vers la consigne.</p>
 </dd>
 <dt class="field-odd">Type renvoyé</dt>
 <dd class="field-odd"><p>float</p>
@@ -294,7 +294,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="driver_baseRoulante.html" class="btn btn-neutral float-right" title="Driver Base Roulante" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="driver_baseRoulante.html" class="btn btn-neutral float-right" title="Module Driver Base Roulante" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Motion_controller.html" class="btn btn-neutral float-left" title="Module Motion Controlleur" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

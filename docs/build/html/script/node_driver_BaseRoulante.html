@@ -87,10 +87,19 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire :</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FichierSource.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Module Motion Controlleur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nav_utiles.html">Module Navigation Utile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_baseRoulante.html">Module Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Node Driver Base Roulante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_motion_controller.html">Node Motion Controlleur</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -137,7 +146,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../FichierSource.html">Fichiers sources détaillés</a> &raquo;</li>
+          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
         
       <li>Node Driver Base Roulante</li>
     
@@ -160,7 +169,7 @@
             
   <div class="section" id="module-node_driver_BaseRoulante">
 <span id="node-driver-base-roulante"></span><h1>Node Driver Base Roulante<a class="headerlink" href="#module-node_driver_BaseRoulante" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Cette node permet de communiquer avec le robot en Gcode. 
+<p>Cette node permet de communiquer avec le robot en Gcode.
 ELle récupère la consigne en vitesse et renvoie la position du robot.</p>
 <dl class="py function">
 <dt id="node_driver_BaseRoulante.communication">

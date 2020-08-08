@@ -156,4 +156,9 @@ Pour plus de lisibilité, j’ai choisi de séparer mes chapitres dans le site d
 
     script/Consigne_point
 
-Cela rend mon répertoire plus lisible !!
+Puis je source (en étant dans le dossier docs):
+
+    cd ~/catkin_ws/docs
+    sphinx-apidoc -f -o source/script/ ./../src/navigation_valrob/script/
+
+Cela rend mon répertoire plus lisible et me permet de ressourcer facilement !!
