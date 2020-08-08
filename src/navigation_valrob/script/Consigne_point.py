@@ -23,16 +23,12 @@ class Consigne_Point(object):
     def __init__(self, distance_tolerance, angle_tolerance, maxLinVelStopped, maxAngVelStopped, fichier):
         """Paramètres pour initialiser la classe
 
-        :param distance_tolerance: distance de tolérance pour affirmer que la cible est atteinte.
-        :type distance_tolerance: float
-        :param angle_tolerance: angle de tolérance pour affirmer que le robot est bien positionner.
-        :type angle_tolerance: float
-        :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.
-        :type maxLinVelStopped: float
-        :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.
-        :type maxAngVelStopped: float
-        :param fichier: Nom du fichier contenant les points.
-        :type fichier: char
+        Args:
+            distance_tolerance (float): distance de tolérance pour affirmer que la cible est atteinte.
+            angle_tolerance (float): angle de tolérance pour affirmer que le robot est bien positionner.
+            maxLinVelStopped (float): Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.
+            maxAngVelStopped (float): Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.
+            fichier (char): Nom du fichier contenant les points.
         """
         super(Consigne_Point, self).__init__()
         self.listCoord = []
@@ -50,16 +46,16 @@ class Consigne_Point(object):
     def update_robot_pose(self, robotPose):
         """Fonction qui met à jour la position actuelle du robot dans la classe.
 
-        :param robotPose: Position actuelle du robot.
-        :type robotPose: Pose()
+        Args:
+            robotPose (Pose): Position actuelle su robot.
         """
         self.robotPose = robotPose
 
     def send_new_consign(self):
         """Fonction qui met à jour la nouvelle consigne que doit suivre le robot.
 
-        :return: la nouvelle consigne
-        :rtype: Pose2D()
+        Returns:
+            Pose2D: La nouvelle consigne.
         """
         if isPosition_reached(self.robotPose, self.robotConsign, self.distance_tolerance):
             self.update_robot_consign()
@@ -89,8 +85,8 @@ class Consigne_Point(object):
     def lecture_fichier(self, nomFichier):
         """Fonction pour lire le fichier .txt contenant les points de consigne du robot.
 
-        :param nomFichier: nom du fichier
-        :type nomFichier: char[]
+        Args:
+            nomFichier (char): nom du fichier
         """
         fichier = open(nomFichier, "r")
 

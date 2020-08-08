@@ -10,16 +10,16 @@ Le but de cette librairie est de fournir des fonctions générales pour le dépl
 
 from math import sqrt, pow, atan2, pi
 
-
 def rotation(posRobot, posCible):
-    """Fonction pour gerer la rotation du robot
+    """
+    Fonction pour gerer la rotation du robot
+    
+    Args:
+        posRobot (Pose): Position actuelle du robot
+        posCible (Pose2D): Position de la consigne
 
-    :param posRobot: Position actuelle du robot
-    :type posRobot: Pose
-    :param posCible: Positio de la cible
-    :type posCible: Pose2D
-    :return: Angle de rotation
-    :rtype: float
+    Returns:
+        float: Angle de rotation à effectuer pour se diriger vers la consigne.
     """
     deltax = posCible.x - posRobot.x
     deltay = posCible.y - posRobot.y
@@ -27,26 +27,29 @@ def rotation(posRobot, posCible):
 
 
 def distance_euclidienne(posRobot, posCible):
-    """Fonction pour calculer la distance euclidienne
+    """
+    Fonction pour calculer la distance euclidienne
 
-    :param posRobot: Position du robot
-    :type posRobot: Pose
-    :param posCible: Position de la consignz
-    :type posCible: Pose2D
-    :return: Distance euclidienne entre la postion du robot et la consigne
-    :rtype: float
+    Args:
+        posRobot (Pose): Position du robot
+        posCible (Pose2D): Position de la consigne
+
+    Returns:
+        float: Distance euclidienne entre la postion du robot et la consigne
     """
     deltax = posCible.x - posRobot.x
     deltay = posCible.y - posRobot.y
     return sqrt( pow( deltax, 2) + pow( deltay, 2) )
 
 def reduction_angle(angle):
-    """Fontion pour remettre l'angle dans entre [-Pi/2, Pi/2]
+    """
+    Fontion pour remettre l'angle dans entre[-Pi/2, Pi/2]
 
-    :param angle: angle en radian à réduire
-    :type angle: float
-    :return: angle en radian réduit
-    :rtype: float
+    Args:
+        angle (flaot): Angle en rad à réduire
+
+    Returns:
+        float: Angle en radian réduit
     """
     while angle > pi/2:
         angle -= 2*pi
@@ -56,16 +59,16 @@ def reduction_angle(angle):
     return angle
 
 def isStopped(commandVel, maxLinVelStopped, maxAngVelStopped):
-    """Fonction pour vérifier si le robot est bien stoppé.
+    """
+    Fonction pour vérifier si le robot est bien stoppé.
 
-    :param commandVel: la commande du robot en vitesse
-    :type commandVel: Twist
-    :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.
-    :type maxLinVelStopped: float
-    :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.
-    :type maxAngVelStopped: float
-    :return: Vrai ou Faux
-    :rtype: Booleen
+    Args:
+        commandVel (Twist): La commande du robot en vitesse
+        maxLinVelStopped (float): Seuil de tolérance pour la vitesse linéaire
+        maxAngVelStopped (float): Seuil de tolérance pour la vitesse angulaire
+
+    Returns:
+        Booleen
     """
     if (sqrt(commandVel.linear.x*commandVel.linear.x + commandVel.linear.y*commandVel.linear.y + commandVel.linear.z*commandVel.linear.z)  < maxLinVelStopped):
         if (sqrt(commandVel.angular.x*commandVel.angular.x + commandVel.angular.y*commandVel.angular.y + commandVel.angular.z*commandVel.angular.z)  < maxAngVelStopped):
@@ -75,16 +78,16 @@ def isStopped(commandVel, maxLinVelStopped, maxAngVelStopped):
 
 
 def isPosition_reached(pose, poseConsign, distance_tolerance):
-    """Fonction pour vérifier si la position souhaitée est bien atteinte.
+    """
+    Fonction pour vérifier si la position souhaitée est bien atteinte.
 
-    :param pose: Position actuelle du robot.
-    :type pose: Pose
-    :param poseConsign: Position de la consigne du robot.
-    :type poseConsign: Pose2D
-    :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch
-    :type distance_tolerance: float
-    :return: Vrai ou Faux
-    :rtype: Booleen
+    Args:
+        pose (Pose): Position actuelle du robot
+        poseConsign (Pose2D): Consigne de position
+        distance_tolerance (float): Seuil de tolérance pour accepter que le robot à atteint l'objectif
+
+    Returns:
+        Booleen
     """
     if abs(poseConsign.x - pose.x) < distance_tolerance and abs(poseConsign.y - pose.y) < distance_tolerance:
         return True
@@ -93,22 +96,19 @@ def isPosition_reached(pose, poseConsign, distance_tolerance):
 
 
 def isGoal_reached(robotPose, robotConsign, distance_tolerance, commandVel, maxLinVelStopped, maxAngVelStopped):
-    """Fonction pour vérifier que le robot a bien atteint l'objectif désiré.
+    """
+    Fonction pour vérifier que le robot a bien atteint l'objectif désiré.
 
-    :param robotPose: Position actuelle du robot.
-    :type robotPose: Pose
-    :param robotConsign: Position de la consigne du robot.
-    :type robotConsign: Pose2D
-    :param distance_tolerance: seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch
-    :type distance_tolerance: float
-    :param commandVel: la commande du robot en vitesse
-    :type commandVel: Twist
-    :param maxLinVelStopped: Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.
-    :type maxLinVelStopped: float
-    :param maxAngVelStopped: Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.
-    :type maxAngVelStopped: float
-    :return: Vrai ou Faux
-    :rtype: Booleen
+    Args:
+        robotPose(Pose): Position actuelle du robot.
+        robotConsign(Pose2D): Position de la consigne du robot.
+        distance_tolerance(float): seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch
+        commandVel(Twist): la commande du robot en vitesse
+        maxLinVelStopped(float): Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.
+        maxAngVelStopped(float): Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.
+
+    Returns:
+        Booleen
     """
     #x, y, angle
     if isPosition_reached(robotPose,

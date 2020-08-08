@@ -43,15 +43,12 @@ class Communication_Gcode(object):
 
     # Commandes déplacements:
     def set_fast_move_to(self, x: float, y: float, theta: float):
-        """
-        G00 Le robot se déplace au plus vite vers la cible et prends l’angle d’arrivée.
+        """G00 Le robot se déplace au plus vite vers la cible et prends l’angle d’arrivée.
 
-        :param x: Position en X absolue sur le terrain
-        :type x: float
-        :param y: Position en Y absolue sur le terrain
-        :type y: flaot
-        :param theta: Angle d'arrivé à prendre lorsque la position est atteinte
-        :type theta: float
+        Args:
+            x (float): Position en X absolue sur le terrain
+            y (float): Position en Y absolue sur le terrain
+            theta (float): Angle d'arrivé à prendre lorsque la position est atteinte
         """
         self.serial.write(b'G00 X')
         self.serial.write(str.encode(str(x)))
@@ -66,16 +63,13 @@ class Communication_Gcode(object):
 
 
     def set_slow_move_to(self, x: float, y: float, theta: float):
-        """
-        G01 Le robot se déplace vers la cible de façon linéaire : il s’oriente d’abord vers sa cible
+        """G01 Le robot se déplace vers la cible de façon linéaire: il s’oriente d’abord vers sa cible
         avant d’avancer jusqu’à atteindre la cible. Il prend l’angle d’arrivée une fois sur la cible.
-        
-        :param x: Position en X absolue sur le terrain
-        :type x: float
-        :param y: Position en Y absolue sur le terrain
-        :type y: flaot
-        :param theta: Angle d'arrivé à prendre lorsque la position est atteinte
-        :type theta: float
+
+        Args:
+            x (float): Position en X absolue sur le terrain
+            y (float): Position en Y absolue sur le terrain
+            theta (float): Angle d'arrivé à prendre lorsque la position est atteinte
         """
         self.serial.write(b'G01 X')
         self.serial.write(str.encode(str(x)))
@@ -90,13 +84,11 @@ class Communication_Gcode(object):
 
 
     def set_robot_speed(self, linearSpeed: float, angularSpeed: float):
-        """
-        G10 Le robot se déplace à la vitesse et vitesse angulaire précisée.
+        """G10 Le robot se déplace à la vitesse et vitesse angulaire précisée.
 
-        :param linearSpeed: Consigne en vitesse linéaire du robot
-        :type linearSpeed: float
-        :param angularSpeed: Consigne en vitesse angulaire du robot
-        :type angularSpeed: float
+        Args:
+            linearSpeed (float): Consigne en vitesse linéaire du robot
+            angularSpeed (float): Consigne en vitesse angulaire du robot
         """
         self.serial.write(b'G10 I')
         self.serial.write(str.encode(str(linearSpeed)))
@@ -109,13 +101,11 @@ class Communication_Gcode(object):
 
 
     def set_robot_wheel_speed(self, leftWheelSpeed: float, RightWeelSpeed: float):
-        """
-        G11 Les roues du robot se déplacent aux vitesses précisées.
+        """G11 Les roues du robot se déplacent aux vitesses précisées.
 
-        :param leftWheelSpeed: Consigne de vitesse de la roue gauche
-        :type leftWheelSpeed: float
-        :param RightWeelSpeed: Consigne de vitesse de la roue droite
-        :type RightWeelSpeed: float
+        Args:
+            leftWheelSpeed (float): Consigne de vitesse de la roue gauche
+            RightWeelSpeed (float): Consigne de vitesse de la roue droite
         """
         self.serial.write(b'G11 I')
         self.serial.write(str.encode(str(leftWheelSpeed)))
@@ -129,12 +119,10 @@ class Communication_Gcode(object):
 
     # position control
     def get_robot_pose(self) -> Pose2D:
-        """
-        Fonction qui met à jour la position actuelle du robot dans la classe.
-        
+        """Fonction qui met à jour la position actuelle du robot dans la classe.
 
-        :param robotPose: Position actuelle du robot.
-        :type robotPose: Pose2D
+        Returns:
+            Pose2D: Position actuelle du robot.
         """
         if (self.serial.is_open):
             self.serial.write(b'M114\n') # Demande la position au robot
@@ -158,16 +146,13 @@ class Communication_Gcode(object):
 
 
     def set_robot_pose(self, x: float, y: float, theta: float):
-        """
-        G92 Met à jour la position du robot, et change place la consigne de position du robot 
+        """G92 Met à jour la position du robot, et change place la consigne de position du robot
         à la même valeur.
 
-        :param x: Nouvelle valeur de position suivant l'axe x
-        :type x: float
-        :param y: Nouvelle valeur de postion suivant l'axe y
-        :type y: float
-        :param theta: Nouvelle valeur de position autour de l'axe z
-        :type theta: float
+        Args:
+            x (float): Nouvelle valeur de position suivant l'axe x
+            y (float): Nouvelle valeur de postion suivant l'axe y
+            theta (float): Nouvelle valeur de position autour de l'axe z
         """
         self.serial.write(b'G92 X')
         self.serial.write(str.encode(str(x)))
@@ -253,12 +238,11 @@ class Communication_Gcode(object):
         self.disable_motors()
     
     def set_robot_speed_ros(self, msg_twist: Twist ):
-        """
-        Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes 
+        """Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes
         et d'avoir des fonctions spéciales ROS
 
-        :param msg_twist: Commande de vitesse ROS
-        :type msg_twist: Twist
+        Args:
+            msg_twist (Twist): Commande de vitesse ROS
         """
         self.set_robot_speed(msg_twist.linear.x, msg_twist.angular.z)
 
