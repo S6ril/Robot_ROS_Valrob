@@ -57,9 +57,16 @@ Tout d’abord en haut, on rajoute :
 	import sys
 	sys.path.insert(0, os.path.abspath('./../../src/navigation_valrob/script/'))
 
-Cela permet d’ajouter le dossier qui contient les différents scripts Python.
+Cela permet d’ajouter le dossier qui contient les différents scripts Pythons.
 
-Pour les extensions, on ajote dans la ligne `recommonmark`. Cela permettra d’écrire des documents en langage `.md`.
+En même temps, on ajoute :
+
+    import recommonmark
+    from recommonmark.transform import AutoStructify
+    from recommonmark.parser import CommonMarkParser
+
+Cela permet d’écrire la documentation en langage markdown.
+Pour les extensions, on ajote dans la ligne `recommonmark`.
 
     extensions = [
     	'sphinx.ext.autodoc',
@@ -75,6 +82,23 @@ On modifie la ligne `source_suffix` par :
     	'.md': 'markdown',
 	}
 
+On ajoute en dessous :
+
+    source_parsers = {
+        '.md': CommonMarkParser
+    }
+
+et en bas du document :
+
+    github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/doc/'
+    def setup(app):
+        app.add_config_value('recommonmark_config', {
+                'url_resolver': lambda url : github_doc_root + url,
+                'auto_toc_tree_section': 'Contents',
+                }, True)
+        app.add_transform(AutoStructify)
+
+Ce n’est pas facile, mais le mardown est bien pratique pour écrire la documentation.
 
 Il est aussi conseiller de changer le thème de la page, pour cela j’utilise [sphinx rtd theme](https://github.com/readthedocs/sphinx_rtd_theme). On modifie la ligne.
 
@@ -86,7 +110,7 @@ J’ajoute par la même occasion un logo (ajouter la ligne juste en dessous) :
 
     html_logo = "./../../images/robot.png"
 
-Et ma page est configurée.
+Et ma page est configurée. Si le doute persiste, mon fichier de configuration se trouve sous Github.
 
 
 ## Lancement du script
@@ -115,6 +139,18 @@ Le site est maintenant accessible dans le dossier `docs\build\html\index.html`.
 
 
 ## Pour aller plus loin
+
+### Page Github documentation
+
+Github permet de gérer des pages de documentations. Mais avec cette astuce, `index.html` doit se situer dans le dossier `docs`. Pour cela, il suffit de créer une page `index.html` qui redirige vers la page Sphinx de documentation.
+
+    cd ~/catkin_ws/docs
+    echo '<meta http-equiv="refresh" content="0; url=./build/html/index.html" />' >> index.html
+
+Maintenant sous Github, il suffit d’aller dans les options du repo, et d’activer `Github Pages` avec le dossier `/docs`.
+La redirection est automatique.
+
+### Lisibilité des fichiers sources
 
 Pour plus de lisibilité, j’ai choisi de séparer mes chapitres dans le site dans des sous-dossier. Pour cela, j’ai créé un dossier `script`, j’ai inserer les fichiers `.rst` correspondant dedans. Et dans le fichier `modules.rst`, je modifie le chemin d’accès. Exemple :
 

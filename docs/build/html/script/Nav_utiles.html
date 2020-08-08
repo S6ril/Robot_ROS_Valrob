@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -86,9 +86,9 @@
               
             
             
-              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
@@ -170,148 +170,127 @@
   <div class="section" id="module-Nav_utiles">
 <span id="module-navigation-utile"></span><h1>Module Navigation Utile<a class="headerlink" href="#module-Nav_utiles" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Le but de cette librairie est de fournir des fonctions générales pour le déplacement d’un robot.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="Nav_utiles.distance_euclidienne">
-<code class="descclassname">Nav_utiles.</code><code class="descname">distance_euclidienne</code><span class="sig-paren">(</span><em>posRobot</em>, <em>posCible</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#distance_euclidienne"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.distance_euclidienne" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname">Nav_utiles.</code><code class="sig-name descname">distance_euclidienne</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">posRobot</span></em>, <em class="sig-param"><span class="n">posCible</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#distance_euclidienne"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.distance_euclidienne" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction pour calculer la distance euclidienne</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>posRobot</strong> (<em>Pose</em>) – Position du robot</li>
-<li><strong>posCible</strong> (<em>Pose2D</em>) – Position de la consignz</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>posRobot</strong> (<em>Pose</em>) – Position du robot</p></li>
+<li><p><strong>posCible</strong> (<em>Pose2D</em>) – Position de la consignz</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body"><p class="first">Distance euclidienne entre la postion du robot et la consigne</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body"><p class="first last">float</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Distance euclidienne entre la postion du robot et la consigne</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="Nav_utiles.isGoal_reached">
-<code class="descclassname">Nav_utiles.</code><code class="descname">isGoal_reached</code><span class="sig-paren">(</span><em>robotPose</em>, <em>robotConsign</em>, <em>distance_tolerance</em>, <em>commandVel</em>, <em>maxLinVelStopped</em>, <em>maxAngVelStopped</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#isGoal_reached"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.isGoal_reached" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname">Nav_utiles.</code><code class="sig-name descname">isGoal_reached</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">robotPose</span></em>, <em class="sig-param"><span class="n">robotConsign</span></em>, <em class="sig-param"><span class="n">distance_tolerance</span></em>, <em class="sig-param"><span class="n">commandVel</span></em>, <em class="sig-param"><span class="n">maxLinVelStopped</span></em>, <em class="sig-param"><span class="n">maxAngVelStopped</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#isGoal_reached"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.isGoal_reached" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction pour vérifier que le robot a bien atteint l’objectif désiré.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>robotPose</strong> (<em>Pose</em>) – Position actuelle du robot.</li>
-<li><strong>robotConsign</strong> (<em>Pose2D</em>) – Position de la consigne du robot.</li>
-<li><strong>distance_tolerance</strong> (<em>float</em>) – seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</li>
-<li><strong>commandVel</strong> (<em>Twist</em>) – la commande du robot en vitesse</li>
-<li><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</li>
-<li><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>robotPose</strong> (<em>Pose</em>) – Position actuelle du robot.</p></li>
+<li><p><strong>robotConsign</strong> (<em>Pose2D</em>) – Position de la consigne du robot.</p></li>
+<li><p><strong>distance_tolerance</strong> (<em>float</em>) – seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</p></li>
+<li><p><strong>commandVel</strong> (<em>Twist</em>) – la commande du robot en vitesse</p></li>
+<li><p><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</p></li>
+<li><p><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body"><p class="first">Vrai ou Faux</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body"><p class="first last">Booleen</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Vrai ou Faux</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Booleen</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="Nav_utiles.isPosition_reached">
-<code class="descclassname">Nav_utiles.</code><code class="descname">isPosition_reached</code><span class="sig-paren">(</span><em>pose</em>, <em>poseConsign</em>, <em>distance_tolerance</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#isPosition_reached"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.isPosition_reached" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname">Nav_utiles.</code><code class="sig-name descname">isPosition_reached</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pose</span></em>, <em class="sig-param"><span class="n">poseConsign</span></em>, <em class="sig-param"><span class="n">distance_tolerance</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#isPosition_reached"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.isPosition_reached" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction pour vérifier si la position souhaitée est bien atteinte.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>pose</strong> (<em>Pose</em>) – Position actuelle du robot.</li>
-<li><strong>poseConsign</strong> (<em>Pose2D</em>) – Position de la consigne du robot.</li>
-<li><strong>distance_tolerance</strong> (<em>float</em>) – seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pose</strong> (<em>Pose</em>) – Position actuelle du robot.</p></li>
+<li><p><strong>poseConsign</strong> (<em>Pose2D</em>) – Position de la consigne du robot.</p></li>
+<li><p><strong>distance_tolerance</strong> (<em>float</em>) – seuil de tolérance pour accepter que le robot est bien à la position désirée, parametrée dans le ROSlaunch</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body"><p class="first">Vrai ou Faux</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body"><p class="first last">Booleen</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Vrai ou Faux</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Booleen</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="Nav_utiles.isStopped">
-<code class="descclassname">Nav_utiles.</code><code class="descname">isStopped</code><span class="sig-paren">(</span><em>commandVel</em>, <em>maxLinVelStopped</em>, <em>maxAngVelStopped</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#isStopped"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.isStopped" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname">Nav_utiles.</code><code class="sig-name descname">isStopped</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">commandVel</span></em>, <em class="sig-param"><span class="n">maxLinVelStopped</span></em>, <em class="sig-param"><span class="n">maxAngVelStopped</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#isStopped"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.isStopped" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction pour vérifier si le robot est bien stoppé.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>commandVel</strong> (<em>Twist</em>) – la commande du robot en vitesse</li>
-<li><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</li>
-<li><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>commandVel</strong> (<em>Twist</em>) – la commande du robot en vitesse</p></li>
+<li><p><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</p></li>
+<li><p><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body"><p class="first">Vrai ou Faux</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body"><p class="first last">Booleen</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Vrai ou Faux</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Booleen</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="Nav_utiles.reduction_angle">
-<code class="descclassname">Nav_utiles.</code><code class="descname">reduction_angle</code><span class="sig-paren">(</span><em>angle</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#reduction_angle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.reduction_angle" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname">Nav_utiles.</code><code class="sig-name descname">reduction_angle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#reduction_angle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.reduction_angle" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fontion pour remettre l’angle dans entre [-Pi/2, Pi/2]</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>angle</strong> (<em>float</em>) – angle en radian à réduire</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body">angle en radian réduit</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body">float</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – angle en radian à réduire</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>angle en radian réduit</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="Nav_utiles.rotation">
-<code class="descclassname">Nav_utiles.</code><code class="descname">rotation</code><span class="sig-paren">(</span><em>posRobot</em>, <em>posCible</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#rotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.rotation" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname">Nav_utiles.</code><code class="sig-name descname">rotation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">posRobot</span></em>, <em class="sig-param"><span class="n">posCible</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Nav_utiles.html#rotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Nav_utiles.rotation" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction pour gerer la rotation du robot</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first simple">
-<li><strong>posRobot</strong> (<em>Pose</em>) – Position actuelle du robot</li>
-<li><strong>posCible</strong> (<em>Pose2D</em>) – Positio de la cible</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>posRobot</strong> (<em>Pose</em>) – Position actuelle du robot</p></li>
+<li><p><strong>posCible</strong> (<em>Pose2D</em>) – Positio de la cible</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Renvoie:</th><td class="field-body"><p class="first">Angle de rotation</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Type renvoyé:</th><td class="field-body"><p class="first last">float</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Angle de rotation</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

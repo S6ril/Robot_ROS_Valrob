@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Logiciel" href="Logiciel.html" />
     <link rel="prev" title="Astuces" href="../Astuces.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
 
@@ -85,9 +86,9 @@
               
             
             
-              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Astuces.html">Astuces</a><ul class="current">
@@ -96,9 +97,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#installation-de-sphinx">Installation de Sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lancement-du-script">Lancement du script</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pour-aller-plus-loin">Pour aller plus loin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#page-github-documentation">Page Github documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lisibilite-des-fichiers-sources">Lisibilité des fichiers sources</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Logiciel.html">Logiciel</a></li>
 </ul>
 </li>
 </ul>
@@ -172,28 +178,28 @@
 <div class="section" id="faire-sa-documentation-avec-sphinx">
 <h2>Faire sa documentation avec Sphinx<a class="headerlink" href="#faire-sa-documentation-avec-sphinx" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Toute cette documentation a été faite avec <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a>.</p>
-<p>À première vue c’est assez complexe, mais ce n’est pas irréalisable pour un futur ingénieur INSA HDF&nbsp;!!!</p>
+<p>À première vue c’est assez complexe, mais ce n’est pas irréalisable pour un futur ingénieur INSA HDF !!!</p>
 </div>
 <div class="section" id="installation-de-sphinx">
 <h2>Installation de Sphinx<a class="headerlink" href="#installation-de-sphinx" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Je me base sur ce <a class="reference external" href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/">site</a>. Il explique plutôt bien la procédure. Comme d’habitude, je suis sous Ubuntu 20 LTS.</p>
-<p>Pour cela on utilise pip&nbsp;:</p>
+<p>Pour cela on utilise pip :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">Sphinx</span>
 </pre></div>
 </div>
-<p>Pour plus tard, on installe aussi une extension pour écrire en Mardown (plus pratique que le <code class="docutils literal notranslate"><span class="pre">.rst</span></code>)&nbsp;:</p>
+<p>Pour plus tard, on installe aussi une extension pour écrire en Mardown (plus pratique que le <code class="docutils literal notranslate"><span class="pre">.rst</span></code>) :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">recommonmark</span>
 </pre></div>
 </div>
-<p>Il faut aussi installer un thème&nbsp;:</p>
+<p>Il faut aussi installer un thème :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
 </pre></div>
 </div>
-<p>C’est déjà fini&nbsp;!!</p>
+<p>C’est déjà fini !!</p>
 </div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h2>
-<p>C’est la partie la plus délicate. Je me base sur cette documentation. Elle a été faite dans le dossier source <code class="docutils literal notranslate"><span class="pre">catkin_ws</span></code>. On crée alors un nouveau document&nbsp;:</p>
+<p>C’est la partie la plus délicate. Je me base sur cette documentation. Elle a été faite dans le dossier source <code class="docutils literal notranslate"><span class="pre">catkin_ws</span></code>. On crée alors un nouveau document :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span>
 <span class="n">mkdir</span> <span class="n">docs</span><span class="o">/</span>
 <span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
@@ -211,16 +217,23 @@
     &gt; ...
 </pre></div>
 </div>
-<p>Ajouter les extensions que vous voulez&nbsp;!!</p>
+<p>Ajouter les extensions que vous voulez !!</p>
 <p>Maintenant que cela est fait, on se rend dans le dossier <code class="docutils literal notranslate"><span class="pre">source</span></code> et on va modifier <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>. Cela permettra de mieux configurer Sphinx.</p>
-<p>Tout d’abord en haut, on rajoute&nbsp;:</p>
+<p>Tout d’abord en haut, on rajoute :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;./../../src/navigation_valrob/script/&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Cela permet d’ajouter le dossier qui contient les différents scripts Python.</p>
-<p>Pour les extensions, on ajote dans la ligne <code class="docutils literal notranslate"><span class="pre">recommonmark</span></code>. Cela permettra d’écrire des documents en langage <code class="docutils literal notranslate"><span class="pre">.md</span></code>.</p>
+<p>Cela permet d’ajouter le dossier qui contient les différents scripts Pythons.</p>
+<p>En même temps, on ajoute :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">recommonmark</span>
+<span class="kn">from</span> <span class="nn">recommonmark.transform</span> <span class="k">import</span> <span class="n">AutoStructify</span>
+<span class="kn">from</span> <span class="nn">recommonmark.parser</span> <span class="k">import</span> <span class="n">CommonMarkParser</span>
+</pre></div>
+</div>
+<p>Cela permet d’écrire la documentation en langage markdown.
+Pour les extensions, on ajote dans la ligne <code class="docutils literal notranslate"><span class="pre">recommonmark</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
 	<span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
 	<span class="o">...</span>    	
@@ -228,23 +241,40 @@
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>On modifie la ligne <code class="docutils literal notranslate"><span class="pre">source_suffix</span></code> par&nbsp;:</p>
+<p>On modifie la ligne <code class="docutils literal notranslate"><span class="pre">source_suffix</span></code> par :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source_suffix</span> <span class="o">=</span> <span class="p">{</span>
 	<span class="s1">&#39;.rst&#39;</span><span class="p">:</span> <span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
 	<span class="s1">&#39;.md&#39;</span><span class="p">:</span> <span class="s1">&#39;markdown&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>On ajoute en dessous :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source_parsers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;.md&#39;</span><span class="p">:</span> <span class="n">CommonMarkParser</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>et en bas du document :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">github_doc_root</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/rtfd/recommonmark/tree/master/doc/&#39;</span>
+<span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;recommonmark_config&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;url_resolver&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">url</span> <span class="p">:</span> <span class="n">github_doc_root</span> <span class="o">+</span> <span class="n">url</span><span class="p">,</span>
+            <span class="s1">&#39;auto_toc_tree_section&#39;</span><span class="p">:</span> <span class="s1">&#39;Contents&#39;</span><span class="p">,</span>
+            <span class="p">},</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_transform</span><span class="p">(</span><span class="n">AutoStructify</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ce n’est pas facile, mais le mardown est bien pratique pour écrire la documentation.</p>
 <p>Il est aussi conseiller de changer le thème de la page, pour cela j’utilise <a class="reference external" href="https://github.com/readthedocs/sphinx_rtd_theme">sphinx rtd theme</a>. On modifie la ligne.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
 </pre></div>
 </div>
 <p>Il en existe d’autre sur internet.</p>
-<p>J’ajoute par la même occasion un logo (ajouter la ligne juste en dessous)&nbsp;:</p>
+<p>J’ajoute par la même occasion un logo (ajouter la ligne juste en dessous) :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_logo</span> <span class="o">=</span> <span class="s2">&quot;./../../images/robot.png&quot;</span>
 </pre></div>
 </div>
-<p>Et ma page est configurée.</p>
+<p>Et ma page est configurée. Si le doute persiste, mon fichier de configuration se trouve sous Github.</p>
 </div>
 <div class="section" id="lancement-du-script">
 <h2>Lancement du script<a class="headerlink" href="#lancement-du-script" title="Lien permanent vers ce titre">¶</a></h2>
@@ -253,7 +283,7 @@
 <span class="n">sphinx</span><span class="o">-</span><span class="n">apidoc</span> <span class="o">-</span><span class="n">o</span> <span class="n">source</span><span class="o">/</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">navigation_valrob</span><span class="o">/</span><span class="n">script</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>Il faudra avant de lancer la compilation modifier le fichier <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>, et ajouter <code class="docutils literal notranslate"><span class="pre">modules</span></code>&nbsp;:</p>
+<p>Il faudra avant de lancer la compilation modifier le fichier <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>, et ajouter <code class="docutils literal notranslate"><span class="pre">modules</span></code> :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
    <span class="p">:</span><span class="n">maxdepth</span> <span class="p">:</span> <span class="mi">2</span>
    <span class="p">:</span><span class="n">caption</span> <span class="p">:</span> <span class="n">Sommaire</span> <span class="p">:</span>
@@ -261,7 +291,7 @@
    <span class="n">modules</span>
 </pre></div>
 </div>
-<p>Maintenant on peut compiler&nbsp;:</p>
+<p>Maintenant on peut compiler :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span> <span class="n">html</span>
 </pre></div>
 </div>
@@ -269,11 +299,24 @@
 </div>
 <div class="section" id="pour-aller-plus-loin">
 <h2>Pour aller plus loin<a class="headerlink" href="#pour-aller-plus-loin" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Pour plus de lisibilité, j’ai choisi de séparer mes chapitres dans le site dans des sous-dossier. Pour cela, j’ai créé un dossier <code class="docutils literal notranslate"><span class="pre">script</span></code>, j’ai inserer les fichiers <code class="docutils literal notranslate"><span class="pre">.rst</span></code> correspondant dedans. Et dans le fichier <code class="docutils literal notranslate"><span class="pre">modules.rst</span></code>, je modifie le chemin d’accès. Exemple&nbsp;:</p>
+<div class="section" id="page-github-documentation">
+<h3>Page Github documentation<a class="headerlink" href="#page-github-documentation" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Github permet de gérer des pages de documentations. Mais avec cette astuce, <code class="docutils literal notranslate"><span class="pre">index.html</span></code> doit se situer dans le dossier <code class="docutils literal notranslate"><span class="pre">docs</span></code>. Pour cela, il suffit de créer une page <code class="docutils literal notranslate"><span class="pre">index.html</span></code> qui redirige vers la page Sphinx de documentation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span><span class="n">docs</span>
+<span class="n">echo</span> <span class="s1">&#39;&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=./build/html/index.html&quot; /&gt;&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Maintenant sous Github, il suffit d’aller dans les options du repo, et d’activer <code class="docutils literal notranslate"><span class="pre">Github</span> <span class="pre">Pages</span></code> avec le dossier <code class="docutils literal notranslate"><span class="pre">/docs</span></code>.
+La redirection est automatique.</p>
+</div>
+<div class="section" id="lisibilite-des-fichiers-sources">
+<h3>Lisibilité des fichiers sources<a class="headerlink" href="#lisibilite-des-fichiers-sources" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Pour plus de lisibilité, j’ai choisi de séparer mes chapitres dans le site dans des sous-dossier. Pour cela, j’ai créé un dossier <code class="docutils literal notranslate"><span class="pre">script</span></code>, j’ai inserer les fichiers <code class="docutils literal notranslate"><span class="pre">.rst</span></code> correspondant dedans. Et dans le fichier <code class="docutils literal notranslate"><span class="pre">modules.rst</span></code>, je modifie le chemin d’accès. Exemple :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">script</span><span class="o">/</span><span class="n">Consigne_point</span>
 </pre></div>
 </div>
-<p>Cela rend mon répertoire plus lisible&nbsp;!!</p>
+<p>Cela rend mon répertoire plus lisible !!</p>
+</div>
 </div>
 </div>
 
@@ -284,6 +327,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Logiciel.html" class="btn btn-neutral float-right" title="Logiciel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../Astuces.html" class="btn btn-neutral float-left" title="Astuces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

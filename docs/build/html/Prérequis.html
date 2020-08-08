@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Prérequis &mdash; Documentation Robot ROS Valrob 2020</title>
+  <title>Prérequis &amp; Installation &mdash; Documentation Robot ROS Valrob 2020</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/translations.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -86,14 +86,15 @@
               
             
             
-              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Prérequis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ros">ROS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Prérequis &amp; Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-de-ros-sur-ubuntu">Installation de ROS sur Ubuntu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#teechargement-des-paquets">Tééchargement des paquets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparation-de-lenvironnement-ros">Préparation de l’environnement ROS</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#python">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#telechargement-des-codes">Téléchargement des codes</a></li>
 </ul>
 </li>
@@ -145,13 +146,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Prérequis</li>
+      <li>Prérequis &amp; Installation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/Prérequis.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Prérequis.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -164,41 +165,96 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="prerequis">
-<h1>Prérequis<a class="headerlink" href="#prerequis" title="Lien permanent vers ce titre">¶</a></h1>
+  <div class="section" id="prerequis-installation">
+<h1>Prérequis &amp; Installation<a class="headerlink" href="#prerequis-installation" title="Lien permanent vers ce titre">¶</a></h1>
 <div class="admonition warning">
-<p class="first admonition-title">Avertissement</p>
-<p class="last">Ce Robot a été développé sous Linux (Ubuntu 20.04 lts) et <a class="reference external" href="https://wiki.ros.org/noetic/">ROS Noetic</a>. Les commandes dans ce tutoriel seront données pour cet OS.
+<p class="admonition-title">Avertissement</p>
+<p>Ce Robot a été développé sous Linux (Ubuntu 20.04 lts) et ROS Noetic. Les commandes dans ce tutoriel seront données pour cet OS.
 Cependant ROS est un langage disponible sur toutes les plateformes. <strong>Les commandes données pour ROS peuvent varier d’une version à l’autre.</strong></p>
 </div>
-<a class="reference internal image-reference" href="_images/noetic.png"><img alt="alternate text" class="align-center" src="_images/noetic.png" style="width: 200px;" /></a>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="ros">
-<h3>ROS<a class="headerlink" href="#ros" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="line-block">
-<div class="line">Pour installer ROS, il faut suivre le wiki ROS associée à la version utilisée.</div>
-<div class="line">Pour mon cas ce sera <a class="reference external" href="https://wiki.ros.org/noetic/">ROS Noetic</a>.</div>
+<p><span style="display:block;text-align:center"> <img alt="ROS Noetic" src="_images/noetic.png" /> </span></p>
+<div class="section" id="installation-de-ros-sur-ubuntu">
+<h2>Installation de ROS sur Ubuntu<a class="headerlink" href="#installation-de-ros-sur-ubuntu" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Voici un petit résumé :</p>
+<div class="section" id="teechargement-des-paquets">
+<h3>Tééchargement des paquets<a class="headerlink" href="#teechargement-des-paquets" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Je me base sur le <a class="reference external" href="http://wiki.ros.org/noetic/Installation/Ubuntu">tutoriel de ROS</a> pour l’installation sous Ubuntu.</p>
+<p>On ajoute le dépot :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">adv</span> <span class="o">--</span><span class="n">keyserver</span> <span class="s1">&#39;hkp://keyserver.ubuntu.com:80&#39;</span> <span class="o">--</span><span class="n">recv</span><span class="o">-</span><span class="n">key</span> <span class="n">C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="s1">&#39;http://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="o">-</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+</pre></div>
+</div>
+<p>On installe ROS :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ros</span><span class="o">-</span><span class="n">noetic</span><span class="o">-</span><span class="n">desktop</span>
+</pre></div>
+</div>
+<p>Cette version est suffisante. Vous pouvez installer la totalité de ROS avec :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ros</span><span class="o">-</span><span class="n">noetic</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">full</span>
+</pre></div>
+</div>
+<p>Pour Raspberry-Pi sous Ubuntu Server OS, il est possible d’installer une version minimale (sans interface graphique) :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ros</span><span class="o">-</span><span class="n">noetic</span><span class="o">-</span><span class="n">ros</span><span class="o">-</span><span class="n">base</span>
+</pre></div>
+</div>
+<p>On peut ajouter au terminal l’environnement ROS :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;source /opt/ros/noetic/setup.bash&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bashrc</span>
+<span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preparation-de-lenvironnement-ros">
+<h3>Préparation de l’environnement ROS<a class="headerlink" href="#preparation-de-lenvironnement-ros" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Je me base sur le <a class="reference external" href="http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment">tutoriel de ROS</a>.</p>
+<p>Il faut dans un premier temps sourcer le terminal (si ce n’est pas déjà fait) :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ros</span><span class="o">/</span><span class="n">noetic</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
+</pre></div>
+</div>
+<p>Puis créer le ROS Workspace :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    mkdir -p ~/catkin_ws/src
+    <span class="nb">cd</span> ~/catkin_ws/
+    catkin_make -DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
+</pre></div>
+</div>
+<p>On impose python 3 pour <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code>. ROS Noetic est le premier ROS à être seulement basé sur Python3. Pour cette version <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code> suffit.</p>
+<p>On source à nouveau le workspace (pour prendre en compte les modofications) :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">devel</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
+</pre></div>
+</div>
+<p>On peut alors mettre le code github sur l’ordinateur !</p>
 </div>
 </div>
 <div class="section" id="python">
-<h3>Python<a class="headerlink" href="#python" title="Lien permanent vers ce titre">¶</a></h3>
+<h2>Python<a class="headerlink" href="#python" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Voici la page de téléchargement de <a class="reference external" href="https://www.python.org/downloads/">Python</a>.</p>
+<p>Sous Linux, si Python n’est pas installé automatiquement :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="telechargement-des-codes">
 <h2>Téléchargement des codes<a class="headerlink" href="#telechargement-des-codes" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Une fois les langages installés, il faut récupérer le code de Github.
-On ouvre un terminal, et on crée un nouveau dossier&nbsp;:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">catkin_ws</span>
-<span class="n">cd</span> <span class="n">catkin_ws</span>
+On ouvre un terminal, puis :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">S6ril</span><span class="o">/</span><span class="n">Robot_ROS_Valrob</span><span class="o">.</span><span class="n">git</span>
+<span class="n">mv</span> <span class="n">Robot_ROS_Valrob</span><span class="o">/</span><span class="n">src</span><span class="o">/</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>Puis on télécharge le code&nbsp;:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">S6ril</span><span class="o">/</span><span class="n">Robot_ROS_Valrob</span><span class="o">.</span><span class="n">git</span>
+<p>Cela permet de déplacer les codes vers l’envirronement ROS.
+C’est bon !! Vous pouvez maintenant compiler le code :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">catkin_ws</span>
+<span class="n">catkin_make</span>
 </pre></div>
 </div>
-<p>C’est bon&nbsp;!! Il ne reste plus qu’à le lancer.</p>
+<p>PS : Dans le dossier <code class="docutils literal notranslate"><span class="pre">Robot_ROS_Valrob</span></code> vous retrouvez cette documentation.
+Pour faire de la place (notamment sur Rapsberry-Pi) :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">Robot_ROS_Valrob</span>
+</pre></div>
+</div>
+<p>Cela supprime le dossier documentation téléchargé de Github.</p>
 </div>
 </div>
 

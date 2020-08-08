@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/translations.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Fichiers sources détaillés" href="modules.html" />
-    <link rel="prev" title="Prérequis" href="Prérequis.html" />
+    <link rel="prev" title="Prérequis &amp; Installation" href="Pr%C3%A9requis.html" />
     <link href="_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -86,10 +86,21 @@
               
             
             
-              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Prérequis.html">Prérequis</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Lancement rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lancement rapide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#itineraire">Itinéraire</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#robot">Robot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#port-de-larduino">Port de l’Arduino</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lancement-de-ros">Lancement de ROS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Astuces.html">Astuces</a></li>
 </ul>
@@ -143,7 +154,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/Lancement.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Lancement.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -161,17 +172,49 @@
 <p>Maintenant que le code est prêt, il faut le lancer. Pour cela, j’utilise un <a class="reference external" href="https://wiki.ros.org/roslaunch/Commandline%20Tools/">ROSLaunch</a> qui me permet de lancer un Roscore et des nodes simultanément.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">catkin_ws</span><span class="o">/</span>
 <span class="n">catkin_make</span>
-<span class="o">.</span> <span class="n">devel</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>  <span class="c1">#il faut bien noter le &quot;.&quot;</span>
+<span class="n">source</span> <span class="o">./</span><span class="n">devel</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>  
 </pre></div>
 </div>
-<p>La dernière commande permet «&nbsp;d’apprendre&nbsp;» au terminal toutes les nouvelles commandes contenue dans ce dossier.</p>
-<p>Maintenant on lance les nodes ROS&nbsp;:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">navigation_valrob</span> <span class="n">turtle</span><span class="o">.</span><span class="n">launch</span>
+<p>La dernière commande permet « d’apprendre » au terminal toutes les nouvelles commandes contenue dans ce dossier.</p>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="itineraire">
+<h3>Itinéraire<a class="headerlink" href="#itineraire" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On configure dans le fichier <code class="docutils literal notranslate"><span class="pre">point.txt</span></code> les futurs points de consignes.
+Ils sont de la forme :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="n">y</span> <span class="n">z</span>
+<span class="n">x</span> <span class="n">y</span> <span class="n">z</span>
+<span class="o">...</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="robot">
+<h3>Robot<a class="headerlink" href="#robot" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="section" id="port-de-larduino">
+<h4>Port de l’Arduino<a class="headerlink" href="#port-de-larduino" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Dans un premier temps on regarde le port de l’arduino. Pour cela dans l’application Arduino, on le trouve facilement dans outils/port.
+Souvent le port est <code class="docutils literal notranslate"><span class="pre">ttyACM0</span></code>. On retient alors <code class="docutils literal notranslate"><span class="pre">ACM0</span></code>.</p>
+<p>PS : Si plusieurs cartes ont été connectées, il est probable que le port soit <code class="docutils literal notranslate"><span class="pre">ACM1</span></code>, etc …</p>
+<p>De plus on vérifie le bauderate de la carte.</p>
+</div>
+<div class="section" id="lancement-de-ros">
+<h4>Lancement de ROS<a class="headerlink" href="#lancement-de-ros" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Puis on configure le robot, pour cela on modifie dans le fichier <code class="docutils literal notranslate"><span class="pre">src/navigation_valrob/launch/robot.launch</span></code> les paramètres de la carte :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">portCarte</span> <span class="p">:</span> <span class="s2">&quot;ACM0&quot;</span>
+<span class="n">bauderate</span> <span class="p">:</span> <span class="mi">115200</span>
+</pre></div>
+</div>
+<p>Maintenant on lance les nodes ROS :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">navigation_valrob</span> <span class="n">robot</span><span class="o">.</span><span class="n">launch</span> 
+</pre></div>
+</div>
+<p>Le robot devrait alors commencer à bouger vers les points souhaités.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Lorsque l’on écrit au clavier, il est utile d’utiliser la touche <cite>tab</cite>. Cela permet de compléter automatiquement la commande en cours.</p>
+<p class="admonition-title">Note</p>
+<p>Lorsque l’on écrit au clavier, il est utile d’utiliser la touche tabulation. Cela permet de compléter automatiquement la commande en cours.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -186,7 +229,7 @@
         <a href="modules.html" class="btn btn-neutral float-right" title="Fichiers sources détaillés" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Prérequis.html" class="btn btn-neutral float-left" title="Prérequis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Pr%C3%A9requis.html" class="btn btn-neutral float-left" title="Prérequis &amp; Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

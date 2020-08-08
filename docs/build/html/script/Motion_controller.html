@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -86,9 +86,9 @@
               
             
             
-              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
@@ -170,53 +170,45 @@
   <div class="section" id="module-Motion_controller">
 <span id="module-motion-controlleur"></span><h1>Module Motion Controlleur<a class="headerlink" href="#module-Motion_controller" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Cette classe permet de gérer les déplacements du robot, afin qu’il se dirige vers la consigne donnée.</p>
-<dl class="class">
+<dl class="py class">
 <dt id="Motion_controller.Motion_controller">
-<em class="property">class </em><code class="descclassname">Motion_controller.</code><code class="descname">Motion_controller</code><span class="sig-paren">(</span><em>krho</em>, <em>kalpha</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Motion_controller.html#Motion_controller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Motion_controller.Motion_controller" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">Motion_controller.</code><code class="sig-name descname">Motion_controller</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">krho</span></em>, <em class="sig-param"><span class="n">kalpha</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Motion_controller.html#Motion_controller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Motion_controller.Motion_controller" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>docstring for Motion_controller.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="Motion_controller.Motion_controller.update_command_vel">
-<code class="descname">update_command_vel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Motion_controller.html#Motion_controller.update_command_vel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Motion_controller.Motion_controller.update_command_vel" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">update_command_vel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Motion_controller.html#Motion_controller.update_command_vel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Motion_controller.Motion_controller.update_command_vel" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction qui met à jour la commande du robot dès qu’elle est appelée.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Renvoie:</th><td class="field-body">la commande en vitesse, vitesse angulaire</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Type renvoyé:</th><td class="field-body">Twist</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>la commande en vitesse, vitesse angulaire</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>Twist</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="Motion_controller.Motion_controller.update_robot_consign">
-<code class="descname">update_robot_consign</code><span class="sig-paren">(</span><em>robotConsign</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Motion_controller.html#Motion_controller.update_robot_consign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Motion_controller.Motion_controller.update_robot_consign" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">update_robot_consign</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">robotConsign</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Motion_controller.html#Motion_controller.update_robot_consign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Motion_controller.Motion_controller.update_robot_consign" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction qui met à jour la consigne du robot, dès qu’elle est appelé.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotConsign</strong> (<em>Pose2D</em>) – Consigne a donné au robot</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>robotConsign</strong> (<em>Pose2D</em>) – Consigne a donné au robot</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="Motion_controller.Motion_controller.update_robot_pos">
-<code class="descname">update_robot_pos</code><span class="sig-paren">(</span><em>robotPose</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Motion_controller.html#Motion_controller.update_robot_pos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Motion_controller.Motion_controller.update_robot_pos" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">update_robot_pos</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">robotPose</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Motion_controller.html#Motion_controller.update_robot_pos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Motion_controller.Motion_controller.update_robot_pos" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction qui met à jour la position du robot dès qu’elle est appelée.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotPose</strong> (<em>Pose2D</em>) – Position actuelle du robot</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>robotPose</strong> (<em>Pose2D</em>) – Position actuelle du robot</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

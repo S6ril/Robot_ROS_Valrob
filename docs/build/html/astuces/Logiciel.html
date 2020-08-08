@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Vue d&#39;ensemble : code du module &mdash; Documentation Robot ROS Valrob 2020</title>
+  <title>Logiciel &mdash; Documentation Robot ROS Valrob 2020</title>
   
 
   
@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="prev" title="Sphinx" href="Sphinx.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -85,11 +86,22 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire :</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Astuces.html">Astuces</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html">Sphinx</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Logiciel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vscode">VScode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#addons">Addons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#terminal">Terminal</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -135,10 +147,16 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Vue d'ensemble : code du module</li>
+          <li><a href="../Astuces.html">Astuces</a> &raquo;</li>
+        
+      <li>Logiciel</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/astuces/Logiciel.md.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -150,20 +168,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Modules pour lesquels le code est disponible</h1>
-<ul><li><a href="Consigne_point.html">Consigne_point</a></li>
-<li><a href="Motion_controller.html">Motion_controller</a></li>
-<li><a href="Nav_utiles.html">Nav_utiles</a></li>
-<li><a href="driver_baseRoulante.html">driver_baseRoulante</a></li>
-<li><a href="node_consigne_point.html">node_consigne_point</a></li>
-<li><a href="node_driver_BaseRoulante.html">node_driver_BaseRoulante</a></li>
-<li><a href="node_motion_controller.html">node_motion_controller</a></li>
+  <div class="section" id="logiciel">
+<h1>Logiciel<a class="headerlink" href="#logiciel" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Pour coder je suis sous Ubuntu.</p>
+<div class="section" id="vscode">
+<h2>VScode<a class="headerlink" href="#vscode" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Mon éditeur de code est <a class="reference external" href="https://code.visualstudio.com/Download">visual studio code</a>. J’utilise la version <code class="docutils literal notranslate"><span class="pre">snap</span></code> car elle est automatiquement mise à jour.</p>
+<div class="section" id="addons">
+<h3>Addons<a class="headerlink" href="#addons" title="Lien permanent vers ce titre">¶</a></h3>
+<p>J’utilise les extensions suivantes :</p>
+<ul class="simple">
+<li><p>Arduino : pas facile à configurer</p></li>
+<li><p>arduino-snippets : permet d’avoir une auto-completion pour arduino</p></li>
+<li><p>Atom Keymap : raccourcis Atom</p></li>
+<li><p>C/C++ : classique</p></li>
+<li><p>Doxygen Documentation : permet d’avoir des commentaires pour une documentation automatique en C/C++ avec doxygen</p></li>
+<li><p>GitHub : classique</p></li>
+<li><p>Python : classique</p></li>
+<li><p>Python Docstring Generator : permet d’avoir des commmentaires python pour la documentation automatique</p></li>
+<li><p>ROS</p></li>
+<li><p>Visual Studio Intellicode : auto-completion performante de Microsoft</p></li>
 </ul>
+<div class="section" id="arduino-addon">
+<h4>Arduino addon<a class="headerlink" href="#arduino-addon" title="Lien permanent vers ce titre">¶</a></h4>
+<p>J’ai installé arduino idle avec <code class="docutils literal notranslate"><span class="pre">snap</span></code>. Si une erreur incessante apparait pour l’addon arduino, il faut rajouer dans les configurations :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;arduino.path&quot;</span><span class="p">:</span> <span class="s2">&quot;/snap/arduino/current&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Cela permet d’indiquer où se trouve l’installation d’arduino idle.</p>
+</div>
+</div>
+</div>
+<div class="section" id="terminal">
+<h2>Terminal<a class="headerlink" href="#terminal" title="Lien permanent vers ce titre">¶</a></h2>
+<p>J’utilise Terminator comme terminal. Il est plus puissant que celui d’origine, car il a la possibilité de créer plusieurs terminaux dans une fenètre.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">terminator</span>
+</pre></div>
+</div>
+</div>
+</div>
+
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Sphinx.html" class="btn btn-neutral float-left" title="Sphinx" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

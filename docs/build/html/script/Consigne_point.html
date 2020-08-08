@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -86,9 +86,9 @@
               
             
             
-              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Module Consigne</a></li>
@@ -170,76 +170,64 @@
   <div class="section" id="module-Consigne_point">
 <span id="module-consigne"></span><h1>Module Consigne<a class="headerlink" href="#module-Consigne_point" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Cette classe permet de gérer les consignes données au robot.</p>
-<dl class="class">
+<dl class="py class">
 <dt id="Consigne_point.Consigne_Point">
-<em class="property">class </em><code class="descclassname">Consigne_point.</code><code class="descname">Consigne_Point</code><span class="sig-paren">(</span><em>distance_tolerance</em>, <em>angle_tolerance</em>, <em>maxLinVelStopped</em>, <em>maxAngVelStopped</em>, <em>fichier</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">Consigne_point.</code><code class="sig-name descname">Consigne_Point</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">distance_tolerance</span></em>, <em class="sig-param"><span class="n">angle_tolerance</span></em>, <em class="sig-param"><span class="n">maxLinVelStopped</span></em>, <em class="sig-param"><span class="n">maxAngVelStopped</span></em>, <em class="sig-param"><span class="n">fichier</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Classe pour gérer la consigne vers un point.</p>
 <p>Paramètres pour initialiser la classe</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
-<li><strong>distance_tolerance</strong> (<em>float</em>) – distance de tolérance pour affirmer que la cible est atteinte.</li>
-<li><strong>angle_tolerance</strong> (<em>float</em>) – angle de tolérance pour affirmer que le robot est bien positionner.</li>
-<li><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</li>
-<li><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</li>
-<li><strong>fichier</strong> (<em>char</em>) – Nom du fichier contenant les points.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance_tolerance</strong> (<em>float</em>) – distance de tolérance pour affirmer que la cible est atteinte.</p></li>
+<li><p><strong>angle_tolerance</strong> (<em>float</em>) – angle de tolérance pour affirmer que le robot est bien positionner.</p></li>
+<li><p><strong>maxLinVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse linéaire comme nulle, parametrée dans le ROSlaunch.</p></li>
+<li><p><strong>maxAngVelStopped</strong> (<em>float</em>) – Seuil de tolérance pour définir une vitesse angulaire comme nulle, parametrée dans le ROSlaunch.</p></li>
+<li><p><strong>fichier</strong> (<em>char</em>) – Nom du fichier contenant les points.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
+</dd>
+</dl>
+<dl class="py method">
 <dt id="Consigne_point.Consigne_Point.lecture_fichier">
-<code class="descname">lecture_fichier</code><span class="sig-paren">(</span><em>nomFichier</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point.lecture_fichier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.lecture_fichier" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">lecture_fichier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nomFichier</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point.lecture_fichier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.lecture_fichier" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction pour lire le fichier .txt contenant les points de consigne du robot.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>nomFichier</strong> (<em>char</em><em>[</em><em>]</em>) – nom du fichier</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>nomFichier</strong> (<em>char</em><em>[</em><em>]</em>) – nom du fichier</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="Consigne_point.Consigne_Point.send_new_consign">
-<code class="descname">send_new_consign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point.send_new_consign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.send_new_consign" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">send_new_consign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point.send_new_consign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.send_new_consign" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction qui met à jour la nouvelle consigne que doit suivre le robot.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Renvoie:</th><td class="field-body">la nouvelle consigne</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Type renvoyé:</th><td class="field-body">Pose2D()</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>la nouvelle consigne</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>Pose2D()</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="Consigne_point.Consigne_Point.update_robot_consign">
-<code class="descname">update_robot_consign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point.update_robot_consign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.update_robot_consign" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">update_robot_consign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point.update_robot_consign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.update_robot_consign" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction qui génère la nouvelle consigne du robot en fonction de point dans un fichier .txt. 
 Lorsque tous les points ont été lu, la consigne devient la postion actuelle du robot. (Cela permet de l’immobiliser).</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="Consigne_point.Consigne_Point.update_robot_pose">
-<code class="descname">update_robot_pose</code><span class="sig-paren">(</span><em>robotPose</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point.update_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.update_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">update_robot_pose</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">robotPose</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Consigne_point.html#Consigne_Point.update_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Consigne_point.Consigne_Point.update_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction qui met à jour la position actuelle du robot dans la classe.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotPose</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position actuelle du robot.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>robotPose</strong> (<em>Pose</em><em>(</em><em>)</em>) – Position actuelle du robot.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

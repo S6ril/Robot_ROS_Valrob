@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -86,9 +86,9 @@
               
             
             
-              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
@@ -170,223 +170,197 @@
   <div class="section" id="module-driver_baseRoulante">
 <span id="driver-base-roulante"></span><h1>Driver Base Roulante<a class="headerlink" href="#module-driver_baseRoulante" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Cette classe permet de gérer la communication Gcode</p>
-<dl class="class">
+<dl class="py class">
 <dt id="driver_baseRoulante.Communication_Gcode">
-<em class="property">class </em><code class="descclassname">driver_baseRoulante.</code><code class="descname">Communication_Gcode</code><span class="sig-paren">(</span><em>portserial</em>, <em>bauderate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">driver_baseRoulante.</code><code class="sig-name descname">Communication_Gcode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">portserial</span></em>, <em class="sig-param"><span class="n">bauderate</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Classe driver de la carte d’asservissement base roulante
 gère la communication sur le port serial</p>
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.cleanSerial">
-<code class="descname">cleanSerial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.cleanSerial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.cleanSerial" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">cleanSerial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.cleanSerial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.cleanSerial" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Nettoyage du buffer pour éviter une saturation.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.disable_motors">
-<code class="descname">disable_motors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.disable_motors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.disable_motors" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">disable_motors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.disable_motors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.disable_motors" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>M18 Désactive les déplacements moteurs stoppant les mouvements jusqu’à réactivation 
 via la commande M19</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.enable_motors">
-<code class="descname">enable_motors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.enable_motors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.enable_motors" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">enable_motors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.enable_motors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.enable_motors" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>M19 Active les moteurs et remet à zéro les intégrateurs des PID de contrôle moteur</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.get_left_wheel_data">
-<code class="descname">get_left_wheel_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_left_wheel_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_left_wheel_data" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">get_left_wheel_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_left_wheel_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_left_wheel_data" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.get_right_wheel_data">
-<code class="descname">get_right_wheel_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_right_wheel_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_right_wheel_data" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">get_right_wheel_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_right_wheel_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_right_wheel_data" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.get_robot_pose">
-<code class="descname">get_robot_pose</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; geometry_msgs.msg._Pose2D.Pose2D<a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">get_robot_pose</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; geometry_msgs.msg._Pose2D.Pose2D<a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction qui met à jour la position actuelle du robot dans la classe.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>robotPose</strong> (<em>Pose2D</em>) – Position actuelle du robot.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>robotPose</strong> (<em>Pose2D</em>) – Position actuelle du robot.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.miseEnRouteRobot">
-<code class="descname">miseEnRouteRobot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.miseEnRouteRobot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.miseEnRouteRobot" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">miseEnRouteRobot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.miseEnRouteRobot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.miseEnRouteRobot" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_fast_move_to">
-<code class="descname">set_fast_move_to</code><span class="sig-paren">(</span><em>x: float</em>, <em>y: float</em>, <em>theta: float</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_fast_move_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_fast_move_to" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_fast_move_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_fast_move_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_fast_move_to" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>G00 Le robot se déplace au plus vite vers la cible et prends l’angle d’arrivée.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
-<li><strong>x</strong> (<em>float</em>) – Position en X absolue sur le terrain</li>
-<li><strong>y</strong> (<em>flaot</em>) – Position en Y absolue sur le terrain</li>
-<li><strong>theta</strong> (<em>float</em>) – Angle d’arrivé à prendre lorsque la position est atteinte</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – Position en X absolue sur le terrain</p></li>
+<li><p><strong>y</strong> (<em>flaot</em>) – Position en Y absolue sur le terrain</p></li>
+<li><p><strong>theta</strong> (<em>float</em>) – Angle d’arrivé à prendre lorsque la position est atteinte</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_left_odom_wheel_diameter">
-<code class="descname">set_left_odom_wheel_diameter</code><span class="sig-paren">(</span><em>r</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_left_odom_wheel_diameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_left_odom_wheel_diameter" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_left_odom_wheel_diameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">r</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_left_odom_wheel_diameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_left_odom_wheel_diameter" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_max_angular_acceleration">
-<code class="descname">set_max_angular_acceleration</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_max_angular_acceleration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_max_angular_acceleration" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_max_angular_acceleration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_max_angular_acceleration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_max_angular_acceleration" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_max_angular_deceleration">
-<code class="descname">set_max_angular_deceleration</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_max_angular_deceleration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_max_angular_deceleration" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_max_angular_deceleration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_max_angular_deceleration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_max_angular_deceleration" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_max_linear_acceleration">
-<code class="descname">set_max_linear_acceleration</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_max_linear_acceleration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_max_linear_acceleration" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_max_linear_acceleration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_max_linear_acceleration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_max_linear_acceleration" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_max_linear_deceleration">
-<code class="descname">set_max_linear_deceleration</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_max_linear_deceleration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_max_linear_deceleration" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_max_linear_deceleration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_max_linear_deceleration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_max_linear_deceleration" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_odom_wheel_dist_left">
-<code class="descname">set_odom_wheel_dist_left</code><span class="sig-paren">(</span><em>d</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_odom_wheel_dist_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_odom_wheel_dist_left" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_odom_wheel_dist_left</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_odom_wheel_dist_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_odom_wheel_dist_left" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_odom_wheel_dist_right">
-<code class="descname">set_odom_wheel_dist_right</code><span class="sig-paren">(</span><em>d</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_odom_wheel_dist_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_odom_wheel_dist_right" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_odom_wheel_dist_right</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_odom_wheel_dist_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_odom_wheel_dist_right" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_pid_left">
-<code class="descname">set_pid_left</code><span class="sig-paren">(</span><em>p</em>, <em>i</em>, <em>d</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_pid_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_pid_left" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_pid_left</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">i</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_pid_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_pid_left" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_pid_right">
-<code class="descname">set_pid_right</code><span class="sig-paren">(</span><em>p</em>, <em>i</em>, <em>d</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_pid_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_pid_right" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_pid_right</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">i</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_pid_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_pid_right" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_right_odom_wheel_diameter">
-<code class="descname">set_right_odom_wheel_diameter</code><span class="sig-paren">(</span><em>r</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_right_odom_wheel_diameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_right_odom_wheel_diameter" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_right_odom_wheel_diameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">r</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_right_odom_wheel_diameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_right_odom_wheel_diameter" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_robot_pose">
-<code class="descname">set_robot_pose</code><span class="sig-paren">(</span><em>x: float</em>, <em>y: float</em>, <em>theta: float</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_robot_pose</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>G92 Met à jour la position du robot, et change place la consigne de position du robot 
 à la même valeur.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
-<li><strong>x</strong> (<em>float</em>) – Nouvelle valeur de position suivant l’axe x</li>
-<li><strong>y</strong> (<em>float</em>) – Nouvelle valeur de postion suivant l’axe y</li>
-<li><strong>theta</strong> (<em>float</em>) – Nouvelle valeur de position autour de l’axe z</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – Nouvelle valeur de position suivant l’axe x</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Nouvelle valeur de postion suivant l’axe y</p></li>
+<li><p><strong>theta</strong> (<em>float</em>) – Nouvelle valeur de position autour de l’axe z</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_robot_speed">
-<code class="descname">set_robot_speed</code><span class="sig-paren">(</span><em>linearSpeed: float</em>, <em>angularSpeed: float</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_speed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_speed" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_robot_speed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">linearSpeed</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">angularSpeed</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_speed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_speed" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>G10 Le robot se déplace à la vitesse et vitesse angulaire précisée.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
-<li><strong>linearSpeed</strong> (<em>float</em>) – Consigne en vitesse linéaire du robot</li>
-<li><strong>angularSpeed</strong> (<em>float</em>) – Consigne en vitesse angulaire du robot</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>linearSpeed</strong> (<em>float</em>) – Consigne en vitesse linéaire du robot</p></li>
+<li><p><strong>angularSpeed</strong> (<em>float</em>) – Consigne en vitesse angulaire du robot</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_robot_speed_ros">
-<code class="descname">set_robot_speed_ros</code><span class="sig-paren">(</span><em>msg_twist: geometry_msgs.msg._Twist.Twist</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_speed_ros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_speed_ros" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_robot_speed_ros</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg_twist</span><span class="p">:</span> <span class="n">geometry_msgs.msg._Twist.Twist</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_speed_ros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_speed_ros" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes 
 et d’avoir des fonctions spéciales ROS</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><strong>msg_twist</strong> (<em>Twist</em>) – Commande de vitesse ROS</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>msg_twist</strong> (<em>Twist</em>) – Commande de vitesse ROS</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_robot_wheel_speed">
-<code class="descname">set_robot_wheel_speed</code><span class="sig-paren">(</span><em>leftWheelSpeed: float</em>, <em>RightWeelSpeed: float</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_wheel_speed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_wheel_speed" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_robot_wheel_speed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">leftWheelSpeed</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">RightWeelSpeed</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_wheel_speed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_wheel_speed" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>G11 Les roues du robot se déplacent aux vitesses précisées.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
-<li><strong>leftWheelSpeed</strong> (<em>float</em>) – Consigne de vitesse de la roue gauche</li>
-<li><strong>RightWeelSpeed</strong> (<em>float</em>) – Consigne de vitesse de la roue droite</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>leftWheelSpeed</strong> (<em>float</em>) – Consigne de vitesse de la roue gauche</p></li>
+<li><p><strong>RightWeelSpeed</strong> (<em>float</em>) – Consigne de vitesse de la roue droite</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_slow_move_to">
-<code class="descname">set_slow_move_to</code><span class="sig-paren">(</span><em>x: float</em>, <em>y: float</em>, <em>theta: float</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_slow_move_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_slow_move_to" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_slow_move_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_slow_move_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_slow_move_to" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>G01 Le robot se déplace vers la cible de façon linéaire : il s’oriente d’abord vers sa cible
 avant d’avancer jusqu’à atteindre la cible. Il prend l’angle d’arrivée une fois sur la cible.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Paramètres:</th><td class="field-body"><ul class="first last simple">
-<li><strong>x</strong> (<em>float</em>) – Position en X absolue sur le terrain</li>
-<li><strong>y</strong> (<em>flaot</em>) – Position en Y absolue sur le terrain</li>
-<li><strong>theta</strong> (<em>float</em>) – Angle d’arrivé à prendre lorsque la position est atteinte</li>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – Position en X absolue sur le terrain</p></li>
+<li><p><strong>y</strong> (<em>flaot</em>) – Position en Y absolue sur le terrain</p></li>
+<li><p><strong>theta</strong> (<em>float</em>) – Angle d’arrivé à prendre lorsque la position est atteinte</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.stopRobot">
-<code class="descname">stopRobot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.stopRobot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.stopRobot" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">stopRobot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.stopRobot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.stopRobot" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

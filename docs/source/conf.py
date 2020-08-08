@@ -17,6 +17,11 @@ import sys
 sys.path.insert(0, os.path.abspath('./../../src/navigation_valrob/script/'))
 
 
+import recommonmark
+from recommonmark.transform import AutoStructify
+from recommonmark.parser import CommonMarkParser
+
+
 # -- Project information -----------------------------------------------------
 
 project = 'Robot ROS Valrob'
@@ -53,11 +58,21 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-# source_suffix = ['.rst', '.md']
+
+
+#source_suffix = ['.rst', '.md']
+
+source_parsers = {
+   '.md': CommonMarkParser
+}
+
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown',
 }
+
+
+
 
 # The master toctree document.
 master_doc = 'index'
@@ -189,3 +204,10 @@ epub_exclude_files = ['search.html']
 
 
 # -- Extension configuration -------------------------------------------------
+github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/doc/'
+def setup(app):
+    app.add_config_value('recommonmark_config', {
+            'url_resolver': lambda url: github_doc_root + url,
+            'auto_toc_tree_section': 'Contents',
+            }, True)
+    app.add_transform(AutoStructify)

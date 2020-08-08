@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -86,9 +86,9 @@
               
             
             
-              <p class="caption"><span class="caption-text">Sommaire&nbsp;:</span></p>
+              <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Prérequis.html">Prérequis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
@@ -171,14 +171,14 @@
 <span id="node-driver-base-roulante"></span><h1>Node Driver Base Roulante<a class="headerlink" href="#module-node_driver_BaseRoulante" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Cette node permet de communiquer avec le robot en Gcode. 
 ELle récupère la consigne en vitesse et renvoie la position du robot.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="node_driver_BaseRoulante.communication">
-<code class="descclassname">node_driver_BaseRoulante.</code><code class="descname">communication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/node_driver_BaseRoulante.html#communication"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node_driver_BaseRoulante.communication" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname">node_driver_BaseRoulante.</code><code class="sig-name descname">communication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/node_driver_BaseRoulante.html#communication"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node_driver_BaseRoulante.communication" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction principale de la node, elle permet de communiquer avec le robot.
 Elle demande les valeurs dans le ROSLaunch :</p>
 <ul class="simple">
-<li>portCarte : port où se trouve la carte</li>
-<li>bauderate : bauderate de communication de la carte</li>
+<li><p>portCarte : port où se trouve la carte</p></li>
+<li><p>bauderate : bauderate de communication de la carte</p></li>
 </ul>
 </dd></dl>
 

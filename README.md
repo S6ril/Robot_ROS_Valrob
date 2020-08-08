@@ -22,10 +22,7 @@
 ## Table of Contents
 
 * [Le Projet](#projet)
-  * [Construit avec](#construit)
-* [Pour commencer](#commencer)
-  * [Prérequis](#prerequis)
-* [Usage](#usage)
+* [Construit avec](#construit)
 * [License](#license)
 * [Contact](#contact)
 
@@ -34,45 +31,25 @@
 <!-- ABOUT THE PROJECT -->
 ## Le Projet
 
-<p align="center">
- <a href="https://github.com/S6ril/Robot_ROS_Valrob/blob/master/images/tortue_exemple.gif">
-    <img src="images/tortue_exemple.gif" alt="Gif" >
-  </a>
-</p>
+Ce projet a pour but d’initier l’intégration du langage ROS pour le robot Valrob. Cela s’inscrit dans une démarche de rendre le robot modulaire et d’avoir une base solide pour les autres annnées.
 
-Ce projet à pour but d'initier l'intégration du langage ROS pour le robot Valrob. Cela s'inscrit dans une démarche de rendre le robot modulaire et d'avoir une base solide pour les autres annnées.
+Le robot est basé sur une carte Raspberry (cerveau du robot) et d’une carte bas-niveau (arduino, stm32) qui contrôle les moteurs. La communication entre les 2 se fait en Gcode.
 
-On retrouve alors :
-* Sur ce github, un code ROS motion-controller pour faire déplacer le robot.
-* Un robot modulaire dont la communication se fait par le port série et une communication GCODE.
+On retrouve alors 3 principales branches sur ce GitHub :
+* master : la branche principale avec le code autonome.
+* Robot_test : une branche de développement qui permet de contrôler le robot avec une mannette de jeux.
+* Turtle_demo : une branche théorique qui simule le robot avec une tortue.
 
 
-### Construit avec
-Ce robot à dont été développer avec ROS. On retrouve alors :
+Pour plus de précision, veuillez vous réferer à la [Documentation](https://s6ril.github.io/Robot_ROS_Valrob/). Elle explique en détail le code.
+
+## Construit avec
+Ce robot à dont été développer avec ROS. On retrouve alors :
 * [ROS Noetic](https://www.ros.org/)
 * [Python 3](https://www.python.org/)
-
-
-
-<!-- GETTING STARTED -->
-## Pour commencer
-
-### Prerequis
-
-ROS et Python doivent être installés.
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Pour lancer le programme sur un ordinateur :
-```bash
-roslaunch navigation_valrob turtle.launch 
-```
-
-_Pour plus de précision, veuillez vous réferer à la [Documentation](https://s6ril.github.io/Robot_ROS_Valrob/)_
-
-
+* [Arduino](https://www.arduino.cc/)
+* [Raspberry Pi](https://www.raspberrypi.org/)
+* [Ubuntu](https://ubuntu.com/)
 
 
 <!-- LICENSE -->
@@ -89,7 +66,7 @@ S6ril & Starfunx
 
 Valrobotik - ENSIAME Valenciennes
 
-Lien du projet : [https://github.com/S6ril/](https://github.com/S6ril/Robot_ROS_Valrob.git)
+Lien du projet : [https://github.com/S6ril/](https://github.com/S6ril/Robot_ROS_Valrob.git)
 
 
 
