@@ -25,6 +25,7 @@ Le script est composé d'une classe, et correspond au code en Python. La classe 
 
 .. toctree::
    :maxdepth: 4
+   :caption: Sommaire
 
    script/Consigne_point
    script/Motion_controller

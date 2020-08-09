@@ -12,7 +12,7 @@ from math import sqrt, pow, atan2, pi
 
 def rotation(posRobot, posCible):
     """
-    Fonction pour gerer la rotation du robot
+    Fonction pour gérer la rotation du robot vers une cible.
     
     Args:
         posRobot (Pose): Position actuelle du robot
@@ -28,7 +28,7 @@ def rotation(posRobot, posCible):
 
 def distance_euclidienne(posRobot, posCible):
     """
-    Fonction pour calculer la distance euclidienne
+    Fonction pour calculer la distance euclidienne entre le robot et une cible.
 
     Args:
         posRobot (Pose): Position du robot
@@ -43,7 +43,7 @@ def distance_euclidienne(posRobot, posCible):
 
 def reduction_angle(angle):
     """
-    Fontion pour remettre l'angle dans entre[-Pi/2, Pi/2]
+    Fontion pour remettre l'angle dans entre [-Pi/2, Pi/2].
 
     Args:
         angle (flaot): Angle en rad à réduire

@@ -88,7 +88,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -157,11 +157,6 @@
 
 <span class="c1"># @author S6ril &amp; Starfunx</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Cette classe permet de gérer les déplacements du robot, afin qu&#39;il se dirige vers la consigne donnée.</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-
 
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Pose2D</span>
@@ -171,7 +166,7 @@
 
 
 <div class="viewcode-block" id="Motion_controller"><a class="viewcode-back" href="../script/Motion_controller.html#Motion_controller.Motion_controller">[docs]</a><span class="k">class</span> <span class="nc">Motion_controller</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;docstring for Motion_controller.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Cette classe permet de gérer les déplacements du robot, afin qu&#39;il se dirige vers la consigne donnée.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">krho</span><span class="p">,</span> <span class="n">kalpha</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Motion_controller</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>

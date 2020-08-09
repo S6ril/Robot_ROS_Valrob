@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module Driver Base Roulante &mdash; Documentation Robot ROS Valrob 2020</title>
+  <title>Classe Driver Base Roulante &mdash; Documentation Robot ROS Valrob 2020</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
     <link rel="next" title="Node Consigne" href="node_consigne_point.html" />
-    <link rel="prev" title="Module Navigation Utile" href="Nav_utiles.html" />
+    <link rel="prev" title="Fonctions Navigation Utile" href="Nav_utiles.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -90,11 +90,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Module Consigne</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Module Motion Controlleur</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Nav_utiles.html">Module Navigation Utile</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Module Driver Base Roulante</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../module.html">Fichiers sources détaillés</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Consigne_point.html">Classe Consigne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Motion_controller.html">Classe Motion Controlleur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nav_utiles.html">Fonctions Navigation Utile</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Classe Driver Base Roulante</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node_consigne_point.html">Node Consigne</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node_driver_BaseRoulante.html">Node Driver Base Roulante</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node_motion_controller.html">Node Motion Controlleur</a></li>
@@ -146,9 +146,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../modules.html">Fichiers sources détaillés</a> &raquo;</li>
+          <li><a href="../module.html">Fichiers sources détaillés</a> &raquo;</li>
         
-      <li>Module Driver Base Roulante</li>
+      <li>Classe Driver Base Roulante</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -168,18 +168,28 @@
            <div itemprop="articleBody">
             
   <div class="section" id="module-driver_baseRoulante">
-<span id="module-driver-base-roulante"></span><h1>Module Driver Base Roulante<a class="headerlink" href="#module-driver_baseRoulante" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Cette classe permet de gérer la communication Gcode</p>
+<span id="classe-driver-base-roulante"></span><h1>Classe Driver Base Roulante<a class="headerlink" href="#module-driver_baseRoulante" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Cette classe permet de gérer la communication Gcode entre une carte connectée en USB à une Rasperry.</p>
 <dl class="py class">
 <dt id="driver_baseRoulante.Communication_Gcode">
 <em class="property">class </em><code class="sig-prename descclassname">driver_baseRoulante.</code><code class="sig-name descname">Communication_Gcode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">portserial</span></em>, <em class="sig-param"><span class="n">bauderate</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Classe driver de la carte d’asservissement base roulante
-gère la communication sur le port serial</p>
+<p>Classe driver pour la carte d’asservissement de la base roulante.
+Elle gère la communication sur le port serial en Gcode.</p>
+<p>Initialisation des variables internes de la classe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>portserial</strong> (<em>char</em>) – Port USB de l’arduino</p></li>
+<li><p><strong>bauderate</strong> (<em>float</em>) – bauderate de la carte</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.cleanSerial">
 <code class="sig-name descname">cleanSerial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.cleanSerial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.cleanSerial" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Nettoyage du buffer pour éviter une saturation.</p>
+<dd><p>Nettoyage du buffer pour éviter une saturation.
+On appelle cette fonction après chaques commandes Gcode executées.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -207,7 +217,7 @@ via la commande M19</p>
 
 <dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.get_robot_pose">
-<code class="sig-name descname">get_robot_pose</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; geometry_msgs.msg._Pose2D.Pose2D<a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">get_robot_pose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.get_robot_pose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.get_robot_pose" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction qui met à jour la position actuelle du robot dans la classe.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Renvoie</dt>
@@ -227,7 +237,7 @@ via la commande M19</p>
 <dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_fast_move_to">
 <code class="sig-name descname">set_fast_move_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_fast_move_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_fast_move_to" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>G00 Le robot se déplace au plus vite vers la cible et prends l’angle d’arrivée.</p>
+<dd><p>G00 Le robot se déplace au plus vite vers la cible et prend l’angle d’arrivée.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
@@ -321,7 +331,7 @@ via la commande M19</p>
 
 <dl class="py method">
 <dt id="driver_baseRoulante.Communication_Gcode.set_robot_speed_ros">
-<code class="sig-name descname">set_robot_speed_ros</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg_twist</span><span class="p">:</span> <span class="n">geometry_msgs.msg._Twist.Twist</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_speed_ros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_speed_ros" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_robot_speed_ros</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg_twist</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/driver_baseRoulante.html#Communication_Gcode.set_robot_speed_ros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#driver_baseRoulante.Communication_Gcode.set_robot_speed_ros" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes
 et d’avoir des fonctions spéciales ROS</p>
 <dl class="field-list simple">
@@ -381,7 +391,7 @@ avant d’avancer jusqu’à atteindre la cible. Il prend l’angle d’arrivée
         <a href="node_consigne_point.html" class="btn btn-neutral float-right" title="Node Consigne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Nav_utiles.html" class="btn btn-neutral float-left" title="Module Navigation Utile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Nav_utiles.html" class="btn btn-neutral float-left" title="Fonctions Navigation Utile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

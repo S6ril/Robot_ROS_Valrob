@@ -90,7 +90,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Astuces.html">Astuces</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sphinx</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#faire-sa-documentation-avec-sphinx">Faire sa documentation avec Sphinx</a></li>
@@ -232,8 +232,8 @@
 <span class="kn">from</span> <span class="nn">recommonmark.parser</span> <span class="k">import</span> <span class="n">CommonMarkParser</span>
 </pre></div>
 </div>
-<p>Cela permet d’écrire la documentation en langage markdown.
-Pour les extensions, on ajote dans la ligne <code class="docutils literal notranslate"><span class="pre">recommonmark</span></code>.</p>
+<p>Cela permet d’écrire la documentation en langage markdown. La syntaxe est plus facile, mais elle permet moins de mise en forme. (Pour les liens entre les différents fichiers, je garde <code class="docutils literal notranslate"><span class="pre">.rst</span></code>).</p>
+<p>Dans les extensions, on ajote dans la ligne <code class="docutils literal notranslate"><span class="pre">recommonmark</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
 	<span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
 	<span class="o">...</span>    	
@@ -311,7 +311,9 @@ La redirection est automatique.</p>
 </div>
 <div class="section" id="lisibilite-des-fichiers-sources">
 <h3>Lisibilité des fichiers sources<a class="headerlink" href="#lisibilite-des-fichiers-sources" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Pour plus de lisibilité, j’ai choisi de séparer mes chapitres dans le site dans des sous-dossier. Pour cela, j’ai créé un dossier <code class="docutils literal notranslate"><span class="pre">script</span></code>, j’ai inserer les fichiers <code class="docutils literal notranslate"><span class="pre">.rst</span></code> correspondant dedans. Et dans le fichier <code class="docutils literal notranslate"><span class="pre">modules.rst</span></code>, je modifie le chemin d’accès. Exemple :</p>
+<p>Pour plus de lisibilité, j’ai choisi de séparer mes chapitres dans le site dans des sous-dossier. Pour cela, j’ai créé un dossier <code class="docutils literal notranslate"><span class="pre">script</span></code> dans lequel on retouve la documentation générée automatiquement.</p>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">modules.rst</span></code> reste dans le dossier source, mais je modifie les liens vers les autres fichiers. Cela me permet d”écrire dans le fichier module sans qu”il soit supprimé. On peut aussi le renommer pour plus de sécurité.</p>
+<p>Exemple :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">script</span><span class="o">/</span><span class="n">Consigne_point</span>
 </pre></div>
 </div>

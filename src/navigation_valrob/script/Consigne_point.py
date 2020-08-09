@@ -18,10 +18,12 @@ from Nav_utiles import isPosition_reached
 
 class Consigne_Point(object):
     """Classe pour gérer la consigne vers un point.
+    Dès que le robot a atteind son objectif, une nouvelle consigne est générée. 
+    Si il n'y a plus de points en attente dans le fichier `point.txt`, alors la consigne sera la position actuelle du robot.
     """
 
     def __init__(self, distance_tolerance, angle_tolerance, maxLinVelStopped, maxAngVelStopped, fichier):
-        """Paramètres pour initialiser la classe
+        """Paramètres pour initialiser la classe :
 
         Args:
             distance_tolerance (float): distance de tolérance pour affirmer que la cible est atteinte.
@@ -51,6 +53,7 @@ class Consigne_Point(object):
         """
         self.robotPose = robotPose
 
+
     def send_new_consign(self):
         """Fonction qui met à jour la nouvelle consigne que doit suivre le robot.
 
@@ -64,7 +67,7 @@ class Consigne_Point(object):
 
 
     def update_robot_consign(self):
-        """Fonction qui génère la nouvelle consigne du robot en fonction de point dans un fichier .txt. 
+        """Fonction qui génère la nouvelle consigne du robot en fonction de point dans le fichier `points.txt`. 
         Lorsque tous les points ont été lu, la consigne devient la postion actuelle du robot. (Cela permet de l'immobiliser).
         """
         if len(self.listCoord) > 0:

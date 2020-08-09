@@ -88,7 +88,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -173,10 +173,12 @@
 
 <div class="viewcode-block" id="Consigne_Point"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point">[docs]</a><span class="k">class</span> <span class="nc">Consigne_Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Classe pour gérer la consigne vers un point.</span>
+<span class="sd">    Dès que le robot a atteind son objectif, une nouvelle consigne est générée. </span>
+<span class="sd">    Si il n&#39;y a plus de points en attente dans le fichier `point.txt`, alors la consigne sera la position actuelle du robot.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance_tolerance</span><span class="p">,</span> <span class="n">angle_tolerance</span><span class="p">,</span> <span class="n">maxLinVelStopped</span><span class="p">,</span> <span class="n">maxAngVelStopped</span><span class="p">,</span> <span class="n">fichier</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Paramètres pour initialiser la classe</span>
+        <span class="sd">&quot;&quot;&quot;Paramètres pour initialiser la classe :</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            distance_tolerance (float): distance de tolérance pour affirmer que la cible est atteinte.</span>
@@ -206,6 +208,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">robotPose</span></div>
 
+
 <div class="viewcode-block" id="Consigne_Point.send_new_consign"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point.send_new_consign">[docs]</a>    <span class="k">def</span> <span class="nf">send_new_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la nouvelle consigne que doit suivre le robot.</span>
 
@@ -219,7 +222,7 @@
 
 
 <div class="viewcode-block" id="Consigne_Point.update_robot_consign"><a class="viewcode-back" href="../script/Consigne_point.html#Consigne_point.Consigne_Point.update_robot_consign">[docs]</a>    <span class="k">def</span> <span class="nf">update_robot_consign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fonction qui génère la nouvelle consigne du robot en fonction de point dans un fichier .txt. </span>
+        <span class="sd">&quot;&quot;&quot;Fonction qui génère la nouvelle consigne du robot en fonction de point dans le fichier `points.txt`. </span>
 <span class="sd">        Lorsque tous les points ont été lu, la consigne devient la postion actuelle du robot. (Cela permet de l&#39;immobiliser).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listCoord</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>

@@ -88,7 +88,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Fichiers sources détaillés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
 
@@ -157,7 +157,7 @@
 <span class="c1"># @author S6ril &amp; Starfunx</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Cette classe permet de gérer la communication Gcode</span>
+<span class="sd">Cette classe permet de gérer la communication Gcode entre une carte connectée en USB à une Rasperry.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -167,11 +167,17 @@
 
 <div class="viewcode-block" id="Communication_Gcode"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode">[docs]</a><span class="k">class</span> <span class="nc">Communication_Gcode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Classe driver de la carte d&#39;asservissement base roulante</span>
-<span class="sd">    gère la communication sur le port serial</span>
+<span class="sd">    Classe driver pour la carte d&#39;asservissement de la base roulante.</span>
+<span class="sd">    Elle gère la communication sur le port serial en Gcode.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">portserial</span><span class="p">,</span> <span class="n">bauderate</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialisation des variables internes de la classe.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            portserial (char): Port USB de l&#39;arduino</span>
+<span class="sd">            bauderate (float): bauderate de la carte</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Communication_Gcode</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">Pose2D</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">()</span>
@@ -191,6 +197,7 @@
 <div class="viewcode-block" id="Communication_Gcode.cleanSerial"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.cleanSerial">[docs]</a>    <span class="k">def</span> <span class="nf">cleanSerial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Nettoyage du buffer pour éviter une saturation.</span>
+<span class="sd">        On appelle cette fonction après chaques commandes Gcode executées.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">flushInput</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">flushOutput</span><span class="p">()</span></div>
@@ -198,7 +205,7 @@
 
     <span class="c1"># Commandes déplacements:</span>
 <div class="viewcode-block" id="Communication_Gcode.set_fast_move_to"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_fast_move_to">[docs]</a>    <span class="k">def</span> <span class="nf">set_fast_move_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;G00 Le robot se déplace au plus vite vers la cible et prends l’angle d’arrivée.</span>
+        <span class="sd">&quot;&quot;&quot;G00 Le robot se déplace au plus vite vers la cible et prend l’angle d’arrivée.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            x (float): Position en X absolue sur le terrain</span>
@@ -273,7 +280,7 @@
 
 
     <span class="c1"># position control</span>
-<div class="viewcode-block" id="Communication_Gcode.get_robot_pose"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.get_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">get_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pose2D</span><span class="p">:</span>
+<div class="viewcode-block" id="Communication_Gcode.get_robot_pose"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.get_robot_pose">[docs]</a>    <span class="k">def</span> <span class="nf">get_robot_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fonction qui met à jour la position actuelle du robot dans la classe.</span>
 
 <span class="sd">        Returns:</span>
@@ -392,7 +399,7 @@
 <div class="viewcode-block" id="Communication_Gcode.stopRobot"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.stopRobot">[docs]</a>    <span class="k">def</span> <span class="nf">stopRobot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">disable_motors</span><span class="p">()</span></div>
     
-<div class="viewcode-block" id="Communication_Gcode.set_robot_speed_ros"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_robot_speed_ros">[docs]</a>    <span class="k">def</span> <span class="nf">set_robot_speed_ros</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg_twist</span><span class="p">:</span> <span class="n">Twist</span> <span class="p">):</span>
+<div class="viewcode-block" id="Communication_Gcode.set_robot_speed_ros"><a class="viewcode-back" href="../script/driver_baseRoulante.html#driver_baseRoulante.Communication_Gcode.set_robot_speed_ros">[docs]</a>    <span class="k">def</span> <span class="nf">set_robot_speed_ros</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg_twist</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes</span>
 <span class="sd">        et d&#39;avoir des fonctions spéciales ROS</span>
 

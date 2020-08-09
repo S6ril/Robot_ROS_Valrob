@@ -2,7 +2,7 @@
 # @author S6ril & Starfunx
 
 """
-Cette classe permet de gérer la communication Gcode
+Cette classe permet de gérer la communication Gcode entre une carte connectée en USB à une Rasperry.
 
 """
 
@@ -12,11 +12,17 @@ import time
 
 class Communication_Gcode(object):
     """
-    Classe driver de la carte d'asservissement base roulante
-    gère la communication sur le port serial
+    Classe driver pour la carte d'asservissement de la base roulante.
+    Elle gère la communication sur le port serial en Gcode.
     """
 
     def __init__(self, portserial, bauderate):
+        """Initialisation des variables internes de la classe.
+
+        Args:
+            portserial (char): Port USB de l'arduino
+            bauderate (float): bauderate de la carte
+        """
         super(Communication_Gcode, self).__init__()
         self.robotPose = Pose2D()
         self.serial = serial.Serial()
@@ -36,6 +42,7 @@ class Communication_Gcode(object):
     def cleanSerial(self):
         """
         Nettoyage du buffer pour éviter une saturation.
+        On appelle cette fonction après chaques commandes Gcode executées.
         """
         self.serial.flushInput()
         self.serial.flushOutput()
@@ -43,7 +50,7 @@ class Communication_Gcode(object):
 
     # Commandes déplacements:
     def set_fast_move_to(self, x: float, y: float, theta: float):
-        """G00 Le robot se déplace au plus vite vers la cible et prends l’angle d’arrivée.
+        """G00 Le robot se déplace au plus vite vers la cible et prend l’angle d’arrivée.
 
         Args:
             x (float): Position en X absolue sur le terrain
@@ -118,7 +125,7 @@ class Communication_Gcode(object):
 
 
     # position control
-    def get_robot_pose(self) -> Pose2D:
+    def get_robot_pose(self):
         """Fonction qui met à jour la position actuelle du robot dans la classe.
 
         Returns:
@@ -237,7 +244,7 @@ class Communication_Gcode(object):
     def stopRobot(self):
         self.disable_motors()
     
-    def set_robot_speed_ros(self, msg_twist: Twist ):
+    def set_robot_speed_ros(self, msg_twist):
         """Aliase de la fonction set robot speed. Cela permet de garder une cohérence des commandes
         et d'avoir des fonctions spéciales ROS
 

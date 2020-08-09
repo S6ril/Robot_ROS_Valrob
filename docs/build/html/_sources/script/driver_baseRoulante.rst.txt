@@ -1,4 +1,4 @@
-Module Driver Base Roulante
+Classe Driver Base Roulante
 ----------------------------
 
 .. automodule:: driver_baseRoulante

@@ -2,11 +2,6 @@
 
 # @author S6ril & Starfunx
 
-"""
-Cette classe permet de gérer les déplacements du robot, afin qu'il se dirige vers la consigne donnée.
-
-"""
-
 
 from math import sqrt, pow, atan2, cos, sin, pi
 from geometry_msgs.msg import Twist, Pose2D
@@ -16,7 +11,7 @@ from Nav_utiles import distance_euclidienne, rotation, reduction_angle
 
 
 class Motion_controller(object):
-    """docstring for Motion_controller."""
+    """Cette classe permet de gérer les déplacements du robot, afin qu'il se dirige vers la consigne donnée."""
 
     def __init__(self, krho, kalpha):
         super(Motion_controller, self).__init__()

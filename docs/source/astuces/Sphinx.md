@@ -65,8 +65,9 @@ En même temps, on ajoute :
     from recommonmark.transform import AutoStructify
     from recommonmark.parser import CommonMarkParser
 
-Cela permet d’écrire la documentation en langage markdown.
-Pour les extensions, on ajote dans la ligne `recommonmark`.
+Cela permet d’écrire la documentation en langage markdown. La syntaxe est plus facile, mais elle permet moins de mise en forme. (Pour les liens entre les différents fichiers, je garde `.rst`).
+
+Dans les extensions, on ajote dans la ligne `recommonmark`.
 
     extensions = [
     	'sphinx.ext.autodoc',
@@ -152,7 +153,11 @@ La redirection est automatique.
 
 ### Lisibilité des fichiers sources
 
-Pour plus de lisibilité, j’ai choisi de séparer mes chapitres dans le site dans des sous-dossier. Pour cela, j’ai créé un dossier `script`, j’ai inserer les fichiers `.rst` correspondant dedans. Et dans le fichier `modules.rst`, je modifie le chemin d’accès. Exemple :
+Pour plus de lisibilité, j’ai choisi de séparer mes chapitres dans le site dans des sous-dossier. Pour cela, j’ai créé un dossier `script` dans lequel on retouve la documentation générée automatiquement. 
+
+Le fichier `modules.rst` reste dans le dossier source, mais je modifie les liens vers les autres fichiers. Cela me permet d'écrire dans le fichier module sans qu'il soit supprimé. On peut aussi le renommer pour plus de sécurité.
+
+Exemple :
 
     script/Consigne_point
 
