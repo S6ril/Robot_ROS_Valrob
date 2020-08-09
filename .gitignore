@@ -73,4 +73,6 @@ CATKIN_IGNORE
 
 #for prvacy, do not push
 docs/API_Carte_controle_deplacemetns.pdf
+src/rosserial
+install
 
