@@ -1,4 +1,4 @@
-Module Consigne
+Classe Consigne
 ----------------
 
 .. automodule:: Consigne_point

@@ -1,4 +1,4 @@
-Module Navigation Utile
+Fonctions Navigation Utile
 ----------------------------
 
 .. automodule:: Nav_utiles
