@@ -80,6 +80,6 @@ if __name__ == "__main__":
     try:
         while True:
             sharp.get_range()
-            time.sleep(0.5)
+            # time.sleep(0.5)
     except KeyboardInterrupt:
         sharp.__del__()
