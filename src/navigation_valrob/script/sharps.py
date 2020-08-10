@@ -6,13 +6,17 @@ Cette classe permet de gérer la communication avec les Sharps sur une carte ard
 
 """
 
-from sensor_msgs.msg import Range
+from navigation_valrob.msg import Sharps
+
 import serial
 import time
 
 
-class Sharps(object):
+class Class_Sharps(object):
+    """Classe permettant de récupérer la distance donnée par plusieurs Sharps.
 
+    NB: Cette classe s'appelle `Class_` pour ne pas être confondue avec le message Sharps()
+    """
 
     def __init__(self, portserial, bauderate, nbSharps):
         """Initialisation des variables internes de la classe.
@@ -20,10 +24,10 @@ class Sharps(object):
         Args:
             portserial (char): Port USB de l'arduino
             bauderate (float): bauderate de la carte
+            nbSharps    (int): nombre de sharps connecté à la carte.
         """
-        super(Sharps, self).__init__()
-        self.range = Range()
-        self.rangeSharps = [0] *nbSharps
+        self.sharps = Sharps()
+        self.sharps.ranges = [0] *nbSharps
 
         self.serial = serial.Serial()
         self.serial.port = portserial
@@ -49,7 +53,13 @@ class Sharps(object):
         self.serial.flushOutput()
 
     def get_range(self):
-        if (self.serial.is_open):
+        """Fonction pour récupérer les distances données par les sharps sur le port série de la carte
+
+        Returns:
+            Sharps: message custom du paquet navigation_valrob qui regroupe une liste avec toutes les mesures des Sharps.
+        """
+        if (self.serial.is_open and self.serial.inWaiting()> 0):
+            # Verification que serial est ouvert et qu'il y a quelque chose à lire.
             message = self.serial.readlines()  # Lecture du port serial
 
             # print("message =", message)
@@ -58,28 +68,22 @@ class Sharps(object):
                 message = message.rstrip()  # Enlève \n
                 message = message.split(", ")  # Conversion str en list
 
-                # print(message)
-                self.rangeSharps[int(message[0])] = int(message[1])
-
-                print(self.rangeSharps)
-                # # Répartition des valeurs dans la variable position.
-                # self.robotPose.x = float(message[1])
-                # self.robotPose.y = float(message[3])
-                # self.robotPose.theta = float(message[5])
+                # Affectation au message.
+                self.sharps.ranges[int(message[0])] = int(message[1])
 
             self.cleanSerial()
-        # return self.robotPose
+        return self.sharps
 
 
 
 
 
 if __name__ == "__main__":
-    sharp = Sharps("/dev/ttyUSB0", 9600, 4)
+    sharp = Class_Sharps("/dev/ttyUSB0", 9600, 4)
 
     try:
         while True:
-            sharp.get_range()
-            # time.sleep(0.5)
+            print(sharp.get_range())
+            
     except KeyboardInterrupt:
         sharp.__del__()
