@@ -15,7 +15,7 @@ class SharpIR
             SharpIR () {};
 			SharpIR( sensorCode _sensorType , uint8_t _sensorPin ) : sensorType( _sensorType ) , pin( _sensorPin ) {}
 
-			uint8_t getDistance( bool avoidBurstRead = true ) ;
+			uint16_t getDistance( bool avoidBurstRead = true ) ;
 
 			static sensorCode GP2Y0A41SK0F = 0 ;
 			static sensorCode GP2Y0A21YK0F = 1 ;

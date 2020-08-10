@@ -1,8 +1,8 @@
 #include "SharpIR.h"
 
-uint8_t SharpIR::getDistance( bool avoidBurstRead )
+uint16_t SharpIR::getDistance( bool avoidBurstRead )
 	{
-		uint8_t distance ;
+		uint16_t distance ;
 
 		if( !avoidBurstRead ) while( millis() <= lastTime + 20 ) {} //wait for sensor's sampling time
 
