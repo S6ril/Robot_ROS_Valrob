@@ -35,10 +35,11 @@ Ce projet a pour but d’initier l’intégration du langage ROS pour le robot V
 
 Le robot est basé sur une carte Raspberry (cerveau du robot) et d’une carte bas-niveau (arduino, stm32) qui contrôle les moteurs. La communication entre les 2 se fait en Gcode.
 
-On retrouve alors 3 principales branches sur ce GitHub :
+On retrouve alors 4 principales branches sur ce GitHub :
 * master : la branche principale avec le code autonome.
 * Robot_test : une branche de développement qui permet de contrôler le robot avec une mannette de jeux.
 * Turtle_demo : une branche théorique qui simule le robot avec une tortue.
+* dev : une branche de dév pour programmer de nouvelles fonctions.
 
 
 Pour plus de précision, veuillez vous réferer à la [Documentation](https://s6ril.github.io/Robot_ROS_Valrob/). Elle explique en détail le code.
