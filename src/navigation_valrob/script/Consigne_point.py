@@ -119,5 +119,5 @@ class Consigne_Point(object):
             self.listCoord.append([float(x) for x in line.split(" ")])
             line = fichier.readline()
 
-        print(self.listCoord)
+        # print(self.listCoord)
         fichier.close()
