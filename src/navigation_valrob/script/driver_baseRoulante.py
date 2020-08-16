@@ -6,7 +6,15 @@ Cette classe permet de gérer la communication Gcode entre une carte connectée 
 
 """
 
-from geometry_msgs.msg import Twist, Pose2D, Pose
+
+
+class Pose2D():
+	x = 0
+	y = 0
+	theta = 0
+
+
+# from geometry_msgs.msg import Twist, Pose2D, Pose
 import serial
 import time
 
