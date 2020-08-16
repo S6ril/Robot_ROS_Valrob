@@ -15,7 +15,7 @@ def rotation(posRobot, posCible):
     Fonction pour gérer la rotation du robot vers une cible.
     
     Args:
-        posRobot (Pose): Position actuelle du robot
+        posRobot (Pose2D): Position actuelle du robot
         posCible (Pose2D): Position de la consigne
 
     Returns:
@@ -31,7 +31,7 @@ def distance_euclidienne(posRobot, posCible):
     Fonction pour calculer la distance euclidienne entre le robot et une cible.
 
     Args:
-        posRobot (Pose): Position du robot
+        posRobot (Pose2D): Position du robot
         posCible (Pose2D): Position de la consigne
 
     Returns:

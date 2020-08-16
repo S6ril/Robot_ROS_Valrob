@@ -4,8 +4,30 @@
 
 
 from math import sqrt, pow, atan2, cos, sin, pi
-from geometry_msgs.msg import Twist, Pose2D
-from turtlesim.msg import Pose
+
+try:
+    """Importation des variables ROS
+    """
+    from geometry_msgs.msg import Twist, Pose2D
+
+except ImportError:
+    """Si ROS n'est pas dans le système on crée les classes.
+    Cela permet d'utiliser cette classe sans ROS
+    """
+    class Pose2D():
+        x = 0
+        y = 0
+        theta = 0
+
+    class coord():
+        x = 0
+        y = 0
+        z = 0
+
+    class Twist():
+        linear = coord()
+        angular = coord()
+
 
 from Nav_utiles import distance_euclidienne, rotation, reduction_angle
 
@@ -18,10 +40,10 @@ class Motion_controller(object):
         self.krho = float(krho)
         self.kalpha = float(kalpha)
         self.commandVel = Twist()
-        self.robotPose = Pose()
+        self.robotPose = Pose2D()
         self.robotConsign = Pose2D()
         self.initialise = True
-        self.robotPoseInitiale = Pose()
+        self.robotPoseInitiale = Pose2D()
 
 
 
