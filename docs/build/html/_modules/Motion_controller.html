@@ -87,7 +87,7 @@
               <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lancement.html">Lancement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Astuces.html">Astuces</a></li>
 </ul>
@@ -159,8 +159,30 @@
 
 
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
-<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Pose2D</span>
-<span class="kn">from</span> <span class="nn">turtlesim.msg</span> <span class="k">import</span> <span class="n">Pose</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Importation des variables ROS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="k">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Pose2D</span>
+
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Si ROS n&#39;est pas dans le système on crée les classes.</span>
+<span class="sd">    Cela permet d&#39;utiliser cette classe sans ROS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">class</span> <span class="nc">Pose2D</span><span class="p">():</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">class</span> <span class="nc">coord</span><span class="p">():</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">class</span> <span class="nc">Twist</span><span class="p">():</span>
+        <span class="n">linear</span> <span class="o">=</span> <span class="n">coord</span><span class="p">()</span>
+        <span class="n">angular</span> <span class="o">=</span> <span class="n">coord</span><span class="p">()</span>
+
 
 <span class="kn">from</span> <span class="nn">Nav_utiles</span> <span class="k">import</span> <span class="n">distance_euclidienne</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">reduction_angle</span>
 
@@ -173,10 +195,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">krho</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">krho</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kalpha</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">kalpha</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">commandVel</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotPose</span> <span class="o">=</span> <span class="n">Pose2D</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">robotConsign</span> <span class="o">=</span> <span class="n">Pose2D</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">robotPoseInitiale</span> <span class="o">=</span> <span class="n">Pose</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robotPoseInitiale</span> <span class="o">=</span> <span class="n">Pose2D</span><span class="p">()</span>
 
 
 
