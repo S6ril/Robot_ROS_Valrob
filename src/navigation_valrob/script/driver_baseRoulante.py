@@ -5,10 +5,32 @@
 Cette classe permet de gérer la communication Gcode entre une carte connectée en USB à une Rasperry.
 
 """
+try:
+    """Importation des variables ROS
+    """
+    from geometry_msgs.msg import Twist, Pose2D
 
-from geometry_msgs.msg import Twist, Pose2D, Pose
+except ImportError:
+    """Si ROS n'est pas dans le système on crée les classes.
+    Cela permet d'utiliser cette classe sans ROS
+    """
+    class Pose2D():
+        x = 0
+        y = 0
+        theta = 0
+
+    class coord():
+        x = 0
+        y = 0
+        z = 0
+
+    class Twist():
+        linear  = coord()
+        angular = coord() 
+
+
 import serial
-import time
+
 
 class Communication_Gcode(object):
     """

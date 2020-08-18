@@ -10,8 +10,29 @@ Cette classe permet de gérer les consignes données au robot.
 
 
 from math import sqrt, pow, atan2, cos, sin
-from geometry_msgs.msg import Twist, Pose2D
-from turtlesim.msg import Pose
+
+try:
+    """Importation des variables ROS
+    """
+    from geometry_msgs.msg import Twist, Pose2D
+
+except ImportError:
+    """Si ROS n'est pas dans le système on crée les classes.
+    Cela permet d'utiliser cette classe sans ROS
+    """
+    class Pose2D():
+        x = 0
+        y = 0
+        theta = 0
+
+    class coord():
+        x = 0
+        y = 0
+        z = 0
+
+    class Twist():
+        linear = coord()
+        angular = coord()
 
 from Nav_utiles import isPosition_reached
 
@@ -40,7 +61,7 @@ class Consigne_Point(object):
         self.angle_tolerance = angle_tolerance
         self.maxLinVelStopped = maxLinVelStopped
         self.maxAngVelStopped = maxAngVelStopped
-        self.robotPose = Pose()
+        self.robotPose = Pose2D()
         self.robotConsign = Pose2D()
 
 
@@ -49,7 +70,7 @@ class Consigne_Point(object):
         """Fonction qui met à jour la position actuelle du robot dans la classe.
 
         Args:
-            robotPose (Pose): Position actuelle su robot.
+            robotPose (Pose2D): Position actuelle su robot.
         """
         self.robotPose = robotPose
 
@@ -98,5 +119,5 @@ class Consigne_Point(object):
             self.listCoord.append([float(x) for x in line.split(" ")])
             line = fichier.readline()
 
-        print(self.listCoord)
+        # print(self.listCoord)
         fichier.close()

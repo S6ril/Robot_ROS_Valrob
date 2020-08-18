@@ -7,7 +7,7 @@ Bienvenue sur la documentation du robot ROS de Valrob
     :align: center
     :alt: alternate text
 
-Cette documentation vous apprendra comment faire fonctionner le robot de Valrob avec le langage ROS. 
+Cette documentation vous apprendra comment faire fonctionner le robot de Valrob avec et sans le langage ROS. 
 
 .. toctree::
    :maxdepth: 2

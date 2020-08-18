@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Lancement rapide &mdash; Documentation Robot ROS Valrob 2020</title>
+  <title>Lancement &mdash; Documentation Robot ROS Valrob 2020</title>
   
 
   
@@ -89,14 +89,12 @@
               <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Pr%C3%A9requis.html">Prérequis &amp; Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Lancement rapide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#itineraire">Itinéraire</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#robot">Robot</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#port-de-larduino">Port de l’Arduino</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#lancement-de-ros">Lancement de ROS</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lancement</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lancement-sans-ros">Lancement sans ROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lancement-avec-ros">Lancement avec ROS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-de-l-itineraire">Configuration de l”itinéraire</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-du-port-de-larduino">Configuration du port de l’Arduino</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lancement-de-ros">Lancement de ROS</a></li>
 </ul>
 </li>
 </ul>
@@ -148,7 +146,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Lancement rapide</li>
+      <li>Lancement</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,19 +165,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="lancement-rapide">
-<h1>Lancement rapide<a class="headerlink" href="#lancement-rapide" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Maintenant que le code est prêt, il faut le lancer. Pour cela, j’utilise un <a class="reference external" href="https://wiki.ros.org/roslaunch/Commandline%20Tools/">ROSLaunch</a> qui me permet de lancer un Roscore et des nodes simultanément.</p>
+  <div class="section" id="lancement">
+<h1>Lancement<a class="headerlink" href="#lancement" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="lancement-sans-ros">
+<h2>Lancement sans ROS<a class="headerlink" href="#lancement-sans-ros" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est possible d’utiliser le code sans ROS.</p>
+<p>Pour cela ajoutez dans votre dossier de travail (le même où se situe votre script Python) les fichiers suivant :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">driver_baseRoulante</span></code> : Cela permet de controler les moteurs par communication Gcode via le port série.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Consigne_point</span></code> : permet de lire un fichier de points et d’envoyer une consigne lorsque le point a été atteind.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Motion_controller</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Nav_utiles</span></code> : outils qui peuvent être utile à la navigation.</p></li>
+</ul>
+<p>Le plus interressant est le <code class="docutils literal notranslate"><span class="pre">driver_baseRoulante</span></code>. Dans votre script Python :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">driver_BaseRoulante</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="c1"># Initialisation de la communication</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">Communication_Gcode</span><span class="p">(</span><span class="s2">&quot;COM5&quot;</span><span class="p">,</span> <span class="mi">115200</span><span class="p">)</span>
+
+<span class="c1"># Activation des moteurs</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">enable_motors</span><span class="p">()</span>
+
+<span class="c1"># Déplacement lent vers un point</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">set_slow_move_to</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Avec les différentes fonctions, il sera alors possible de diriger le robot.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le fichiers <strong>nodes</strong> sont utiles pour le langage ROS. Ils permettent de gérer les entrées et les sorties.</p>
+</div>
+</div>
+<div class="section" id="lancement-avec-ros">
+<h2>Lancement avec ROS<a class="headerlink" href="#lancement-avec-ros" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Maintenant que le code est téléchargé et placé dans l’environnement <code class="docutils literal notranslate"><span class="pre">catkin_ws</span></code>.
+On a alors un dossier de la forme :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">catkin_ws</span>
+    <span class="o">--</span> <span class="n">src</span>
+    <span class="o">----</span> <span class="n">navigation_valrob</span>
+    <span class="o">------</span> <span class="n">script</span>
+    <span class="o">------</span> <span class="n">launch</span>
+</pre></div>
+</div>
+<p>Il faut alors lancer ROS ! Pour cela, j’utilise un <a class="reference external" href="https://wiki.ros.org/roslaunch/Commandline%20Tools/">ROSLaunch</a> qui me permet de lancer un Roscore et des nodes simultanément.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">catkin_ws</span><span class="o">/</span>
 <span class="n">catkin_make</span>
 <span class="n">source</span> <span class="o">./</span><span class="n">devel</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>  
 </pre></div>
 </div>
-<p>La dernière commande permet « d’apprendre » au terminal toutes les nouvelles commandes contenue dans ce dossier.</p>
-<div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h2>
-<div class="section" id="itineraire">
-<h3>Itinéraire<a class="headerlink" href="#itineraire" title="Lien permanent vers ce titre">¶</a></h3>
+<p>La dernière commande <code class="docutils literal notranslate"><span class="pre">source</span></code> permet « d’apprendre » au terminal toutes les nouvelles commandes contenue dans ce dossier.</p>
+<div class="section" id="configuration-de-l-itineraire">
+<h3>Configuration de l”itinéraire<a class="headerlink" href="#configuration-de-l-itineraire" title="Lien permanent vers ce titre">¶</a></h3>
 <p>On configure dans le fichier <code class="docutils literal notranslate"><span class="pre">point.txt</span></code> les futurs points de consignes.
 Ils sont de la forme :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="n">y</span> <span class="n">z</span>
@@ -188,17 +224,15 @@ Ils sont de la forme :</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="robot">
-<h3>Robot<a class="headerlink" href="#robot" title="Lien permanent vers ce titre">¶</a></h3>
-<div class="section" id="port-de-larduino">
-<h4>Port de l’Arduino<a class="headerlink" href="#port-de-larduino" title="Lien permanent vers ce titre">¶</a></h4>
+<div class="section" id="configuration-du-port-de-larduino">
+<h3>Configuration du port de l’Arduino<a class="headerlink" href="#configuration-du-port-de-larduino" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Dans un premier temps on regarde le port de l’arduino. Pour cela dans l’application Arduino, on le trouve facilement dans outils/port.
 Souvent le port est <code class="docutils literal notranslate"><span class="pre">ttyACM0</span></code>. On retient alors <code class="docutils literal notranslate"><span class="pre">ACM0</span></code>.</p>
 <p>PS : Si plusieurs cartes ont été connectées, il est probable que le port soit <code class="docutils literal notranslate"><span class="pre">ACM1</span></code>, etc …</p>
-<p>De plus on vérifie le bauderate de la carte.</p>
+<p>De plus on vérifie le baudrate de la carte.</p>
 </div>
 <div class="section" id="lancement-de-ros">
-<h4>Lancement de ROS<a class="headerlink" href="#lancement-de-ros" title="Lien permanent vers ce titre">¶</a></h4>
+<h3>Lancement de ROS<a class="headerlink" href="#lancement-de-ros" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Puis on configure le robot, pour cela on modifie dans le fichier <code class="docutils literal notranslate"><span class="pre">src/navigation_valrob/launch/robot.launch</span></code> les paramètres de la carte :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">portCarte</span> <span class="p">:</span> <span class="s2">&quot;ACM0&quot;</span>
 <span class="n">bauderate</span> <span class="p">:</span> <span class="mi">115200</span>
@@ -212,7 +246,6 @@ Souvent le port est <code class="docutils literal notranslate"><span class="pre"
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Lorsque l’on écrit au clavier, il est utile d’utiliser la touche tabulation. Cela permet de compléter automatiquement la commande en cours.</p>
-</div>
 </div>
 </div>
 </div>

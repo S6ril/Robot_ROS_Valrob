@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Lancement rapide" href="Lancement.html" />
+    <link rel="next" title="Lancement" href="Lancement.html" />
     <link rel="prev" title="Bienvenue sur la documentation du robot ROS de Valrob" href="index.html" />
     <link href="_static/style.css" rel="stylesheet" type="text/css">
 
@@ -89,16 +89,43 @@
               <p class="caption"><span class="caption-text">Sommaire :</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Prérequis &amp; Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-dubuntu-sur-raspberry-pi">Installation d’Ubuntu sur Raspberry PI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requis">Requis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-dubuntu">Installation d’Ubuntu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-du-wifi-apres-le-flash">Configuration du wifi après le flash.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#connexion">Connexion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#si-vous-avez-un-reseau-local">Si vous avez un reseau local</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#si-vous-etes-directement-avec-un-clavier-sur-la-raspberry">Si vous étes directement avec un clavier sur la Raspberry</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-des-mises-a-jours">Installation des mises à jours</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#problemes">Problèmes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#je-ne-trouve-pas-la-raspberry-sur-mon-reseau-local">Je ne trouve pas la Raspberry sur mon réseau local</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#installation-de-ros-sur-ubuntu">Installation de ROS sur Ubuntu</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#teechargement-des-paquets">Tééchargement des paquets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#telechargement-des-paquets">Téléchargement des paquets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preparation-de-lenvironnement-ros">Préparation de l’environnement ROS</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#python">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#telechargement-des-codes">Téléchargement des codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-de-ros-sur-windows">Installation de ROS sur Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-de-python">Installation de Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux-debian">Linux Debian</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Lancement.html">Lancement rapide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#telechargement-des-codes">Téléchargement des codes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sous-windows-et-linux">Sous Windows et Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sous-linux-en-ligne-de-commande">Sous Linux en ligne de commande</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Lancement.html">Lancement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Fichiers sources détaillés</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Astuces.html">Astuces</a></li>
 </ul>
@@ -173,11 +200,110 @@
 Cependant ROS est un langage disponible sur toutes les plateformes. <strong>Les commandes données pour ROS peuvent varier d’une version à l’autre.</strong></p>
 </div>
 <p><span style="display:block;text-align:center"> <img alt="ROS Noetic" src="_images/noetic.png" /> </span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Il est possible d’utiliser le code sans ROS et seulement avec le langage Python, car le code est composé de classe. Pour cela sautez l’étape d’installation de ROS et allez directement au téléchargement du code (si Python est installé !!).</p>
+</div>
+<div class="section" id="installation-dubuntu-sur-raspberry-pi">
+<h2>Installation d’Ubuntu sur Raspberry PI<a class="headerlink" href="#installation-dubuntu-sur-raspberry-pi" title="Lien permanent vers ce titre">¶</a></h2>
+<p>En installant Ubuntu sur Raspberry Pi, on simplifie l’installation de ROS. Mais l’installation sur la carte est un peu complexe.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>On va utiliser une connexion ssh vers la Raspberry. Cela necessite alors un réseau local avec l’ordinateur et la Rasperry connectée dessus. La connexion peut être en wifi ou en ethernet.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Si par malchance vous n’avez pas de réseau local, mais seulement une seule connexion internet, vous pouvez utiliser la Raspberry comme ordinateur en vous connectant dessus avec un clavier, un écran et une connexion internet (wifi, cable). Les commandes seront identiques à une installation sur Ubuntu. Le client ssh ne sera donc pas obligatoire, car il permet seulement d’accéder à distance à la Raspberry.</p>
+</div>
+<div class="section" id="requis">
+<h3>Requis<a class="headerlink" href="#requis" title="Lien permanent vers ce titre">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ubuntu.com/download/raspberry-pi">Ubuntu OS</a> pour Raspberry. Dans mon cas, j’utilise une Raspberry Pi 3b avec 1Go de RAM. Je prends alors la version 32 bits de l’OS.</p></li>
+<li><p><a class="reference external" href="https://www.raspberrypi.org/downloads/">Raspberry Pi Imager</a> pour installer l’OS sur une carte micro-sd.</p></li>
+<li><p>Carte micro-sd avec son adaptateur PC.</p></li>
+<li><p><a class="reference external" href="https://putty.org/">Putty</a> pour se connecter en ssh. (optionnel voir note ci-dessus).</p></li>
+</ul>
+</div>
+<div class="section" id="installation-dubuntu">
+<h3>Installation d’Ubuntu<a class="headerlink" href="#installation-dubuntu" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Si vous avez télécharger Ubuntu server, ouvrez Raspberry Pi Imager sur votre ordinateur et selectionner <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">custom</span></code>.</p>
+<p><span style="display:block;text-align:center"> <img alt="Rpi_imager" src="_images/rpi_imager.png" /> </span></p>
+<p>Puis chosissez votre carte et enfin <code class="docutils literal notranslate"><span class="pre">write</span></code>.</p>
+<p>Raspberry Pi imager propose aussi de télécharger l”OS à votre place.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Par cable ethernet, il n’y a aucune configuration du reseau à faire.</p>
+</div>
+<div class="section" id="configuration-du-wifi-apres-le-flash">
+<h4>Configuration du wifi après le flash.<a class="headerlink" href="#configuration-du-wifi-apres-le-flash" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Si vous souhaitez mettre la Raspberry en wifi, il faut modifier dans la partition <code class="docutils literal notranslate"><span class="pre">system-boot</span></code> le fichier <code class="docutils literal notranslate"><span class="pre">network-config</span></code> et décommenter (et adapter) les lignes suivantes :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wifis</span> <span class="p">:</span>
+  <span class="n">wlan0</span> <span class="p">:</span>
+  <span class="n">dhcp4</span> <span class="p">:</span> <span class="n">true</span>
+  <span class="n">optional</span> <span class="p">:</span> <span class="n">true</span>
+  <span class="n">access</span><span class="o">-</span><span class="n">points</span> <span class="p">:</span>
+    <span class="s2">&quot;home network&quot;</span><span class="p">:</span>
+      <span class="n">password</span> <span class="p">:</span> <span class="s2">&quot;123456789&quot;</span>
+</pre></div>
+</div>
+<p>Maintenant la Raspberry peut être démarrée. L’os est configuré pour activer automatiquement la connection SSH.</p>
+</div>
+</div>
+<div class="section" id="connexion">
+<h3>Connexion<a class="headerlink" href="#connexion" title="Lien permanent vers ce titre">¶</a></h3>
+<p>L’utilisateur et mot de passe par défaut est <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code>. Il est demandé à la première utilisation de changer le mot de passe.</p>
+<div class="section" id="si-vous-avez-un-reseau-local">
+<h4>Si vous avez un reseau local<a class="headerlink" href="#si-vous-avez-un-reseau-local" title="Lien permanent vers ce titre">¶</a></h4>
+<p>On se connecte avec Putty sur la raspberry. Remplissez seulement <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">Name</span></code> avec <code class="docutils literal notranslate"><span class="pre">raspberrypi.home</span></code>. Puis cliquer sur <code class="docutils literal notranslate"><span class="pre">open</span></code>.</p>
+<p><span style="display:block;text-align:center"> <img alt="Putty" src="_images/Putty.png" /> </span></p>
+<p>Un terminal de connexion s’affiche alors. Félicitation, vous étes connecté à la Raspberry en ssh !</p>
+<p>Il ne manque plus de rentrer l’identifiant <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> et le mot de passe <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code>.</p>
+</div>
+<div class="section" id="si-vous-etes-directement-avec-un-clavier-sur-la-raspberry">
+<h4>Si vous étes directement avec un clavier sur la Raspberry<a class="headerlink" href="#si-vous-etes-directement-avec-un-clavier-sur-la-raspberry" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Lorsque l”on demande un login, entrez l’identifiant <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> et le mot de passe <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code>.
+Attention lorsque vous tapez le mot de passe aucun carractère s”affiche sur l”écran, c”est normal.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p><strong>Le clavier est sûrement en qwerty !!</strong></p>
+</div>
+<p>Pour changer le clavier en français, je me base sur ce <a class="reference external" href="https://linoxide.com/linux-how-to/configure-keyboard-ubuntu/">site</a>.</p>
+<p>En une ligne, la commande est :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>L=&#39;fr&#39; &amp;&amp; sudo sed -i &#39;s/XKBLAYOUT=\&quot;\w*&quot;/XKBLAYOUT=\&quot;&#39;$L&#39;\&quot;/g&#39; /etc/default/keyboard
+</pre></div>
+</div>
+<p>Féliciation vous étes connecté à la Raspberry !</p>
+</div>
+</div>
+<div class="section" id="installation-des-mises-a-jours">
+<h3>Installation des mises à jours<a class="headerlink" href="#installation-des-mises-a-jours" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Par habitude, on peut aussi vérifier les mises à jours lors de la première utilisation :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">y</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">autoremove</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="problemes">
+<h3>Problèmes<a class="headerlink" href="#problemes" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="section" id="je-ne-trouve-pas-la-raspberry-sur-mon-reseau-local">
+<h4>Je ne trouve pas la Raspberry sur mon réseau local<a class="headerlink" href="#je-ne-trouve-pas-la-raspberry-sur-mon-reseau-local" title="Lien permanent vers ce titre">¶</a></h4>
+<ul class="simple">
+<li><p>Solution 1 : En branchant un écran et un clavier sur la raspberry et en se connectant dessus, vous pouvez vérifier l’adresse ip de la Raspberry :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">ifconfig</span>
+</pre></div>
+</div>
+<p>En fouillant un peu, on peut trouver l’adresse ip de la Raspberry qui est de la forme <code class="docutils literal notranslate"><span class="pre">192.168.*.*</span></code> .</p>
+<ul class="simple">
+<li><p>Solution 2 : Si votre téléphone est aussi connectés sur le même réseau local, vous pouvez utiliser l’application <a class="reference external" href="https://www.fing.com/">fing</a>. Elle permet de scanner le réseau et de trouver les périphériques connectés.</p></li>
+</ul>
+</div>
+</div>
+</div>
 <div class="section" id="installation-de-ros-sur-ubuntu">
 <h2>Installation de ROS sur Ubuntu<a class="headerlink" href="#installation-de-ros-sur-ubuntu" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Voici un petit résumé :</p>
-<div class="section" id="teechargement-des-paquets">
-<h3>Tééchargement des paquets<a class="headerlink" href="#teechargement-des-paquets" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Voici un petit résumé du tutorial :</p>
+<div class="section" id="telechargement-des-paquets">
+<h3>Téléchargement des paquets<a class="headerlink" href="#telechargement-des-paquets" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Je me base sur le <a class="reference external" href="http://wiki.ros.org/noetic/Installation/Ubuntu">tutoriel de ROS</a> pour l’installation sous Ubuntu.</p>
 <p>On ajoute le dépot :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;</span>
@@ -222,21 +348,39 @@ catkin_make -DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">devel</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">bash</span>
 </pre></div>
 </div>
-<p>On peut alors mettre le code github sur l’ordinateur !</p>
 </div>
 </div>
-<div class="section" id="python">
-<h2>Python<a class="headerlink" href="#python" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="installation-de-ros-sur-windows">
+<h2>Installation de ROS sur Windows<a class="headerlink" href="#installation-de-ros-sur-windows" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Voir le tutoriel <a class="reference external" href="http://wiki.ros.org/Installation/Windows">suivant</a>.</p>
+</div>
+<div class="section" id="installation-de-python">
+<h2>Installation de Python<a class="headerlink" href="#installation-de-python" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Voici la page de téléchargement de <a class="reference external" href="https://www.python.org/downloads/">Python</a>.</p>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Il suffit de cliquer sur le bouton <code class="docutils literal notranslate"><span class="pre">télécharger</span> <span class="pre">Python</span></code> et de suivre le programme d’installation.</p>
+</div>
+<div class="section" id="linux-debian">
+<h3>Linux Debian<a class="headerlink" href="#linux-debian" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Sous Linux, si Python n’est pas installé automatiquement :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span>
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="telechargement-des-codes">
 <h2>Téléchargement des codes<a class="headerlink" href="#telechargement-des-codes" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Une fois les langages installés, il faut récupérer le code de Github.
-On ouvre un terminal, puis :</p>
+<p>Une fois les langages installés, il faut récupérer le code de Github.</p>
+<div class="section" id="sous-windows-et-linux">
+<h3>Sous Windows et Linux<a class="headerlink" href="#sous-windows-et-linux" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On se rend sur le <a class="reference external" href="https://github.com/S6ril/Robot_ROS_Valrob">github</a> et il suffit de télécharger le code depuis l’archive ZIP.</p>
+<p><span style="display:block;text-align:center"> <img alt="Github" src="_images/github_download.png" /> </span></p>
+<p>Puis d’extraire le dossier <code class="docutils literal notranslate"><span class="pre">src</span></code> qui contient les codes.</p>
+</div>
+<div class="section" id="sous-linux-en-ligne-de-commande">
+<h3>Sous Linux en ligne de commande<a class="headerlink" href="#sous-linux-en-ligne-de-commande" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On ouvre un terminal, puis :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">S6ril</span><span class="o">/</span><span class="n">Robot_ROS_Valrob</span><span class="o">.</span><span class="n">git</span>
 <span class="n">mv</span> <span class="n">Robot_ROS_Valrob</span><span class="o">/</span><span class="n">src</span><span class="o">/</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span>
@@ -257,6 +401,7 @@ Pour faire de la place (notamment sur Rapsberry-Pi) :</p>
 <p>Cela supprime le dossier documentation téléchargé de Github.</p>
 </div>
 </div>
+</div>
 
 
            </div>
@@ -266,7 +411,7 @@ Pour faire de la place (notamment sur Rapsberry-Pi) :</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Lancement.html" class="btn btn-neutral float-right" title="Lancement rapide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Lancement.html" class="btn btn-neutral float-right" title="Lancement" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Bienvenue sur la documentation du robot ROS de Valrob" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
