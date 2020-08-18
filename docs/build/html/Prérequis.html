@@ -289,18 +289,19 @@ Attention lorsque vous tapez le mot de passe aucun carractère s”affiche sur l
 <ul class="simple">
 <li><p>Solution 1 : En branchant un écran et un clavier sur la raspberry et en se connectant dessus, vous pouvez vérifier l’adresse ip de la Raspberry :</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">ifconfig</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ifconfig</span>
 </pre></div>
 </div>
-<p>En fouillant un peu, on peut trouver l’adresse ip de la Raspberry qui est de la forme <code class="docutils literal notranslate"><span class="pre">192.168.*.*</span></code> .</p>
+<p>En fouillant un peu, on peut trouver l’adresse ip de la Raspberry qui est de la forme <code class="docutils literal notranslate"><span class="pre">192.168.1.12</span></code>. Entrez ce numéro dans la case Host name de Putty et connectez-vous.</p>
 <ul class="simple">
-<li><p>Solution 2 : Si votre téléphone est aussi connectés sur le même réseau local, vous pouvez utiliser l’application <a class="reference external" href="https://www.fing.com/">fing</a>. Elle permet de scanner le réseau et de trouver les périphériques connectés.</p></li>
+<li><p>Solution 2 : Si votre téléphone est aussi connectés sur le même réseau local, vous pouvez utiliser l’application <a class="reference external" href="https://www.fing.com/">Fing</a>. Elle permet de scanner le réseau et de trouver les périphériques connectés.</p></li>
 </ul>
 </div>
 </div>
 </div>
 <div class="section" id="installation-de-ros-sur-ubuntu">
 <h2>Installation de ROS sur Ubuntu<a class="headerlink" href="#installation-de-ros-sur-ubuntu" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Maintenant que Ubuntu est installé sur la Raspberry, on peut installer ROS. Le processus est identique pour une installation sur un ordinateur.</p>
 <p>Voici un petit résumé du tutorial :</p>
 <div class="section" id="telechargement-des-paquets">
 <h3>Téléchargement des paquets<a class="headerlink" href="#telechargement-des-paquets" title="Lien permanent vers ce titre">¶</a></h3>
@@ -356,15 +357,16 @@ catkin_make -DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
 </div>
 <div class="section" id="installation-de-python">
 <h2>Installation de Python<a class="headerlink" href="#installation-de-python" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Voici la page de téléchargement de <a class="reference external" href="https://www.python.org/downloads/">Python</a>.</p>
 <div class="section" id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Voici la page de téléchargement de <a class="reference external" href="https://www.python.org/downloads/">Python</a>.</p>
 <p>Il suffit de cliquer sur le bouton <code class="docutils literal notranslate"><span class="pre">télécharger</span> <span class="pre">Python</span></code> et de suivre le programme d’installation.</p>
 </div>
 <div class="section" id="linux-debian">
 <h3>Linux Debian<a class="headerlink" href="#linux-debian" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Sous Linux, si Python n’est pas installé automatiquement :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
 </pre></div>
 </div>
 </div>
@@ -374,9 +376,9 @@ catkin_make -DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
 <p>Une fois les langages installés, il faut récupérer le code de Github.</p>
 <div class="section" id="sous-windows-et-linux">
 <h3>Sous Windows et Linux<a class="headerlink" href="#sous-windows-et-linux" title="Lien permanent vers ce titre">¶</a></h3>
-<p>On se rend sur le <a class="reference external" href="https://github.com/S6ril/Robot_ROS_Valrob">github</a> et il suffit de télécharger le code depuis l’archive ZIP.</p>
+<p>On se rend sur le <a class="reference external" href="https://github.com/S6ril/Robot_ROS_Valrob">github</a> et il suffit de télécharger le code depuis une archive ZIP.</p>
 <p><span style="display:block;text-align:center"> <img alt="Github" src="_images/github_download.png" /> </span></p>
-<p>Puis d’extraire le dossier <code class="docutils literal notranslate"><span class="pre">src</span></code> qui contient les codes.</p>
+<p>Puis d’extraire le dossier <code class="docutils literal notranslate"><span class="pre">src</span></code> qui contient les codes vers l”environnement <code class="docutils literal notranslate"><span class="pre">catkin_ws</span></code>.</p>
 </div>
 <div class="section" id="sous-linux-en-ligne-de-commande">
 <h3>Sous Linux en ligne de commande<a class="headerlink" href="#sous-linux-en-ligne-de-commande" title="Lien permanent vers ce titre">¶</a></h3>
@@ -398,7 +400,7 @@ Pour faire de la place (notamment sur Rapsberry-Pi) :</p>
 <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">Robot_ROS_Valrob</span>
 </pre></div>
 </div>
-<p>Cela supprime le dossier documentation téléchargé de Github.</p>
+<p>Cela supprime le dossier documentation téléchargé de Github qui se trouve dans le repo.</p>
 </div>
 </div>
 </div>

@@ -105,16 +105,18 @@ Par habitude, on peut aussi vérifier les mises à jours lors de la première ut
 
 * Solution 1 : En branchant un écran et un clavier sur la raspberry et en se connectant dessus, vous pouvez vérifier l’adresse ip de la Raspberry :
 ```
-    ifconfig
+ifconfig
 ``` 
 
 
-En fouillant un peu, on peut trouver l’adresse ip de la Raspberry qui est de la forme `192.168.*.*` .
+En fouillant un peu, on peut trouver l’adresse ip de la Raspberry qui est de la forme `192.168.1.12`. Entrez ce numéro dans la case Host name de Putty et connectez-vous.
 
-* Solution 2 : Si votre téléphone est aussi connectés sur le même réseau local, vous pouvez utiliser l’application [fing](https://www.fing.com/). Elle permet de scanner le réseau et de trouver les périphériques connectés.
+* Solution 2 : Si votre téléphone est aussi connectés sur le même réseau local, vous pouvez utiliser l’application [Fing](https://www.fing.com/). Elle permet de scanner le réseau et de trouver les périphériques connectés.
 
 
 ## Installation de ROS sur Ubuntu
+
+Maintenant que Ubuntu est installé sur la Raspberry, on peut installer ROS. Le processus est identique pour une installation sur un ordinateur.
 
 Voici un petit résumé du tutorial :
 
@@ -180,9 +182,9 @@ Voir le tutoriel [suivant](http://wiki.ros.org/Installation/Windows).
 
 ## Installation de Python
 
-Voici la page de téléchargement de [Python](https://www.python.org/downloads/).
 
 ### Windows
+Voici la page de téléchargement de [Python](https://www.python.org/downloads/).
 
 Il suffit de cliquer sur le bouton `télécharger Python` et de suivre le programme d’installation.
 
@@ -191,6 +193,7 @@ Il suffit de cliquer sur le bouton `télécharger Python` et de suivre le progra
 Sous Linux, si Python n’est pas installé automatiquement :
 
     sudo apt install python3
+    sudo apt install python3-pip
 
 
 
@@ -200,11 +203,11 @@ Une fois les langages installés, il faut récupérer le code de Github.
 
 ### Sous Windows et Linux
 
-On se rend sur le [github](https://github.com/S6ril/Robot_ROS_Valrob) et il suffit de télécharger le code depuis l’archive ZIP. 
+On se rend sur le [github](https://github.com/S6ril/Robot_ROS_Valrob) et il suffit de télécharger le code depuis une archive ZIP. 
 
 <span style="display:block;text-align:center"> ![Github](./../../images/github_download.png) </span>
 
-Puis d’extraire le dossier `src` qui contient les codes.
+Puis d’extraire le dossier `src` qui contient les codes vers l'environnement `catkin_ws`.
 
 ### Sous Linux en ligne de commande
 
@@ -227,5 +230,5 @@ Pour faire de la place (notamment sur Rapsberry-Pi) :
     cd ~/
     rm -rf Robot_ROS_Valrob
 
-Cela supprime le dossier documentation téléchargé de Github.
+Cela supprime le dossier documentation téléchargé de Github qui se trouve dans le repo.
 
