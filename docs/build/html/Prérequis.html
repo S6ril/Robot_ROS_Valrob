@@ -96,8 +96,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#connexion">Connexion</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#si-vous-avez-un-reseau-local">Si vous avez un reseau local</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#si-vous-etes-directement-avec-un-clavier-sur-la-raspberry">Si vous étes directement avec un clavier sur la Raspberry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#si-vous-avez-un-reseau-local">Si vous avez un reseau local</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#installation-des-mises-a-jours">Installation des mises à jours</a></li>
@@ -207,13 +207,9 @@ Cependant ROS est un langage disponible sur toutes les plateformes. <strong>Les 
 <div class="section" id="installation-dubuntu-sur-raspberry-pi">
 <h2>Installation d’Ubuntu sur Raspberry PI<a class="headerlink" href="#installation-dubuntu-sur-raspberry-pi" title="Lien permanent vers ce titre">¶</a></h2>
 <p>En installant Ubuntu sur Raspberry Pi, on simplifie l’installation de ROS. Mais l’installation sur la carte est un peu complexe.</p>
-<div class="admonition warning">
-<p class="admonition-title">Avertissement</p>
-<p>On va utiliser une connexion ssh vers la Raspberry. Cela necessite alors un réseau local avec l’ordinateur et la Rasperry connectée dessus. La connexion peut être en wifi ou en ethernet.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Si par malchance vous n’avez pas de réseau local, mais seulement une seule connexion internet, vous pouvez utiliser la Raspberry comme ordinateur en vous connectant dessus avec un clavier, un écran et une connexion internet (wifi, cable). Les commandes seront identiques à une installation sur Ubuntu. Le client ssh ne sera donc pas obligatoire, car il permet seulement d’accéder à distance à la Raspberry.</p>
+<p>Si par malchance vous n’avez pas de réseau local, mais seulement une seule connexion internet, vous pouvez utiliser la Raspberry comme ordinateur en vous connectant dessus avec un clavier, un écran et une connexion internet (wifi, cable). Les commandes seront identiques à une installation sur Ubuntu. Le client ssh Putty ne sera donc pas obligatoire, car il permet seulement d’accéder à distance à la Raspberry.</p>
 </div>
 <div class="section" id="requis">
 <h3>Requis<a class="headerlink" href="#requis" title="Lien permanent vers ce titre">¶</a></h3>
@@ -226,16 +222,16 @@ Cependant ROS est un langage disponible sur toutes les plateformes. <strong>Les 
 </div>
 <div class="section" id="installation-dubuntu">
 <h3>Installation d’Ubuntu<a class="headerlink" href="#installation-dubuntu" title="Lien permanent vers ce titre">¶</a></h3>
-<p>Si vous avez télécharger Ubuntu server, ouvrez Raspberry Pi Imager sur votre ordinateur et selectionner <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">custom</span></code>.</p>
+<p>Si vous avez téléchargé Ubuntu server, ouvrez Raspberry Pi Imager sur votre ordinateur et selectionner <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">custom</span></code>.</p>
 <p><span style="display:block;text-align:center"> <img alt="Rpi_imager" src="_images/rpi_imager.png" /> </span></p>
 <p>Puis chosissez votre carte et enfin <code class="docutils literal notranslate"><span class="pre">write</span></code>.</p>
-<p>Raspberry Pi imager propose aussi de télécharger l”OS à votre place.</p>
+<p>Raspberry Pi imager propose aussi de télécharger l’OS à votre place.</p>
+<div class="section" id="configuration-du-wifi-apres-le-flash">
+<h4>Configuration du wifi après le flash.<a class="headerlink" href="#configuration-du-wifi-apres-le-flash" title="Lien permanent vers ce titre">¶</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Par cable ethernet, il n’y a aucune configuration du reseau à faire.</p>
 </div>
-<div class="section" id="configuration-du-wifi-apres-le-flash">
-<h4>Configuration du wifi après le flash.<a class="headerlink" href="#configuration-du-wifi-apres-le-flash" title="Lien permanent vers ce titre">¶</a></h4>
 <p>Si vous souhaitez mettre la Raspberry en wifi, il faut modifier dans la partition <code class="docutils literal notranslate"><span class="pre">system-boot</span></code> le fichier <code class="docutils literal notranslate"><span class="pre">network-config</span></code> et décommenter (et adapter) les lignes suivantes :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wifis</span> <span class="p">:</span>
   <span class="n">wlan0</span> <span class="p">:</span>
@@ -252,17 +248,10 @@ Cependant ROS est un langage disponible sur toutes les plateformes. <strong>Les 
 <div class="section" id="connexion">
 <h3>Connexion<a class="headerlink" href="#connexion" title="Lien permanent vers ce titre">¶</a></h3>
 <p>L’utilisateur et mot de passe par défaut est <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code>. Il est demandé à la première utilisation de changer le mot de passe.</p>
-<div class="section" id="si-vous-avez-un-reseau-local">
-<h4>Si vous avez un reseau local<a class="headerlink" href="#si-vous-avez-un-reseau-local" title="Lien permanent vers ce titre">¶</a></h4>
-<p>On se connecte avec Putty sur la raspberry. Remplissez seulement <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">Name</span></code> avec <code class="docutils literal notranslate"><span class="pre">raspberrypi.home</span></code>. Puis cliquer sur <code class="docutils literal notranslate"><span class="pre">open</span></code>.</p>
-<p><span style="display:block;text-align:center"> <img alt="Putty" src="_images/Putty.png" /> </span></p>
-<p>Un terminal de connexion s’affiche alors. Félicitation, vous étes connecté à la Raspberry en ssh !</p>
-<p>Il ne manque plus de rentrer l’identifiant <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> et le mot de passe <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code>.</p>
-</div>
 <div class="section" id="si-vous-etes-directement-avec-un-clavier-sur-la-raspberry">
 <h4>Si vous étes directement avec un clavier sur la Raspberry<a class="headerlink" href="#si-vous-etes-directement-avec-un-clavier-sur-la-raspberry" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Lorsque l”on demande un login, entrez l’identifiant <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> et le mot de passe <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code>.
-Attention lorsque vous tapez le mot de passe aucun carractère s”affiche sur l”écran, c”est normal.</p>
+<p>Lorsque l’on demande un login, entrez l’identifiant <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> et le mot de passe <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code>.
+Attention lorsque vous tapez le mot de passe aucun carractère s’affiche sur l’écran, c’est normal.</p>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p><strong>Le clavier est sûrement en qwerty !!</strong></p>
@@ -273,6 +262,14 @@ Attention lorsque vous tapez le mot de passe aucun carractère s”affiche sur l
 </pre></div>
 </div>
 <p>Féliciation vous étes connecté à la Raspberry !</p>
+</div>
+<div class="section" id="si-vous-avez-un-reseau-local">
+<h4>Si vous avez un reseau local<a class="headerlink" href="#si-vous-avez-un-reseau-local" title="Lien permanent vers ce titre">¶</a></h4>
+<p>On se connecte avec Putty sur la raspberry depuis un ordianateur sur le réseau local. La Rapsberry pi n’a pas besoin d’avoir d’écran, ni de clavier connecté. <strong>Il faut obligatoirement que les 2 appareils soient connectés sur le même réseau local !!</strong></p>
+<p>Dans Putty, remplissez seulement <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">Name</span></code> avec <code class="docutils literal notranslate"><span class="pre">raspberrypi.home</span></code>. Puis cliquer sur <code class="docutils literal notranslate"><span class="pre">open</span></code>.</p>
+<p><span style="display:block;text-align:center"> <img alt="Putty" src="_images/Putty.png" /> </span></p>
+<p>Un terminal de connexion s’affiche alors. Félicitation, vous étes connecté à la Raspberry en ssh !</p>
+<p>Il ne manque plus de rentrer l’identifiant <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> et le mot de passe <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code>.</p>
 </div>
 </div>
 <div class="section" id="installation-des-mises-a-jours">
@@ -294,7 +291,7 @@ Attention lorsque vous tapez le mot de passe aucun carractère s”affiche sur l
 </div>
 <p>En fouillant un peu, on peut trouver l’adresse ip de la Raspberry qui est de la forme <code class="docutils literal notranslate"><span class="pre">192.168.1.12</span></code>. Entrez ce numéro dans la case Host name de Putty et connectez-vous.</p>
 <ul class="simple">
-<li><p>Solution 2 : Si votre téléphone est aussi connectés sur le même réseau local, vous pouvez utiliser l’application <a class="reference external" href="https://www.fing.com/">Fing</a>. Elle permet de scanner le réseau et de trouver les périphériques connectés.</p></li>
+<li><p>Solution 2 : Si votre téléphone est aussi connecté sur le même réseau local, vous pouvez utiliser l’application <a class="reference external" href="https://www.fing.com/">Fing</a>. Elle permet de scanner le réseau et de trouver les périphériques connectés.</p></li>
 </ul>
 </div>
 </div>
@@ -313,19 +310,27 @@ Attention lorsque vous tapez le mot de passe aucun carractère s”affiche sur l
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
 </pre></div>
 </div>
-<p>On installe ROS :</p>
+<p>On a 3 possibilités pour installer ROS :</p>
+<ul class="simple">
+<li><p>La version de base :</p></li>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ros</span><span class="o">-</span><span class="n">noetic</span><span class="o">-</span><span class="n">desktop</span>
 </pre></div>
 </div>
-<p>Cette version est suffisante. Vous pouvez installer la totalité de ROS avec :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ros</span><span class="o">-</span><span class="n">noetic</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">full</span>
-</pre></div>
-</div>
-<p>Pour Raspberry-Pi sous Ubuntu Server OS, il est possible d’installer une version minimale (sans interface graphique) :</p>
+<p>Cette version comporte le minimum d’outils avec une interface graphique pour faire tourner ROS.</p>
+<ul class="simple">
+<li><p>Pour Raspberry-Pi sous Ubuntu Server OS, il est possible d’installer une version minimale (sans interface graphique) :</p></li>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ros</span><span class="o">-</span><span class="n">noetic</span><span class="o">-</span><span class="n">ros</span><span class="o">-</span><span class="n">base</span>
 </pre></div>
 </div>
-<p>On peut ajouter au terminal l’environnement ROS :</p>
+<ul class="simple">
+<li><p>Vous pouvez installer la totalité de ROS avec :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ros</span><span class="o">-</span><span class="n">noetic</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="n">full</span>
+</pre></div>
+</div>
+<p>Après l’installation, on ajoute au terminal l’environnement ROS :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;source /opt/ros/noetic/setup.bash&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bashrc</span>
 <span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
 </pre></div>
@@ -378,7 +383,7 @@ catkin_make -DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
 <h3>Sous Windows et Linux<a class="headerlink" href="#sous-windows-et-linux" title="Lien permanent vers ce titre">¶</a></h3>
 <p>On se rend sur le <a class="reference external" href="https://github.com/S6ril/Robot_ROS_Valrob">github</a> et il suffit de télécharger le code depuis une archive ZIP.</p>
 <p><span style="display:block;text-align:center"> <img alt="Github" src="_images/github_download.png" /> </span></p>
-<p>Puis d’extraire le dossier <code class="docutils literal notranslate"><span class="pre">src</span></code> qui contient les codes vers l”environnement <code class="docutils literal notranslate"><span class="pre">catkin_ws</span></code>.</p>
+<p>Puis d’extraire le dossier <code class="docutils literal notranslate"><span class="pre">src</span></code> qui contient les codes vers l’environnement <code class="docutils literal notranslate"><span class="pre">catkin_ws</span></code>.</p>
 </div>
 <div class="section" id="sous-linux-en-ligne-de-commande">
 <h3>Sous Linux en ligne de commande<a class="headerlink" href="#sous-linux-en-ligne-de-commande" title="Lien permanent vers ce titre">¶</a></h3>

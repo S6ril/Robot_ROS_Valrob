@@ -17,10 +17,7 @@
 
 En installant Ubuntu sur Raspberry Pi, on simplifie l’installation de ROS. Mais l’installation sur la carte est un peu complexe.
 
-``` warning:: On va utiliser une connexion ssh vers la Raspberry. Cela necessite alors un réseau local avec l’ordinateur et la Rasperry connectée dessus. La connexion peut être en wifi ou en ethernet. 
-```
-
-``` note:: Si par malchance vous n’avez pas de réseau local, mais seulement une seule connexion internet, vous pouvez utiliser la Raspberry comme ordinateur en vous connectant dessus avec un clavier, un écran et une connexion internet (wifi, cable). Les commandes seront identiques à une installation sur Ubuntu. Le client ssh ne sera donc pas obligatoire, car il permet seulement d'accéder à distance à la Raspberry.
+``` note:: Si par malchance vous n’avez pas de réseau local, mais seulement une seule connexion internet, vous pouvez utiliser la Raspberry comme ordinateur en vous connectant dessus avec un clavier, un écran et une connexion internet (wifi, cable). Les commandes seront identiques à une installation sur Ubuntu. Le client ssh Putty ne sera donc pas obligatoire, car il permet seulement d’accéder à distance à la Raspberry.
 ```
 
 ### Requis 
@@ -32,18 +29,19 @@ En installant Ubuntu sur Raspberry Pi, on simplifie l’installation de ROS. Mai
 
 ### Installation d’Ubuntu
 
-Si vous avez télécharger Ubuntu server, ouvrez Raspberry Pi Imager sur votre ordinateur et selectionner `use custom`.
+Si vous avez téléchargé Ubuntu server, ouvrez Raspberry Pi Imager sur votre ordinateur et selectionner `use custom`.
 
 <span style="display:block;text-align:center"> ![Rpi_imager](./../../images/rpi_imager.png) </span>
 
 Puis chosissez votre carte et enfin `write`.
 
-Raspberry Pi imager propose aussi de télécharger l'OS à votre place.
+Raspberry Pi imager propose aussi de télécharger l’OS à votre place.
 
-``` note:: Par cable ethernet, il n'y a aucune configuration du reseau à faire.
-```
 
 #### Configuration du wifi après le flash.
+
+``` note:: Par cable ethernet, il n’y a aucune configuration du reseau à faire.
+```
 
 Si vous souhaitez mettre la Raspberry en wifi, il faut modifier dans la partition `system-boot` le fichier `network-config` et décommenter (et adapter) les lignes suivantes :
 
@@ -62,21 +60,10 @@ Maintenant la Raspberry peut être démarrée. L’os est configuré pour active
 
 L’utilisateur et mot de passe par défaut est `ubuntu`. Il est demandé à la première utilisation de changer le mot de passe.
 
-#### Si vous avez un reseau local
-
-On se connecte avec Putty sur la raspberry. Remplissez seulement `Host Name` avec `raspberrypi.home`. Puis cliquer sur `open`.
-
-<span style="display:block;text-align:center"> ![Putty](./../../images/Putty.png) </span>
-
-Un terminal de connexion s’affiche alors. Félicitation, vous étes connecté à la Raspberry en ssh !
-
-Il ne manque plus de rentrer l’identifiant `ubuntu` et le mot de passe `ubuntu`.
-    
-
 #### Si vous étes directement avec un clavier sur la Raspberry
 
-Lorsque l'on demande un login, entrez l’identifiant `ubuntu` et le mot de passe `ubuntu`.
-Attention lorsque vous tapez le mot de passe aucun carractère s'affiche sur l'écran, c'est normal.
+Lorsque l’on demande un login, entrez l’identifiant `ubuntu` et le mot de passe `ubuntu`.
+Attention lorsque vous tapez le mot de passe aucun carractère s’affiche sur l’écran, c’est normal.
 
 ``` warning:: **Le clavier est sûrement en qwerty !!**
 ```
@@ -90,6 +77,23 @@ En une ligne, la commande est :
     L='fr' && sudo sed -i 's/XKBLAYOUT=\"\w*"/XKBLAYOUT=\"'$L'\"/g' /etc/default/keyboard
 
 Féliciation vous étes connecté à la Raspberry !
+
+
+#### Si vous avez un reseau local
+
+
+On se connecte avec Putty sur la raspberry depuis un ordianateur sur le réseau local. La Rapsberry pi n’a pas besoin d’avoir d’écran, ni de clavier connecté. **Il faut obligatoirement que les 2 appareils soient connectés sur le même réseau local !!** 
+
+Dans Putty, remplissez seulement `Host Name` avec `raspberrypi.home`. Puis cliquer sur `open`.
+
+<span style="display:block;text-align:center"> ![Putty](./../../images/Putty.png) </span>
+
+Un terminal de connexion s’affiche alors. Félicitation, vous étes connecté à la Raspberry en ssh !
+
+Il ne manque plus de rentrer l’identifiant `ubuntu` et le mot de passe `ubuntu`.
+    
+
+
 
 
 ### Installation des mises à jours
@@ -111,7 +115,7 @@ ifconfig
 
 En fouillant un peu, on peut trouver l’adresse ip de la Raspberry qui est de la forme `192.168.1.12`. Entrez ce numéro dans la case Host name de Putty et connectez-vous.
 
-* Solution 2 : Si votre téléphone est aussi connectés sur le même réseau local, vous pouvez utiliser l’application [Fing](https://www.fing.com/). Elle permet de scanner le réseau et de trouver les périphériques connectés.
+* Solution 2 : Si votre téléphone est aussi connecté sur le même réseau local, vous pouvez utiliser l’application [Fing](https://www.fing.com/). Elle permet de scanner le réseau et de trouver les périphériques connectés.
 
 
 ## Installation de ROS sur Ubuntu
@@ -131,20 +135,27 @@ On ajoute le dépot :
     curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -
     sudo apt update
 
-On installe ROS :
-    
-    sudo apt install ros-noetic-desktop
+On a 3 possibilités pour installer ROS :
 
-Cette version est suffisante. Vous pouvez installer la totalité de ROS avec :
+* La version de base :
+```
+sudo apt install ros-noetic-desktop
+```
+Cette version comporte le minimum d’outils avec une interface graphique pour faire tourner ROS.
 
-    sudo apt install ros-noetic-desktop-full
+* Pour Raspberry-Pi sous Ubuntu Server OS, il est possible d’installer une version minimale (sans interface graphique) :
+```
+sudo apt install ros-noetic-ros-base
+```
 
-Pour Raspberry-Pi sous Ubuntu Server OS, il est possible d’installer une version minimale (sans interface graphique) :
+* Vous pouvez installer la totalité de ROS avec :
+```
+sudo apt install ros-noetic-desktop-full
+```
 
-    sudo apt install ros-noetic-ros-base
 
 
-On peut ajouter au terminal l’environnement ROS :
+Après l’installation, on ajoute au terminal l’environnement ROS :
     
     echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
     source ~/.bashrc
@@ -207,7 +218,7 @@ On se rend sur le [github](https://github.com/S6ril/Robot_ROS_Valrob) et il suff
 
 <span style="display:block;text-align:center"> ![Github](./../../images/github_download.png) </span>
 
-Puis d’extraire le dossier `src` qui contient les codes vers l'environnement `catkin_ws`.
+Puis d’extraire le dossier `src` qui contient les codes vers l’environnement `catkin_ws`.
 
 ### Sous Linux en ligne de commande
 
